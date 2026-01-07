@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://[TON-USERNAME].github.io/[TON-REPO]/sitemap.xml
-
-# Remarque : Remplacer l'URL ci-dessus par l'URL réelle de ton site GitHub Pages
-# Exemple : https://tonusername.github.io/delphine-millot/sitemap.xml
-# Ou si domaine personnalisé : https://delphinemillot.fr/sitemap.xml
