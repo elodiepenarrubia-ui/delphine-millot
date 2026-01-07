@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://elodiepenarrubia-ui.github.io/delphine-millot/sitemap.xml
