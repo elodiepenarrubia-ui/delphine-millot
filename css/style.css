@@ -433,15 +433,41 @@ nav a.active {
   font-family: var(--font-titre);
   font-size: 1.2rem;
   color: var(--orange-cuivre);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 0;
   font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+}
+
+.faq-question:hover {
+  background-color: var(--gris-clair);
+}
+
+.faq-question.active {
+  color: var(--orange-fonce);
+}
+
+.faq-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+  margin-left: var(--spacing-sm);
+}
+
+.faq-question.active .faq-arrow {
+  transform: rotate(180deg);
 }
 
 .faq-answer {
   color: var(--gris-texte);
   line-height: 1.8;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-sm);
 }
-
 /* === FOOTER === */
 footer {
   background-color: var(--noir);
