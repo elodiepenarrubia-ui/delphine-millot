@@ -181,16 +181,32 @@ header.scrolled {
   display: flex;
   align-items: center;
   transition: var(--transition);
+  position: relative;
 }
 
-.logo img {
+/* Logo complet (par défaut) */
+.logo-full {
   height: 150px;
   width: auto;
   transition: var(--transition);
+  display: block;
 }
 
-header.scrolled .logo img {
-  height: 60px;
+/* Favicon (caché par défaut) */
+.logo-favicon {
+  height: 50px;
+  width: auto;
+  transition: var(--transition);
+  display: none;
+}
+
+/* Au scroll : on cache le logo complet et on affiche le favicon */
+header.scrolled .logo-full {
+  display: none;
+}
+
+header.scrolled .logo-favicon {
+  display: block;
 }
 
 nav ul {
@@ -200,12 +216,16 @@ nav ul {
   transition: var(--transition);
 }
 
+/* Au scroll : on cache le menu desktop */
 header.scrolled nav ul {
   display: none;
 }
 
+/* Au scroll : on affiche le burger */
 header.scrolled .menu-toggle {
   display: flex !important;
+  z-index: 1001;
+  cursor: pointer;
 }
 
 nav a {
@@ -334,15 +354,17 @@ nav a.active {
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--noir);
-  border-color: var(--noir);
-  padding: 0.7rem 1.5rem;
-  font-size: 0.85rem;
+  color: var(--gris-texte);
+  border-color: var(--gris-moyen);
+  padding: 0.6rem 1.3rem;
+  font-size: 0.8rem;
+  font-weight: 300;
 }
 
 .btn-secondary:hover {
-  background-color: var(--noir);
-  color: var(--blanc);
+  background-color: var(--gris-clair);
+  color: var(--orange-cuivre);
+  border-color: var(--orange-cuivre);
 }
 
 .btn-group {
@@ -385,12 +407,12 @@ nav a.active {
 .card p {
   font-size: 0.95rem;
   line-height: 1.7;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
   flex-grow: 1;
 }
 
 .card .btn {
-  margin-top: auto;
+  margin-top: var(--spacing-md);
   align-self: center;
   width: fit-content;
 }
@@ -427,6 +449,58 @@ nav a.active {
 /* Image jardin Qi Gong */
 .jardin-qigong-image {
   background-image: url('/delphine-millot/images/jardin-qigong.jpg');
+}
+
+/* Section Qi Gong avec photo */
+.qigong-photo-section {
+  position: relative;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/delphine-millot/images/jardin-qigong.jpg');
+}
+
+.qigong-photo-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.qigong-photo-section .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--blanc);
+}
+
+.qigong-photo-section h2 {
+  color: var(--blanc);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.qigong-photo-section p {
+  color: var(--blanc);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.qigong-photo-placeholder {
+  min-height: 400px;
+  background-color: var(--gris-clair);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gris-texte);
+  font-style: italic;
+  font-size: 1.2rem;
 }
 
 /* === CHARTE ÉTHIQUE === */
