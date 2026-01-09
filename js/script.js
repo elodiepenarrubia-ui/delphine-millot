@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         avisSlider.style.animation = 'none';
         
         let position = 0;
-        const speed = 0.5; // pixels par frame (ajuste si besoin)
+        const speed = 0.8; // pixels par frame (ajuste si besoin)
         let animationId;
         let isPaused = false;
         
