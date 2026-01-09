@@ -266,7 +266,7 @@ nav a.active {
   transition: var(--transition);
 }
 
-/* === HERO AVEC IMAGE DE FOND === */
+/* === HERO (général - pour toutes les pages) === */
 .hero {
   position: relative;
   height: 85vh;
@@ -275,14 +275,19 @@ nav a.active {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: url('/delphine-millot/images/hero-massage.jpg');
-  background-size: cover;
-  background-position: center;
+  background-color: var(--gris-clair);
   overflow: hidden;
 }
 
-/* Overlay sombre pour contraste texte */
-.hero::before {
+/* === HERO PAGE D'ACCUEIL (avec image de fond) === */
+.hero-home {
+  background-image: url('/delphine-millot/images/hero-massage.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay sombre pour contraste texte (page d'accueil uniquement) */
+.hero-home::before {
   content: '';
   position: absolute;
   top: 0;
@@ -307,24 +312,47 @@ nav a.active {
 .hero h1 {
   margin-bottom: var(--spacing-md);
   font-size: 3rem;
-  color: var(--blanc);
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
 }
 
 .hero p {
-  font-size: 1.3rem;
-  color: var(--blanc);
+  font-size: 1.2rem;
+  color: var(--gris-texte);
   margin-bottom: var(--spacing-lg);
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Texte blanc sur la page d'accueil uniquement */
+.hero-home h1 {
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-home p {
+  font-size: 1.3rem;
+  color: var(--blanc);
   text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+/* Boutons blancs sur la page d'accueil */
+.hero-home .btn-secondary {
+  background-color: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.hero-home .btn-secondary:hover {
+  background-color: var(--blanc);
+  color: var(--orange-cuivre);
+  border-color: var(--blanc);
 }
 
 /* Supprimer l'ancien hero-image (n'est plus utilisé) */
 .hero-image {
   display: none;
 }
+
 /* === PHRASE SIGNATURE === */
 .phrase-signature {
   text-align: center;
