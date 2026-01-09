@@ -266,7 +266,7 @@ nav a.active {
   transition: var(--transition);
 }
 
-/* === HERO === */
+/* === HERO AVEC IMAGE DE FOND === */
 .hero {
   position: relative;
   height: 85vh;
@@ -275,18 +275,26 @@ nav a.active {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: var(--gris-clair);
+  background-image: url('/delphine-millot/images/hero-massage.jpg');
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
 }
 
-.hero-image {
+/* Overlay sombre pour contraste texte */
+.hero::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.3;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.65) 0%,
+    rgba(212, 130, 92, 0.35) 100%
+  );
+  z-index: 1;
 }
 
 .hero-content {
@@ -299,17 +307,24 @@ nav a.active {
 .hero h1 {
   margin-bottom: var(--spacing-md);
   font-size: 3rem;
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
 }
 
 .hero p {
-  font-size: 1.2rem;
-  color: var(--gris-texte);
+  font-size: 1.3rem;
+  color: var(--blanc);
   margin-bottom: var(--spacing-lg);
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
 }
 
+/* Supprimer l'ancien hero-image (n'est plus utilisé) */
+.hero-image {
+  display: none;
+}
 /* === PHRASE SIGNATURE === */
 .phrase-signature {
   text-align: center;
