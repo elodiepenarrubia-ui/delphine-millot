@@ -473,6 +473,11 @@ nav a.active {
   border-color: var(--blanc);
 }
 
+/* === HERO SOUS-PAGES MASSAGES (fond personnalisé) === */
+.hero-massage-page {
+  background-color: var(--blanc-casse); /* ou toute autre couleur */
+}
+
 /* === PHRASE SIGNATURE === */
 .phrase-signature {
   text-align: center;
