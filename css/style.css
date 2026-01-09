@@ -475,7 +475,7 @@ nav a.active {
 
 /* === HERO SOUS-PAGES MASSAGES (fond personnalisé) === */
 .hero-massage-page {
-  background-color: var(--blanc-casse); /* ou toute autre couleur */
+  background-color: var(--orange-clair); /* ou toute autre couleur */
 }
 
 /* === PHRASE SIGNATURE === */
