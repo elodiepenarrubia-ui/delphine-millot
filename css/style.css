@@ -625,7 +625,7 @@ nav a.active {
 .avis-slider {
   display: flex;
   gap: var(--spacing-lg);
-  animation: scroll-avis 30s linear infinite;
+  animation: scroll-avis 20s linear infinite;
 }
 
 .avis-slider:hover {
@@ -642,7 +642,7 @@ nav a.active {
 }
 
 .avis-card {
-  min-width: 350px;
+  min-width: 150px;
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
   padding: var(--spacing-lg);
