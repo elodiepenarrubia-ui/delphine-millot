@@ -620,12 +620,14 @@ nav a.active {
   overflow: hidden;
   position: relative;
   padding: var(--spacing-lg) 0;
+  margin: 0 calc(-1 * var(--spacing-md));
 }
 
 .avis-slider {
   display: flex;
   gap: var(--spacing-lg);
-  animation: scroll-avis 20s linear infinite;
+  animation: scroll-avis 15s linear infinite;
+  padding: 0 var(--spacing-md);
 }
 
 .avis-slider:hover {
@@ -642,12 +644,14 @@ nav a.active {
 }
 
 .avis-card {
-  min-width: 150px;
+  min-width: 360px;
+  max-width: 360px;
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
   padding: var(--spacing-lg);
   border-radius: var(--border-radius);
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .avis-card .stars {
@@ -659,7 +663,8 @@ nav a.active {
 .avis-card .name {
   font-weight: 700;
   color: var(--noir);
-  margin-bottom: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+  text-transform: capitalize;
 }
 
 .avis-card .text {
