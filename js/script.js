@@ -93,13 +93,59 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ============================================
-    // 5. AVIS DÉFILANTS (Duplication pour effet infini)
+    // 5. AVIS DÉFILANTS (Animation fluide sans saut)
     // ============================================
     const avisSlider = document.querySelector('.avis-slider');
     if (avisSlider) {
-        // Dupliquer les avis pour créer un effet de boucle infinie
+        // Dupliquer les avis pour la boucle infinie
         const avisCards = avisSlider.innerHTML;
         avisSlider.innerHTML = avisCards + avisCards;
+        
+        // Désactiver l'animation CSS
+        avisSlider.style.animation = 'none';
+        
+        let position = 0;
+        const speed = 0.5; // pixels par frame (ajuste si besoin)
+        let animationId;
+        let isPaused = false;
+        
+        // Calculer la largeur d'un set complet d'avis
+        const firstCard = avisSlider.querySelector('.avis-card');
+        const cardWidth = firstCard ? firstCard.offsetWidth : 360;
+        const gap = 48; // var(--spacing-lg) = 3rem = 48px
+        const totalCards = avisSlider.querySelectorAll('.avis-card').length / 2;
+        const oneSetWidth = (cardWidth + gap) * totalCards;
+        
+        function animate() {
+            if (!isPaused) {
+                position -= speed;
+                
+                // Quand on a défilé un set complet, on repositionne sans saut
+                if (Math.abs(position) >= oneSetWidth) {
+                    position = 0;
+                }
+                
+                avisSlider.style.transform = `translateX(${position}px)`;
+            }
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        // Démarrer l'animation
+        animate();
+        
+        // Pause au survol
+        avisSlider.addEventListener('mouseenter', () => {
+            isPaused = true;
+        });
+        
+        avisSlider.addEventListener('mouseleave', () => {
+            isPaused = false;
+        });
+        
+        // Nettoyer l'animation si la page est fermée
+        window.addEventListener('beforeunload', () => {
+            cancelAnimationFrame(animationId);
+        });
     }
     
 });
