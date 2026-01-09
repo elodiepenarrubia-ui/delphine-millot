@@ -353,6 +353,126 @@ nav a.active {
   display: none;
 }
 
+/* === HERO PAGE MASSAGES === */
+.hero-massages {
+  background-image: url('/delphine-millot/images/massage.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-massages::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.65) 0%,
+    rgba(212, 130, 92, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+.hero-massages h1,
+.hero-massages p {
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-massages .btn-secondary {
+  background-color: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.hero-massages .btn-secondary:hover {
+  background-color: var(--blanc);
+  color: var(--orange-cuivre);
+  border-color: var(--blanc);
+}
+
+/* === HERO PAGE QI GONG === */
+.hero-qigong {
+  background-image: url('/delphine-millot/images/qi-gong.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-qigong::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.65) 0%,
+    rgba(212, 130, 92, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+.hero-qigong h1,
+.hero-qigong p {
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-qigong .btn-secondary {
+  background-color: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.hero-qigong .btn-secondary:hover {
+  background-color: var(--blanc);
+  color: var(--orange-cuivre);
+  border-color: var(--blanc);
+}
+
+/* === HERO PAGE À PROPOS === */
+.hero-apropos {
+  background-image: url('/delphine-millot/images/a-propos.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-apropos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.65) 0%,
+    rgba(212, 130, 92, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+.hero-apropos h1,
+.hero-apropos p {
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-apropos .btn-secondary {
+  background-color: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.hero-apropos .btn-secondary:hover {
+  background-color: var(--blanc);
+  color: var(--orange-cuivre);
+  border-color: var(--blanc);
+}
+
 /* === PHRASE SIGNATURE === */
 .phrase-signature {
   text-align: center;
