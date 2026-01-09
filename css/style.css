@@ -777,6 +777,11 @@ footer {
     grid-template-columns: 1fr;
   }
   
+  .presentation-image {
+    min-height: 300px;
+    order: -1;
+  }
+  
   .cards-grid {
     grid-template-columns: 1fr;
   }
@@ -840,16 +845,33 @@ footer {
     font-size: 0.9rem;
   }
   
-  .logo img {
-    height: 120px;
+  .logo {
+    height: 100px;
   }
   
-  header.scrolled .logo img {
+  header.scrolled .logo {
     height: 50px;
+  }
+  
+  .logo-full {
+    height: 100px;
+  }
+  
+  header.scrolled .logo-full {
+    height: 40px;
+  }
+  
+  .logo-favicon {
+    height: 40px;
+  }
+  
+  .presentation-image {
+    min-height: 250px;
   }
   
   .avis-card {
     min-width: 280px;
+    max-width: 320px;
   }
 }
 
