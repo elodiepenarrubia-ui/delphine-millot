@@ -626,12 +626,12 @@ nav a.active {
 .avis-slider {
   display: flex;
   gap: var(--spacing-lg);
-  animation: scroll-avis 15s linear infinite;
   padding: 0 var(--spacing-md);
+  /* Animation gérée par JavaScript pour éviter le saut */
 }
 
 .avis-slider:hover {
-  animation-play-state: paused;
+  /* Pause gérée par JavaScript */
 }
 
 @keyframes scroll-avis {
