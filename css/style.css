@@ -239,6 +239,7 @@ nav a {
   color: var(--noir);
   padding: var(--spacing-xs) 0;
   border-bottom: 2px solid transparent;
+  transition: var(--transition);
 }
 
 nav a:hover,
@@ -328,7 +329,9 @@ nav a.active {
 
 /* === BUTTONS === */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.9rem 2rem;
   font-family: var(--font-texte);
   font-size: 0.95rem;
@@ -340,6 +343,8 @@ nav a.active {
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
+  line-height: 1.2;
+  vertical-align: middle;
 }
 
 .btn-primary {
