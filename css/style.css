@@ -1028,7 +1028,7 @@ footer {
 /* Mobile */
 @media (max-width: 480px) {
   html {
-    font-size: 16px; /* Augmenté pour meilleure lisibilité */
+    font-size: 16px;
   }
   
   :root {
@@ -1046,7 +1046,11 @@ footer {
   /* Hero */
   .hero {
     height: 60vh;
-    background-position: left center; /* Aligné à gauche */
+  }
+  
+  /* Hero Qi Gong : aligné entre gauche et centre sur mobile */
+  .hero-qigong {
+    background-position: 30% center;
   }
   
   .hero h1 {
@@ -1113,16 +1117,6 @@ footer {
   
   .avis-card .text {
     font-size: 1rem;
-  }
-}
-
-/* Hero : aligner la photo à gauche sur mobile */
-  .hero,
-  .hero-home,
-  .hero-massages,
-  .hero-qigong,
-  .hero-apropos {
-    background-position: left center;
   }
 }
 
