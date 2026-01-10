@@ -753,8 +753,8 @@ nav a.active {
 
 .tarif-card .prix strong {
   color: var(--orange-cuivre);
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 /* === FAQ === */
