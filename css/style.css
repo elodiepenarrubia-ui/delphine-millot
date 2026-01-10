@@ -108,10 +108,12 @@ h1 {
 h2 {
   font-size: 2rem;
   margin-bottom: var(--spacing-lg);
+  font-weight: 500;
 }
 
 h3 {
   font-size: 1.5rem;
+  font-weight: 500;
 }
 
 p {
@@ -132,6 +134,8 @@ strong {
 em {
   font-style: italic;
   color: var(--orange-cuivre);
+  font-size: 1.05em;
+  font-weight: 400;
 }
 
 /* === LAYOUT === */
@@ -493,9 +497,10 @@ nav a.active {
 
 .phrase-signature p {
   font-family: var(--font-titre);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-style: italic;
   color: var(--orange-cuivre);
+  font-weight: 500;
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
@@ -583,7 +588,8 @@ nav a.active {
 .card h3 {
   color: var(--orange-cuivre);
   margin-bottom: var(--spacing-sm);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .card p {
@@ -613,6 +619,13 @@ nav a.active {
 
 .presentation-text h2 {
   color: var(--orange-cuivre);
+}
+
+.presentation-text h2,
+.charte-section h2 {
+  color: var(--orange-cuivre);
+  font-weight: 500;
+  font-size: 2.2rem;
 }
 
 .presentation-image {
@@ -732,7 +745,8 @@ nav a.active {
 
 .tarif-card .prix strong {
   color: var(--orange-cuivre);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 /* === FAQ === */
@@ -751,10 +765,10 @@ nav a.active {
 
 .faq-question {
   font-family: var(--font-titre);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--orange-cuivre);
   margin-bottom: 0;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -864,8 +878,9 @@ footer {
 
 .footer-section h3 {
   color: var(--orange-cuivre);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: var(--spacing-sm);
+  font-weight: 600;
 }
 
 .footer-section p,
@@ -993,7 +1008,7 @@ footer {
 /* Mobile */
 @media (max-width: 480px) {
   html {
-    font-size: 14px;
+    font-size: 16px; /* Augmenté pour meilleure lisibilité */
   }
   
   :root {
@@ -1002,23 +1017,38 @@ footer {
     --spacing-xl: 2.5rem;
   }
   
+  /* Texte plus lisible */
+  p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  
+  /* Hero */
   .hero {
     height: 60vh;
+    background-position: left center; /* Aligné à gauche */
   }
   
   .hero h1 {
     font-size: 1.8rem;
   }
   
-  .phrase-signature p {
-    font-size: 1.2rem;
+  .hero p {
+    font-size: 1.1rem;
   }
   
+  /* Phrase signature */
+  .phrase-signature p {
+    font-size: 1.3rem;
+  }
+  
+  /* Boutons */
   .btn {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
   
+  /* Logo */
   .logo {
     height: 100px;
   }
@@ -1039,13 +1069,40 @@ footer {
     height: 40px;
   }
   
+  /* Sections */
   .presentation-image {
     min-height: 250px;
   }
   
+  /* Cartes */
+  .card p {
+    font-size: 1rem;
+  }
+  
+  /* FAQ */
+  .faq-answer {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  /* Avis */
   .avis-card {
     min-width: 280px;
     max-width: 320px;
+  }
+  
+  .avis-card .text {
+    font-size: 1rem;
+  }
+}
+
+/* Hero : aligner la photo à gauche sur mobile */
+  .hero,
+  .hero-home,
+  .hero-massages,
+  .hero-qigong,
+  .hero-apropos {
+    background-position: left center;
   }
 }
 
