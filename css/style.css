@@ -613,6 +613,18 @@ nav a.active {
   width: fit-content;
 }
 
+/* === SECTIONS AVEC TITRES CENTRÉS === */
+section h2 {
+  text-align: center;
+}
+
+/* Exceptions : titres alignés à gauche */
+.presentation-text h2,
+.charte-section h2,
+.legal-page h2 {
+  text-align: left;
+}
+
 /* === SECTIONS SPÉCIFIQUES === */
 .presentation-section {
   background-color: var(--blanc);
