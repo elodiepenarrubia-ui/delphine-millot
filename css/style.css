@@ -359,9 +359,13 @@ nav a.active {
 
 /* === HERO PAGE MASSAGES === */
 .hero-massages {
-  background-image: url('/delphine-millot/images/massage.jpg');
+  background-image: url('/delphine-millot/images/massage.webp');
   background-size: cover;
   background-position: center;
+}
+
+.no-webp .hero-massages {
+  background-image: url('/delphine-millot/images/massage.jpg');
 }
 
 .hero-massages::before {
@@ -439,9 +443,13 @@ nav a.active {
 
 /* === HERO PAGE À PROPOS === */
 .hero-apropos {
-  background-image: url('/delphine-millot/images/a-propos.jpg');
+  background-image: url('/delphine-millot/images/a-propos.webp');
   background-size: cover;
   background-position: center;
+}
+
+.no-webp .hero-apropos {
+  background-image: url('/delphine-millot/images/a-propos.jpg');
 }
 
 .hero-apropos::before {
