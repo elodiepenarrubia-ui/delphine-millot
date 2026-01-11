@@ -285,7 +285,7 @@ nav a.active {
 
 /* === HERO PAGE D'ACCUEIL (avec image de fond) === */
 .hero-home {
-  background-image: url('/delphine-millot/images/hero-massage.jpg');
+  background-image: url('/images/hero-massage.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -359,13 +359,13 @@ nav a.active {
 
 /* === HERO PAGE MASSAGES === */
 .hero-massages {
-  background-image: url('/delphine-millot/images/massage.webp');
+  background-image: url('/images/massage.webp');
   background-size: cover;
   background-position: center;
 }
 
 .no-webp .hero-massages {
-  background-image: url('/delphine-millot/images/massage.jpg');
+  background-image: url('/images/massage.jpg');
 }
 
 .hero-massages::before {
@@ -403,7 +403,7 @@ nav a.active {
 
 /* === HERO PAGE QI GONG === */
 .hero-qigong {
-  background-image: url('/delphine-millot/images/qi-gong.jpg');
+  background-image: url('/images/qi-gong.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -443,13 +443,13 @@ nav a.active {
 
 /* === HERO PAGE À PROPOS === */
 .hero-apropos {
-  background-image: url('/delphine-millot/images/a-propos.webp');
+  background-image: url('/images/a-propos.webp');
   background-size: cover;
   background-position: center;
 }
 
 .no-webp .hero-apropos {
-  background-image: url('/delphine-millot/images/a-propos.jpg');
+  background-image: url('/images/a-propos.jpg');
 }
 
 .hero-apropos::before {
@@ -663,7 +663,7 @@ section h2 {
 
 /* Image jardin Qi Gong */
 .jardin-qigong-image {
-  background-image: url('/delphine-millot/images/jardin-qigong.jpg');
+  background-image: url('/images/jardin-qigong.jpg');
 }
 
 /* Section Qi Gong avec photo */
@@ -676,7 +676,7 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('/delphine-millot/images/jardin-qigong.jpg');
+  background-image: url('/images/jardin-qigong.jpg');
 }
 
 .qigong-photo-section::before {
