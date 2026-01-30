@@ -226,14 +226,46 @@ header.scrolled .logo-favicon {
   opacity: 1;
 }
 
+/* === BOUTON TÉLÉPHONE HEADER === */
+.header-phone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background-color: var(--orange-cuivre);
+  color: var(--blanc);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.header-phone-btn:hover {
+  background-color: var(--orange-fonce);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 130, 92, 0.3);
+}
+
+.header-phone-btn::before {
+  content: "☎";
+  font-size: 1.1rem;
+}
+
+/* === NAVIGATION === */
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
 nav ul {
   display: flex;
   list-style: none;
   gap: var(--spacing-md);
   transition: all 0.4s ease;
 }
-
-/* Le menu reste toujours visible */
 
 nav a {
   font-size: 0.95rem;
@@ -250,6 +282,61 @@ nav a:hover,
 nav a.active {
   color: var(--orange-cuivre);
   border-bottom-color: var(--orange-cuivre);
+}
+
+/* === SOUS-MENU DÉROULANT MASSAGES === */
+nav li {
+  position: relative;
+}
+
+.nav-item-with-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-moyen);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 240px;
+  padding: var(--spacing-sm) 0;
+  margin-top: 0.5rem;
+  z-index: 1000;
+}
+
+.nav-item-with-submenu:hover .submenu {
+  display: block;
+}
+
+.submenu li {
+  display: block;
+  margin: 0;
+}
+
+.submenu a {
+  display: block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-bottom: none;
+  font-size: 0.9rem;
+  text-transform: none;
+  transition: var(--transition);
+}
+
+.submenu a:hover {
+  background-color: var(--gris-clair);
+  color: var(--orange-cuivre);
+  padding-left: calc(var(--spacing-md) + 0.5rem);
+}
+
+/* Flèche indicateur sous-menu */
+.nav-item-with-submenu > a::after {
+  content: " ▼";
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
+  color: var(--orange-cuivre);
 }
 
 /* Menu mobile */
@@ -659,6 +746,23 @@ section h2 {
   font-style: italic;
   background-size: cover;
   background-position: center;
+  position: relative;
+}
+
+/* === FILTRE ORANGE SUR SECTION QI GONG (PAGE D'ACCUEIL) === */
+.presentation-grid .presentation-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 130, 92, 0.3) 0%,
+    rgba(212, 130, 92, 0.1) 100%
+  );
+  pointer-events: none;
 }
 
 /* Image jardin Qi Gong */
@@ -922,6 +1026,33 @@ footer {
   margin-bottom: var(--spacing-xs);
 }
 
+/* === CTA "LAISSER UN AVIS" DANS FOOTER === */
+.footer-cta {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-cta p {
+  color: var(--blanc);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-md);
+  font-weight: 400;
+}
+
+.footer-cta .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-cta .btn-primary::before {
+  content: "⭐";
+  font-size: 1.2rem;
+}
+
 .footer-bottom {
   text-align: center;
   padding-top: var(--spacing-md);
@@ -995,6 +1126,12 @@ footer {
     grid-template-columns: 1fr;
   }
   
+  /* Navigation mobile */
+  .header-phone-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+  
   nav ul {
     display: none;
     position: absolute;
@@ -1010,6 +1147,23 @@ footer {
   
   nav ul.active {
     display: flex;
+  }
+  
+  /* Sous-menu mobile */
+  .submenu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-top: 1px solid var(--gris-moyen);
+    margin-top: var(--spacing-xs);
+  }
+  
+  .nav-item-with-submenu:hover .submenu {
+    display: none;
+  }
+  
+  .nav-item-with-submenu.active .submenu {
+    display: block;
   }
   
   .menu-toggle {
@@ -1070,6 +1224,17 @@ footer {
   .btn {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
+  }
+  
+  /* Bouton téléphone header */
+  .header-phone-btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+  }
+  
+  .header-phone-btn::before {
+    content: "☎";
+    font-size: 1rem;
   }
   
   /* Logo */
