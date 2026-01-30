@@ -3,7 +3,7 @@
   <!-- Page d'accueil -->
   <url>
     <loc>https://delphine-millot.fr/</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,21 +11,21 @@
   <!-- Pages principales -->
   <url>
     <loc>https://delphine-millot.fr/massages.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://delphine-millot.fr/qi-gong.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://delphine-millot.fr/a-propos.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -33,28 +33,28 @@
   <!-- Sous-pages massages -->
   <url>
     <loc>https://delphine-millot.fr/massages/massage-suedois.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://delphine-millot.fr/massages/massage-tantrique.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://delphine-millot.fr/massages/massage-lomi-lomi.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://delphine-millot.fr/massages/drainage-lymphatique.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -62,14 +62,14 @@
   <!-- NOUVELLES PAGES -->
   <url>
     <loc>https://delphine-millot.fr/massages/massage-therapeutique.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://delphine-millot.fr/massages/massage-4-mains-duo.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -77,14 +77,14 @@
   <!-- Pages légales -->
   <url>
     <loc>https://delphine-millot.fr/mentions-legales.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
     <loc>https://delphine-millot.fr/politique-confidentialite.html</loc>
-    <lastmod>2025-01-26</lastmod>
+    <lastmod>2025-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
