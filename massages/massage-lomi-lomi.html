@@ -3,151 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massage Lomi Lomi à Brignoles - Massage Hawaïen | Delphine Millot</title>
-    <meta name="description" content="Massage Lomi Lomi à Brignoles : massage hawaïen fluide et enveloppant, mouvements amples aux avant-bras. 1h : 80€, 1h30 : 120€. ☎️ 06 28 13 25 36">
+    <title>Massage Lomi Lomi à Brignoles | Delphine Millot</title>
+    <meta name="description" content="Massage Lomi Lomi à Brignoles : massage hawaïen aux mouvements fluides et enveloppants. Détente profonde et harmonisation corps-esprit. Tarifs 80€ (1h) - 115€ (1h30).">
     <link rel="stylesheet" href="/css/style.css">
-    
-    <!-- Schema Service Massage Lomi Lomi -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Massage Lomi Lomi",
-      "name": "Massage Lomi Lomi à Brignoles",
-      "description": "Inspiré de la tradition hawaïenne, le massage Lomi Lomi se caractérise par des mouvements amples et fluides, réalisés principalement avec les avant-bras. Il procure une profonde sensation d'enveloppement, favorise la libération des tensions et rétablit l'harmonie corps-esprit.",
-      "url": "https://delphine-millot.fr/massages/massage-lomi-lomi.html",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Delphine Millot",
-        "telephone": "+33628132536",
-        "url": "https://delphine-millot.fr",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "4 Av. Henri Buzzegoli",
-          "addressLocality": "Brignoles",
-          "postalCode": "83170",
-          "addressCountry": "FR"
-        }
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Brignoles"
-        },
-        {
-          "@type": "City",
-          "name": "Forcalqueiret"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Var"
-        }
-      ],
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Massage Lomi Lomi 1 heure",
-          "price": "80",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "url": "https://delphine-millot.fr/massages/massage-lomi-lomi.html"
-        },
-        {
-          "@type": "Offer",
-          "name": "Massage Lomi Lomi 1h30",
-          "price": "120",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "url": "https://delphine-millot.fr/massages/massage-lomi-lomi.html"
-        },
-        {
-          "@type": "Offer",
-          "name": "Forfait 5 séances 1h",
-          "price": "350",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "url": "https://delphine-millot.fr/massages/massage-lomi-lomi.html"
-        },
-        {
-          "@type": "Offer",
-          "name": "Forfait 5 séances 1h30",
-          "price": "545",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "url": "https://delphine-millot.fr/massages/massage-lomi-lomi.html"
-        }
-      ]
-    }
-    </script>
-    
-    <!-- Schema BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Accueil",
-          "item": "https://delphine-millot.fr"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Massages",
-          "item": "https://delphine-millot.fr/massages.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Massage Lomi Lomi",
-          "item": "https://delphine-millot.fr/massages/massage-lomi-lomi.html"
-        }
-      ]
-    }
-    </script>
 </head>
 <body>
     <header>
-    <div class="header-content">
-        <div class="logo">
-            <a href="/index.html">
-                <img src="/images/logo.png" 
-                     alt="Delphine Millot - Cœur, Corps, Conscience" 
-                     class="logo-full">
-                <img src="/images/favicon.png" 
-                     alt="Delphine Millot" 
-                     class="logo-favicon">
-            </a>
+        <div class="header-content">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="/images/logo.png" 
+                         alt="Delphine Millot - Corps, Cœur, Conscience" 
+                         class="logo-full">
+                    <img src="/images/favicon.png" 
+                         alt="Delphine Millot" 
+                         class="logo-favicon">
+                </a>
+            </div>
+            <nav>
+                <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="nav-menu">
+                    <li><a href="/index.html">Accueil</a></li>
+                    <li class="nav-item-with-submenu">
+                        <a href="/massages.html" class="active">Massages</a>
+                        <ul class="submenu">
+                            <li><a href="/massages/massage-suedois.html">Massage Suédois</a></li>
+                            <li><a href="/massages/massage-tantrique.html">Massage Tantrique</a></li>
+                            <li><a href="/massages/massage-lomi-lomi.html">Massage Lomi Lomi</a></li>
+                            <li><a href="/massages/drainage-lymphatique.html">Drainage Lymphatique</a></li>
+                            <li><a href="/massages/massage-therapeutique.html">Massage Thérapeutique</a></li>
+                            <li><a href="/massages/massage-4-mains-duo.html">Massage 4 Mains et Duo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/qi-gong.html">Qi Gong</a></li>
+                    <li><a href="/a-propos.html">À propos</a></li>
+                </ul>
+                <a href="tel:+33628132536" class="header-phone-btn">06 28 13 25 36</a>
+            </nav>
         </div>
-        <nav>
-            <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul id="nav-menu">
-                <li><a href="/index.html">Accueil</a></li>
-                <li><a href="/massages.html">Massages</a></li>
-                <li><a href="/qi-gong.html">Qi Gong</a></li>
-                <li><a href="/a-propos.html">À propos</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <section class="hero hero-massage-page" style="height: 40vh; min-height: 300px;">
         <div class="hero-content">
             <h1>Massage Lomi Lomi à Brignoles</h1>
-            <p>Tradition hawaïenne, détente enveloppante</p>
+            <p>Massage hawaïen fluide et enveloppant</p>
         </div>
     </section>
 
     <section>
         <div class="container-narrow">
             <h2>Qu'est-ce que le massage Lomi Lomi ?</h2>
-            <p>Inspiré de la tradition hawaïenne, le massage Lomi Lomi se caractérise par des mouvements amples et fluides, réalisés principalement avec les avant-bras. Il procure une profonde sensation d'enveloppement, favorise la libération des tensions et rétablit l'harmonie corps-esprit.</p>
+            <p>Inspiré de la tradition hawaïenne, le massage Lomi Lomi se caractérise par des mouvements amples et fluides, réalisés avec les mains et les avant-bras. Il procure une profonde sensation d'enveloppement, favorise la libération des tensions et rétablit l'harmonie corps-esprit.</p>
             <p><em>Un massage chaleureux, rythmé comme une vague de détente.</em></p>
         </div>
     </section>
@@ -188,15 +98,19 @@
             <ul style="list-style: none; padding-left: 0;">
                 <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
                     <span style="position: absolute; left: 0; color: var(--orange-cuivre);">•</span>
-                    Les personnes en quête de détente profonde
+                    Les personnes en quête d'un massage à la fois doux et profond
                 </li>
                 <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
                     <span style="position: absolute; left: 0; color: var(--orange-cuivre);">•</span>
-                    Ceux qui apprécient les massages fluides et enveloppants
+                    Celles et ceux qui apprécient un toucher fluide et continu
                 </li>
                 <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
                     <span style="position: absolute; left: 0; color: var(--orange-cuivre);">•</span>
-                    Les personnes souhaitant libérer les tensions physiques et émotionnelles
+                    Les personnes souhaitant retrouver une harmonie intérieure
+                </li>
+                <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--orange-cuivre);">•</span>
+                    Toute personne en recherche d'une détente profonde et enveloppante
                 </li>
             </ul>
         </div>
@@ -204,17 +118,43 @@
 
     <section style="background-color: var(--blanc-casse);">
         <div class="container-narrow">
+            <h2>Déroulement d'une séance</h2>
+            <p>Une séance de massage Lomi Lomi se déroule dans un cadre calme et chaleureux, où le respect de votre confort est primordial.</p>
+            <ol style="list-style: none; padding-left: 0;">
+                <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--orange-cuivre); font-weight: bold; font-family: var(--font-titre);">1.</span>
+                    <strong>Accueil</strong> : échange sur vos besoins et vos attentes
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--orange-cuivre); font-weight: bold; font-family: var(--font-titre);">2.</span>
+                    <strong>Installation</strong> : sur la table de massage, couvert(e) d'un drap
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--orange-cuivre); font-weight: bold; font-family: var(--font-titre);">3.</span>
+                    <strong>Le massage</strong> : mouvements amples, fluides et rythmés sur l'ensemble du corps
+                </li>
+                <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--orange-cuivre); font-weight: bold; font-family: var(--font-titre);">4.</span>
+                    <strong>Repos</strong> : temps d'intégration des bienfaits du massage
+                </li>
+            </ol>
+            <p class="mt-md"><strong>Durée :</strong> 1 heure ou 1h30 selon votre choix. Pour une première séance, 1h30 est recommandé.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-narrow">
             <h2>Tarifs massage Lomi Lomi</h2>
             <div class="tarif-card">
                 <p class="prix">• 1 heure : <strong>80 €</strong></p>
-                <p class="prix">• 1h30 : <strong>120 €</strong></p>
+                <p class="prix">• 1h30 : <strong>115 €</strong></p>
             </div>
 
             <h3 class="mt-lg">Forfait 5 séances</h3>
             <div class="tarif-card">
-                <p class="prix">• 5 séances d'1 heure : <strong>350 €</strong> <span style="color: var(--gris-texte);">(au lieu de 400 €)</span></p>
-                <p class="prix">• 5 séances d'1h30 : <strong>545 €</strong> <span style="color: var(--gris-texte);">(au lieu de 600 €)</span></p>
-                <p style="font-size: 0.9rem; color: var(--gris-texte); margin-top: var(--spacing-sm);">Forfaits non nominatifs.</p>
+                <p class="prix">• 5 séances d'1 heure : <strong>370 €</strong> <span style="color: var(--gris-texte);">(au lieu de 400 €)</span></p>
+                <p class="prix">• 5 séances d'1h30 : <strong>540 €</strong> <span style="color: var(--gris-texte);">(au lieu de 575 €)</span></p>
+                <p style="font-size: 0.9rem; color: var(--gris-texte); margin-top: var(--spacing-sm);">Forfaits non nominatifs : vous pouvez prêter votre carte.</p>
             </div>
 
             <div class="text-center mt-lg">
@@ -223,25 +163,32 @@
         </div>
     </section>
 
-    <section>
+    <section style="background-color: var(--blanc-casse);">
         <div class="container-narrow">
             <h2>Liens utiles</h2>
             <p>
                 <a href="/massages.html" style="color: var(--orange-cuivre);">← Retour à tous les massages</a><br>
                 <a href="/massages/massage-suedois.html" style="color: var(--orange-cuivre);">Découvrir le massage suédois →</a><br>
-                <a href="/massages/drainage-lymphatique.html" style="color: var(--orange-cuivre);">Découvrir le drainage lymphatique →</a>
+                <a href="/massages/massage-tantrique.html" style="color: var(--orange-cuivre);">Découvrir le massage tantrique →</a><br>
+                <a href="/qi-gong.html" style="color: var(--orange-cuivre);">Découvrir les cours de Qi Gong →</a>
             </p>
         </div>
     </section>
 
     <footer>
         <div class="container">
+            <!-- CTA LAISSER UN AVIS -->
+            <div class="footer-cta">
+                <p>Vous avez apprécié votre séance ?</p>
+                <a href="https://maps.app.goo.gl/B99F9CMtDDj8VtBL9" target="_blank" class="btn btn-primary">Laisser un avis</a>
+            </div>
+            
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Delphine Millot</h3>
                     <p>Massages bien-être & Qi Gong<br>
                     Brignoles, Var (83)</p>
-                    <p><em>Cœur, Corps, Conscience</em></p>
+                    <p><em>Corps, Cœur, Conscience</em></p>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
@@ -269,16 +216,12 @@
             </div>
         </div>
     </footer>
-    
-    <!-- Script menu mobile -->
+
     <script>
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
             menu.classList.toggle('active');
         }
     </script>
-    
-    <!-- Script animations -->
-    <script src="/js/script.js"></script>
 </body>
 </html>
