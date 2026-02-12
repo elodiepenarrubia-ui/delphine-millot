@@ -111,23 +111,23 @@
               "name": "Qi Gong",
               "description": "Pratique énergétique douce pour harmoniser corps et esprit"
             }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Massage Thérapeutique",
+              "description": "Soin vibratoire pour libérer les mémoires et retrouver l'amour de soi"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Massage 4 Mains et Duo",
+              "description": "Expérience unique de relaxation profonde avec deux praticiens"
+            }
           }
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Massage Thérapeutique",
-            "description": "Soin vibratoire pour libérer les mémoires et retrouver l'amour de soi"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Massage 4 Mains et Duo",
-            "description": "Expérience unique de relaxation profonde avec deux praticiens"
-          }
-        }
         ]
       },
       "aggregateRating": {
@@ -303,7 +303,7 @@
         <div class="logo">
             <a href="/index.html">
                 <img src="/images/logo.png" 
-                     alt="Delphine Millot - Cœur, Corps, Conscience" 
+                     alt="Delphine Millot - Corps, Cœur, Conscience" 
                      class="logo-full">
                 <img src="/images/favicon.png" 
                      alt="Delphine Millot" 
@@ -318,10 +318,21 @@
             </button>
             <ul id="nav-menu">
                 <li><a href="/index.html" class="active">Accueil</a></li>
-                <li><a href="/massages.html">Massages</a></li>
+                <li class="nav-item-with-submenu">
+                    <a href="/massages.html">Massages</a>
+                    <ul class="submenu">
+                        <li><a href="/massages/massage-suedois.html">Massage Suédois</a></li>
+                        <li><a href="/massages/massage-tantrique.html">Massage Tantrique</a></li>
+                        <li><a href="/massages/massage-lomi-lomi.html">Massage Lomi Lomi</a></li>
+                        <li><a href="/massages/drainage-lymphatique.html">Drainage Lymphatique</a></li>
+                        <li><a href="/massages/massage-therapeutique.html">Massage Thérapeutique</a></li>
+                        <li><a href="/massages/massage-4-mains-duo.html">Massage 4 Mains et Duo</a></li>
+                    </ul>
+                </li>
                 <li><a href="/qi-gong.html">Qi Gong</a></li>
                 <li><a href="/a-propos.html">À propos</a></li>
             </ul>
+            <a href="tel:+33628132536" class="header-phone-btn">06 28 13 25 36</a>
         </nav>
     </div>
 </header>
@@ -363,49 +374,50 @@
                 <!-- Massage Suédois -->
                 <div class="card">
                     <h3>Massage Suédois</h3>
-                    <p>Massage profond et structurant, qui aide à relâcher les tensions musculaires et à améliorer la circulation.</p>
-                    <em>Idéal pour apaiser le corps et retrouver une énergie équilibrée.</em>
+                    <p>Massage profond qui aide à relâcher les tensions musculaires.</p>
+                    <p><em>Pour apaiser le corps et retrouver une énergie équilibrée.</em></p>
                     <a href="/massages/massage-suedois.html" class="btn btn-secondary">En savoir plus</a>
                 </div>
 
                 <!-- Massage Tantrique -->
                 <div class="card">
                     <h3>Massage Tantrique</h3>
-                    <p>Une approche globale et consciente du corps, basée sur un toucher lent, doux, et respectueux.</p>
-                    <em>Une expérience intérieure, subtile et profonde, en pleine présence.</em>
+                    <p>Approche consciente du corps, basée sur un toucher lent et respectueux.</p>
+                    <p><em>Une expérience intérieure subtile, en pleine présence.</em></p>
                     <a href="/massages/massage-tantrique.html" class="btn btn-secondary">En savoir plus</a>
                 </div>
 
                 <!-- Massage Lomi Lomi -->
                 <div class="card">
                     <h3>Massage Lomi Lomi</h3>
-                    <p>Inspiré de la tradition hawaïenne, le Lomi Lomi se caractérise par des mouvements amples et fluides.</p>
-                    <em>Un massage chaleureux, rythmé comme une vague de détente.</em>
+                    <p>Massage hawaïen aux mouvements amples et fluides.</p>
+                    <p><em>Un massage chaleureux, rythmé comme une vague de détente.</em></p>
                     <a href="/massages/massage-lomi-lomi.html" class="btn btn-secondary">En savoir plus</a>
                 </div>
 
                 <!-- Drainage Lymphatique -->
                 <div class="card">
                     <h3>Drainage Lymphatique</h3>
-                    <p>Un massage dynamique qui stimule la circulation de la lymphe et soutient les processus naturels d'élimination.</p>
-                    <em>Un soin apaisant pour se sentir plus léger(ère) et recentré(e).</em>
+                    <p>Massage qui stimule la circulation et soutient l'élimination naturelle.</p>
+                    <p><em>Un soin pour se sentir plus léger(ère) et recentré(e).</em></p>
                     <a href="/massages/drainage-lymphatique.html" class="btn btn-secondary">En savoir plus</a>
                 </div>
                 
-                <!-- NOUVELLE CARTE 1 : Massage Thérapeutique -->
-            <div class="card">
-                <h3>Massage Thérapeutique</h3>
-                <p>Soin vibratoire qui permet au corps de recevoir l'amour inconditionnel. Un massage pour libérer les mémoires, réparer le contact peau à peau et retrouver l'amour de soi.</p>
-                <em>Un massage profondément réparateur pour libérer et apaiser.</em>
-                <a href="/massages/massage-therapeutique.html" class="btn btn-secondary">En savoir plus</a>
-            </div>
+                <!-- Massage Thérapeutique -->
+                <div class="card">
+                    <h3>Massage Thérapeutique</h3>
+                    <p>Soin vibratoire pour libérer les mémoires et retrouver l'amour de soi.</p>
+                    <p><em>Un massage profondément réparateur pour libérer et apaiser.</em></p>
+                    <a href="/massages/massage-therapeutique.html" class="btn btn-secondary">En savoir plus</a>
+                </div>
 
-            <!-- NOUVELLE CARTE 2 : Massage 4 Mains et Duo -->
-            <div class="card">
-                <h3>Massage 4 Mains et Duo</h3>
-                <p>Expérience unique avec Delphine Millot et Stéphane Prévault. Gestes synchronisés, relaxation intense et lâcher-prise profond dans une harmonie totale.</p>
-                <em>Une relaxation exceptionnelle guidée par quatre mains expertes.</em>
-                <a href="/massages/massage-4-mains-duo.html" class="btn btn-secondary">En savoir plus</a>
+                <!-- Massage 4 Mains et Duo -->
+                <div class="card">
+                    <h3>Massage 4 Mains et Duo</h3>
+                    <p>Expérience unique avec gestes synchronisés et relaxation intense.</p>
+                    <p><em>Une relaxation exceptionnelle guidée par quatre mains expertes.</em></p>
+                    <a href="/massages/massage-4-mains-duo.html" class="btn btn-secondary">En savoir plus</a>
+                </div>
             </div>
         </div>
     </section>
@@ -415,7 +427,7 @@
     <div class="container">
         <div class="presentation-grid">
             <!-- Photo à GAUCHE (desktop) / EN HAUT (mobile) -->
-            <div class="presentation-image" style="background-image: url('/images/jardin-qigong.jpg'); background-size: cover; background-position: center;">
+            <div class="presentation-image jardin-qigong-image" style="background-image: url('/images/jardin-qigong.jpg'); background-size: cover; background-position: center;">
             </div>
             
             <!-- Texte à DROITE (desktop) / EN BAS (mobile) -->
@@ -423,10 +435,10 @@
                 <h2>Cours de Qi Gong à Brignoles</h2>
                 <p>Le Qi Gong est une pratique énergétique douce issue de la tradition chinoise, alliant mouvements lents, respiration consciente et attention portée au corps. Accessible à tous, il permet de faire circuler l'énergie vitale, d'apaiser le mental et de renforcer l'harmonie entre le corps et l'esprit.</p>
                 <p style="font-style: italic; color: var(--orange-cuivre);">
-                    « Le Qi suit l'attention, mais l'attention doit être paisible. »
+                    « Cultiver le Qi c'est revenir à l'essence de l'être. »
                 </p>
                 <p><strong>Cours collectifs au Jardin des Gorguettes au Val</strong><br>
-                Tous les samedis de 10h à 11h<br>
+                Tous les mercredis de 10h à 11h<br>
                 Cours d'essai gratuit en septembre</p>
                 <a href="/qi-gong.html" class="btn btn-primary">Découvrir les cours</a>
             </div>
@@ -504,8 +516,8 @@
             <p style="color: var(--gris-texte); font-size: 0.9rem;">
                 Avis vérifiés Google Business Profile
             </p>
-            <a href="https://maps.app.goo.gl/B99F9CMtDDj8VtBL9" target="_blank" class="btn btn-secondary" style="margin-top: var(--spacing-sm);">
-                Voir tous les avis
+            <a href="https://maps.app.goo.gl/B99F9CMtDDj8VtBL9" target="_blank" class="btn btn-primary" style="margin-top: var(--spacing-sm);">
+                Laisser un avis
             </a>
         </div>
     </div>
@@ -552,12 +564,18 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
+            <!-- CTA LAISSER UN AVIS -->
+            <div class="footer-cta">
+                <p>Vous avez apprécié votre séance ?</p>
+                <a href="https://maps.app.goo.gl/B99F9CMtDDj8VtBL9" target="_blank" class="btn btn-primary">Laisser un avis</a>
+            </div>
+            
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Delphine Millot</h3>
                     <p>Massages bien-être & Qi Gong<br>
                     Brignoles, Var (83)</p>
-                    <p><em>Cœur, Corps, Conscience</em></p>
+                    <p><em>Corps, Cœur, Conscience</em></p>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
