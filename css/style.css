@@ -34,7 +34,7 @@
   --spacing-xxl: 6rem;
   
   /* Autres */
-  --border-radius: 2px;
+  --border-radius: 30px;
   --transition: all 0.3s ease;
   --max-width: 1200px;
 }
@@ -61,6 +61,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* === ANIMATIONS FADE-IN === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.fade-in-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.fade-in-delay-2 {
+  animation-delay: 0.4s;
+}
+
+.fade-in-delay-3 {
+  animation-delay: 0.6s;
+}
+
 /* === TYPOGRAPHIE === */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-titre);
@@ -79,10 +108,12 @@ h1 {
 h2 {
   font-size: 2rem;
   margin-bottom: var(--spacing-lg);
+  font-weight: 500;
 }
 
 h3 {
   font-size: 1.5rem;
+  font-weight: 500;
 }
 
 p {
@@ -103,6 +134,8 @@ strong {
 em {
   font-style: italic;
   color: var(--orange-cuivre);
+  font-size: 1.05em;
+  font-weight: 400;
 }
 
 /* === LAYOUT === */
@@ -130,32 +163,107 @@ header {
   backdrop-filter: blur(10px);
   z-index: 1000;
   border-bottom: 1px solid var(--gris-moyen);
-  transition: var(--transition);
+  transition: all 0.4s ease;
+}
+
+header.scrolled {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: 0.5rem var(--spacing-md);
   max-width: var(--max-width);
   margin: 0 auto;
+  transition: all 0.4s ease;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  position: relative;
+  height: 150px;
+  transition: all 0.4s ease;
 }
 
-.logo img {
+header.scrolled .logo {
   height: 60px;
+}
+
+/* Logo complet (par défaut) */
+.logo-full {
+  height: 150px;
   width: auto;
+  transition: all 0.4s ease;
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Favicon (caché par défaut) */
+.logo-favicon {
+  height: 50px;
+  width: auto;
+  transition: all 0.4s ease;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Au scroll : transition fluide logo → favicon */
+header.scrolled .logo-full {
+  opacity: 0;
+  height: 50px;
+}
+
+header.scrolled .logo-favicon {
+  opacity: 1;
+}
+
+/* === BOUTON TÉLÉPHONE HEADER === */
+.header-phone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background-color: var(--orange-cuivre);
+  color: var(--blanc);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.header-phone-btn:hover {
+  background-color: var(--orange-fonce);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 130, 92, 0.3);
+}
+
+.header-phone-btn::before {
+  font-size: 1.1rem;
+}
+
+/* === NAVIGATION === */
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
 }
 
 nav ul {
   display: flex;
   list-style: none;
   gap: var(--spacing-md);
+  transition: all 0.4s ease;
 }
 
 nav a {
@@ -165,13 +273,69 @@ nav a {
   text-transform: uppercase;
   color: var(--noir);
   padding: var(--spacing-xs) 0;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition);
 }
 
 nav a:hover,
 nav a.active {
   color: var(--orange-cuivre);
   border-bottom-color: var(--orange-cuivre);
+}
+
+/* === SOUS-MENU DÉROULANT MASSAGES === */
+nav li {
+  position: relative;
+}
+
+.nav-item-with-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-moyen);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 240px;
+  padding: var(--spacing-sm) 0;
+  margin-top: 0.5rem;
+  z-index: 1000;
+}
+
+.nav-item-with-submenu:hover .submenu {
+  display: block;
+}
+
+.submenu li {
+  display: block;
+  margin: 0;
+}
+
+.submenu a {
+  display: block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-bottom: none;
+  font-size: 0.9rem;
+  text-transform: none;
+  transition: var(--transition);
+}
+
+.submenu a:hover {
+  background-color: var(--gris-clair);
+  color: var(--orange-cuivre);
+  padding-left: calc(var(--spacing-md) + 0.5rem);
+}
+
+/* Flèche indicateur sous-menu */
+.nav-item-with-submenu > a::after {
+  content: " ▼";
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
+  color: var(--gris-texte);
 }
 
 /* Menu mobile */
@@ -192,7 +356,7 @@ nav a.active {
   transition: var(--transition);
 }
 
-/* === HERO === */
+/* === HERO (général - pour toutes les pages) === */
 .hero {
   position: relative;
   height: 85vh;
@@ -205,14 +369,27 @@ nav a.active {
   overflow: hidden;
 }
 
-.hero-image {
+/* === HERO PAGE D'ACCUEIL (avec image de fond) === */
+.hero-home {
+  background-image: url('/images/hero-massage.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay sombre pour contraste texte (page d'accueil uniquement) */
+.hero-home::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.3;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.1) 0%,
+    rgba(212, 130, 92, 0.5) 100%
+  );
+  z-index: 1;
 }
 
 .hero-content {
@@ -236,6 +413,175 @@ nav a.active {
   margin-right: auto;
 }
 
+/* Texte blanc sur la page d'accueil uniquement */
+.hero-home h1 {
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-home p {
+  font-size: 1.3rem;
+  color: var(--blanc);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+/* Boutons blancs sur la page d'accueil */
+.hero-home .btn-secondary {
+  background-color: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.hero-home .btn-secondary:hover {
+  background-color: var(--blanc);
+  color: var(--orange-cuivre);
+  border-color: var(--blanc);
+}
+
+/* Supprimer l'ancien hero-image (n'est plus utilisé) */
+.hero-image {
+  display: none;
+}
+
+/* === HERO PAGE MASSAGES === */
+.hero-massages {
+  background-image: url('/images/massage.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.no-webp .hero-massages {
+  background-image: url('/images/massage.jpg');
+}
+
+.hero-massages::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.3) 0%,
+    rgba(212, 130, 92, 0) 100%
+  );
+  z-index: 1;
+}
+
+.hero-massages h1,
+.hero-massages p {
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-massages .btn-secondary {
+  background-color: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.hero-massages .btn-secondary:hover {
+  background-color: var(--blanc);
+  color: var(--orange-cuivre);
+  border-color: var(--blanc);
+}
+
+/* === HERO PAGE QI GONG === */
+.hero-qigong {
+  background-image: url('/images/qi-gong.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-qigong::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.2) 0%,
+    rgba(212, 130, 92, 0.4) 100%
+  );
+  z-index: 1;
+}
+
+.hero-qigong h1,
+.hero-qigong p {
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-qigong .btn-secondary {
+  background-color: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.hero-qigong .btn-secondary:hover {
+  background-color: var(--blanc);
+  color: var(--orange-cuivre);
+  border-color: var(--blanc);
+}
+
+/* === HERO PAGE À PROPOS === */
+.hero-apropos {
+  background-image: url('/images/a-propos.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.no-webp .hero-apropos {
+  background-image: url('/images/a-propos.jpg');
+}
+
+.hero-apropos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(26, 26, 26, 0.4) 0%,
+    rgba(212, 130, 92, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+.hero-apropos h1,
+.hero-apropos p {
+  color: var(--blanc);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-apropos .btn-secondary {
+  background-color: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.hero-apropos .btn-secondary:hover {
+  background-color: var(--blanc);
+  color: var(--orange-cuivre);
+  border-color: var(--blanc);
+}
+
+/* === HERO SOUS-PAGES MASSAGES (fond personnalisé) === */
+.hero-massage-page {
+  background: linear-gradient(135deg, var(--orange-fonce) 0%, var(--orange-cuivre) 100%);
+}
+
+.hero-massage-page h1,
+.hero-massage-page p {
+  color: var(--blanc);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
 /* === PHRASE SIGNATURE === */
 .phrase-signature {
   text-align: center;
@@ -245,9 +591,10 @@ nav a.active {
 
 .phrase-signature p {
   font-family: var(--font-titre);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-style: italic;
   color: var(--orange-cuivre);
+  font-weight: 500;
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
@@ -255,18 +602,22 @@ nav a.active {
 
 /* === BUTTONS === */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.9rem 2rem;
   font-family: var(--font-texte);
   font-size: 0.95rem;
   font-weight: 400;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  border: 2px solid;
-  border-radius: 30px;
+  border: 1px solid;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
+  line-height: 1.2;
+  vertical-align: middle;
 }
 
 .btn-primary {
@@ -284,13 +635,17 @@ nav a.active {
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--noir);
-  border-color: var(--noir);
+  color: var(--gris-texte);
+  border-color: var(--gris-moyen);
+  padding: 0.6rem 1.3rem;
+  font-size: 0.8rem;
+  font-weight: 300;
 }
 
 .btn-secondary:hover {
-  background-color: var(--noir);
-  color: var(--blanc);
+  background-color: var(--gris-clair);
+  color: var(--orange-cuivre);
+  border-color: var(--orange-cuivre);
 }
 
 .btn-group {
@@ -303,7 +658,7 @@ nav a.active {
 /* === CARDS === */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-lg);
   margin-top: var(--spacing-lg);
 }
@@ -311,10 +666,11 @@ nav a.active {
 .card {
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
-  border-radius: 8px;
   padding: var(--spacing-lg);
   transition: var(--transition);
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -326,17 +682,33 @@ nav a.active {
 .card h3 {
   color: var(--orange-cuivre);
   margin-bottom: var(--spacing-sm);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .card p {
   font-size: 0.95rem;
   line-height: 1.7;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  flex-grow: 1;
 }
 
 .card .btn {
-  margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  align-self: center;
+  width: fit-content;
+}
+
+/* === SECTIONS AVEC TITRES CENTRÉS === */
+section h2 {
+  text-align: center;
+}
+
+/* Exceptions : titres alignés à gauche */
+.presentation-text h2,
+.charte-section h2,
+.legal-page h2 {
+  text-align: left;
 }
 
 /* === SECTIONS SPÉCIFIQUES === */
@@ -355,6 +727,13 @@ nav a.active {
   color: var(--orange-cuivre);
 }
 
+.presentation-text h2,
+.charte-section h2 {
+  color: var(--orange-cuivre);
+  font-weight: 500;
+  font-size: 2.2rem;
+}
+
 .presentation-image {
   width: 100%;
   height: 400px;
@@ -364,7 +743,82 @@ nav a.active {
   justify-content: center;
   color: var(--gris-texte);
   font-style: italic;
-  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* === FILTRE ORANGE SUR SECTION QI GONG (PAGE D'ACCUEIL) === */
+.presentation-grid .presentation-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 130, 92, 0.3) 0%,
+    rgba(212, 130, 92, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+/* Image jardin Qi Gong */
+.jardin-qigong-image {
+  background-image: url('/images/jardin-qigong.jpg');
+}
+
+/* Section Qi Gong avec photo */
+.qigong-photo-section {
+  position: relative;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/images/jardin-qigong.jpg');
+}
+
+.qigong-photo-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.qigong-photo-section .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--blanc);
+}
+
+.qigong-photo-section h2 {
+  color: var(--blanc);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.qigong-photo-section p {
+  color: var(--blanc);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.qigong-photo-placeholder {
+  min-height: 400px;
+  background-color: var(--gris-clair);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gris-texte);
+  font-style: italic;
+  font-size: 1.2rem;
 }
 
 /* === CHARTE ÉTHIQUE === */
@@ -397,7 +851,6 @@ nav a.active {
 .tarif-card {
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
-  border-radius: 8px;
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
 }
@@ -415,7 +868,8 @@ nav a.active {
 
 .tarif-card .prix strong {
   color: var(--orange-cuivre);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 /* === FAQ === */
@@ -434,15 +888,101 @@ nav a.active {
 
 .faq-question {
   font-family: var(--font-titre);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--orange-cuivre);
-  margin-bottom: var(--spacing-sm);
-  font-weight: 500;
+  margin-bottom: 0;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+}
+
+.faq-question:hover {
+  background-color: var(--gris-clair);
+}
+
+.faq-question.active {
+  color: var(--orange-fonce);
+}
+
+.faq-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+  margin-left: var(--spacing-sm);
+}
+
+.faq-question.active .faq-arrow {
+  transform: rotate(180deg);
 }
 
 .faq-answer {
   color: var(--gris-texte);
   line-height: 1.8;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+/* === AVIS DÉFILANTS === */
+.avis-container {
+  overflow: hidden;
+  position: relative;
+  padding: var(--spacing-lg) 0;
+  margin: 0 calc(-1 * var(--spacing-md));
+}
+
+.avis-slider {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding: 0 var(--spacing-md);
+  /* Animation gérée par JavaScript pour éviter le saut */
+}
+
+.avis-slider:hover {
+  /* Pause gérée par JavaScript */
+}
+
+@keyframes scroll-avis {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.avis-card {
+  min-width: 360px;
+  max-width: 360px;
+  background-color: var(--blanc);
+  border: 1px solid var(--gris-moyen);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.avis-card .stars {
+  color: var(--orange-cuivre);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.avis-card .name {
+  font-weight: 700;
+  color: var(--noir);
+  margin-top: var(--spacing-sm);
+  text-transform: capitalize;
+}
+
+.avis-card .text {
+  color: var(--gris-texte);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-style: italic;
 }
 
 /* === FOOTER === */
@@ -461,8 +1001,9 @@ footer {
 
 .footer-section h3 {
   color: var(--orange-cuivre);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: var(--spacing-sm);
+  font-weight: 600;
 }
 
 .footer-section p,
@@ -482,6 +1023,32 @@ footer {
 
 .footer-links li {
   margin-bottom: var(--spacing-xs);
+}
+
+/* === CTA "LAISSER UN AVIS" DANS FOOTER === */
+.footer-cta {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-cta p {
+  color: var(--blanc);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-md);
+  font-weight: 400;
+}
+
+.footer-cta .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-cta .btn-primary::before {
+  font-size: 1.2rem;
 }
 
 .footer-bottom {
@@ -548,8 +1115,19 @@ footer {
     grid-template-columns: 1fr;
   }
   
+  .presentation-image {
+    min-height: 300px;
+    order: -1;
+  }
+  
   .cards-grid {
     grid-template-columns: 1fr;
+  }
+  
+  /* Navigation mobile */
+  .header-phone-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
   }
   
   nav ul {
@@ -569,6 +1147,23 @@ footer {
     display: flex;
   }
   
+  /* Sous-menu mobile */
+  .submenu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-top: 1px solid var(--gris-moyen);
+    margin-top: var(--spacing-xs);
+  }
+  
+  .nav-item-with-submenu:hover .submenu {
+    display: none;
+  }
+  
+  .nav-item-with-submenu.active .submenu {
+    display: block;
+  }
+  
   .menu-toggle {
     display: flex;
   }
@@ -576,12 +1171,16 @@ footer {
   .footer-content {
     grid-template-columns: 1fr;
   }
+  
+  .avis-card {
+    min-width: 300px;
+  }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
   html {
-    font-size: 14px;
+    font-size: 16px;
   }
   
   :root {
@@ -590,25 +1189,97 @@ footer {
     --spacing-xl: 2.5rem;
   }
   
+  /* Texte plus lisible */
+  p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  
+  /* Hero */
   .hero {
     height: 60vh;
+  }
+  
+  /* Hero Qi Gong : aligné entre gauche et centre sur mobile */
+  .hero-qigong {
+    background-position: 30% center;
   }
   
   .hero h1 {
     font-size: 1.8rem;
   }
   
-  .phrase-signature p {
-    font-size: 1.2rem;
+  .hero p {
+    font-size: 1.1rem;
   }
   
+  /* Phrase signature */
+  .phrase-signature p {
+    font-size: 1.3rem;
+  }
+  
+  /* Boutons */
   .btn {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
   
-  .logo img {
+  /* Bouton téléphone header */
+  .header-phone-btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+  }
+  
+  .header-phone-btn::before {
+    content: "☎";
+    font-size: 1rem;
+  }
+  
+  /* Logo */
+  .logo {
+    height: 100px;
+  }
+  
+  header.scrolled .logo {
     height: 50px;
+  }
+  
+  .logo-full {
+    height: 100px;
+  }
+  
+  header.scrolled .logo-full {
+    height: 40px;
+  }
+  
+  .logo-favicon {
+    height: 40px;
+  }
+  
+  /* Sections */
+  .presentation-image {
+    min-height: 250px;
+  }
+  
+  /* Cartes */
+  .card p {
+    font-size: 1rem;
+  }
+  
+  /* FAQ */
+  .faq-answer {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  /* Avis */
+  .avis-card {
+    min-width: 280px;
+    max-width: 320px;
+  }
+  
+  .avis-card .text {
+    font-size: 1rem;
   }
 }
 
