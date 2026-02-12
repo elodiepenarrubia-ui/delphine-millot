@@ -336,7 +336,7 @@ nav li {
   content: " ▼";
   font-size: 0.7rem;
   margin-left: 0.3rem;
-  color: var(--orange-cuivre);
+  color: var(--gris-texte);
 }
 
 /* Menu mobile */
