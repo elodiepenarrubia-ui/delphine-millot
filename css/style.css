@@ -34,7 +34,7 @@
   --spacing-xxl: 6rem;
   
   /* Autres */
-  --border-radius: 24px;
+  --border-radius: 30px;
   --transition: all 0.3s ease;
   --max-width: 1200px;
 }
@@ -274,7 +274,7 @@ nav a {
   text-transform: uppercase;
   color: var(--noir);
   padding: var(--spacing-xs) 0;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
   transition: var(--transition);
 }
 
@@ -612,7 +612,7 @@ nav li {
   font-weight: 400;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  border: 2px solid;
+  border: 1px solid;
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
