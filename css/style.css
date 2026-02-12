@@ -34,7 +34,7 @@
   --spacing-xxl: 6rem;
   
   /* Autres */
-  --border-radius: 2px;
+  --border-radius: 16px;
   --transition: all 0.3s ease;
   --max-width: 1200px;
 }
