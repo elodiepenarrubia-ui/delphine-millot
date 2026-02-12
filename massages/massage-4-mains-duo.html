@@ -59,6 +59,22 @@
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
           "url": "https://delphine-millot.fr/massages/massage-4-mains-duo.html"
+        },
+        {
+          "@type": "Offer",
+          "name": "Forfait Couple 5 séances 1h",
+          "price": "730",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://delphine-millot.fr/massages/massage-4-mains-duo.html"
+        },
+        {
+          "@type": "Offer",
+          "name": "Forfait Couple 5 séances 1h30",
+          "price": "1020",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://delphine-millot.fr/massages/massage-4-mains-duo.html"
         }
       ]
     }
@@ -92,6 +108,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Le massage 4 mains favorise une relaxation intense et immédiate grâce à la synchronisation des gestes, permet un relâchement musculaire profond et homogène, aide à apaiser le mental en limitant l'anticipation des mouvements, et procure une sensation globale d'harmonie et de bien-être durable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que le massage duo ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le massage duo permet à deux personnes (couple, amis, famille) de recevoir leur massage simultanément dans la même pièce. Chaque personne est massée par un praticien (Delphine Millot et Stéphane Prévault), dans une atmosphère de détente partagée. C'est l'occasion de vivre un moment de bien-être ensemble, dans un cadre bienveillant et respectueux."
           }
         }
       ]
@@ -132,7 +156,7 @@
         <div class="logo">
             <a href="/index.html">
                 <img src="/images/logo.png" 
-                     alt="Delphine Millot - Cœur, Corps, Conscience" 
+                     alt="Delphine Millot - Corps, Cœur, Conscience" 
                      class="logo-full">
                 <img src="/images/favicon.png" 
                      alt="Delphine Millot" 
@@ -147,10 +171,21 @@
             </button>
             <ul id="nav-menu">
                 <li><a href="/index.html">Accueil</a></li>
-                <li><a href="/massages.html">Massages</a></li>
+                <li class="nav-item-with-submenu">
+                    <a href="/massages.html">Massages</a>
+                    <ul class="submenu">
+                        <li><a href="/massages/massage-suedois.html">Massage Suédois</a></li>
+                        <li><a href="/massages/massage-tantrique.html">Massage Tantrique</a></li>
+                        <li><a href="/massages/massage-lomi-lomi.html">Massage Lomi Lomi</a></li>
+                        <li><a href="/massages/drainage-lymphatique.html">Drainage Lymphatique</a></li>
+                        <li><a href="/massages/massage-therapeutique.html">Massage Thérapeutique</a></li>
+                        <li><a href="/massages/massage-4-mains-duo.html">Massage 4 Mains et Duo</a></li>
+                    </ul>
+                </li>
                 <li><a href="/qi-gong.html">Qi Gong</a></li>
                 <li><a href="/a-propos.html">À propos</a></li>
             </ul>
+            <a href="tel:+33628132536" class="header-phone-btn">06 28 13 25 36</a>
         </nav>
     </div>
 </header>
@@ -214,6 +249,10 @@
                     <span style="position: absolute; left: 0; color: var(--orange-cuivre);">•</span>
                     Les personnes désireuses de vivre une relaxation profonde et harmonieuse
                 </li>
+                <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--orange-cuivre);">•</span>
+                    Les couples ou amis souhaitant partager un moment de détente (massage duo)
+                </li>
             </ul>
         </div>
     </section>
@@ -247,8 +286,16 @@
         <div class="container-narrow">
             <h2>Tarifs massage 4 mains et duo</h2>
             <div class="tarif-card">
+                <h3>Massage 4 Mains</h3>
                 <p class="prix">• 1 heure : <strong>160 €</strong></p>
                 <p class="prix">• 1h30 : <strong>220 €</strong></p>
+            </div>
+
+            <h3 class="mt-lg">Forfait Couple - Massage Duo</h3>
+            <div class="tarif-card">
+                <p>Deux personnes reçoivent leur massage simultanément :</p>
+                <p class="prix">• 5 séances d'1 heure : <strong>730 €</strong> <span style="color: var(--gris-texte);">(au lieu de 800 €)</span></p>
+                <p class="prix">• 5 séances d'1h30 : <strong>1020 €</strong> <span style="color: var(--gris-texte);">(au lieu de 1100 €)</span></p>
             </div>
 
             <div class="text-center mt-lg">
@@ -275,6 +322,11 @@
                 <p class="faq-question">Quels sont les bienfaits du massage 4 mains ?</p>
                 <p class="faq-answer">Le massage 4 mains favorise une relaxation intense et immédiate grâce à la synchronisation des gestes, permet un relâchement musculaire profond et homogène, aide à apaiser le mental en limitant l'anticipation des mouvements, et procure une sensation globale d'harmonie et de bien-être durable.</p>
             </div>
+
+            <div class="faq-item">
+                <p class="faq-question">Qu'est-ce que le massage duo ?</p>
+                <p class="faq-answer">Le massage duo permet à deux personnes (couple, amis, famille) de recevoir leur massage simultanément dans la même pièce. Chaque personne est massée par un praticien (Delphine Millot et Stéphane Prévault), dans une atmosphère de détente partagée. C'est l'occasion de vivre un moment de bien-être ensemble, dans un cadre bienveillant et respectueux.</p>
+            </div>
         </div>
     </section>
 
@@ -291,12 +343,18 @@
 
     <footer>
         <div class="container">
+            <!-- CTA LAISSER UN AVIS -->
+            <div class="footer-cta">
+                <p>Vous avez apprécié votre séance ?</p>
+                <a href="https://maps.app.goo.gl/B99F9CMtDDj8VtBL9" target="_blank" class="btn btn-primary">Laisser un avis</a>
+            </div>
+            
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Delphine Millot</h3>
                     <p>Massages bien-être & Qi Gong<br>
                     Brignoles, Var (83)</p>
-                    <p><em>Cœur, Corps, Conscience</em></p>
+                    <p><em>Corps, Cœur, Conscience</em></p>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
