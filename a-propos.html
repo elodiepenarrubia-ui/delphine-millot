@@ -43,6 +43,10 @@
         {
           "@type": "EducationalOrganization",
           "name": "École Odyssée Bien-Être"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "École Dubarry Académie"
         }
       ],
       "knowsAbout": [
@@ -66,7 +70,7 @@
         },
         {
           "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "4ème degré Reiki"
+          "credentialCategory": "4ème degré Reiki Usui"
         }
       ],
       "worksFor": {
@@ -109,7 +113,7 @@
         <div class="logo">
             <a href="/index.html">
                 <img src="/images/logo.png" 
-                     alt="Delphine Millot - Cœur, Corps, Conscience" 
+                     alt="Delphine Millot - Corps, Cœur, Conscience" 
                      class="logo-full">
                 <img src="/images/favicon.png" 
                      alt="Delphine Millot" 
@@ -124,10 +128,21 @@
             </button>
             <ul id="nav-menu">
                 <li><a href="/index.html">Accueil</a></li>
-                <li><a href="/massages.html">Massages</a></li>
+                <li class="nav-item-with-submenu">
+                    <a href="/massages.html">Massages</a>
+                    <ul class="submenu">
+                        <li><a href="/massages/massage-suedois.html">Massage Suédois</a></li>
+                        <li><a href="/massages/massage-tantrique.html">Massage Tantrique</a></li>
+                        <li><a href="/massages/massage-lomi-lomi.html">Massage Lomi Lomi</a></li>
+                        <li><a href="/massages/drainage-lymphatique.html">Drainage Lymphatique</a></li>
+                        <li><a href="/massages/massage-therapeutique.html">Massage Thérapeutique</a></li>
+                        <li><a href="/massages/massage-4-mains-duo.html">Massage 4 Mains et Duo</a></li>
+                    </ul>
+                </li>
                 <li><a href="/qi-gong.html">Qi Gong</a></li>
                 <li><a href="/a-propos.html" class="active">À propos</a></li>
             </ul>
+            <a href="tel:+33628132536" class="header-phone-btn">06 28 13 25 36</a>
         </nav>
     </div>
 </header>
@@ -143,9 +158,9 @@
     <section>
     <div class="container">
         <div class="container-narrow text-center">
-            <h2>Delphine Millot</h2>
+            <h2>À propos</h2>
             <p style="font-family: var(--font-titre); font-size: 1.1rem; color: var(--orange-cuivre); font-style: italic;">
-                « Cœur, Corps, Conscience »
+                « Corps, Cœur, Conscience »
             </p>
             <p>Mon parcours professionnel m'a d'abord conduite vers le droit et la médiation familiale, des domaines où l'écoute, la bienveillance et l'accompagnement des personnes sont au cœur de la pratique. Cette expérience humaine m'a profondément nourrie et m'a permis de développer une sensibilité particulière aux dynamiques relationnelles et à l'apaisement des tensions.</p>
             <p>Au fil des années, j'ai ressenti le besoin d'élargir mon approche et d'accompagner autrement : par le toucher, par la présence, par le mouvement. Le massage et le Qi Gong sont devenus des chemins naturels pour poursuivre ce qui m'anime profondément : être au service de l'harmonie intérieure de l'être.</p>
@@ -160,7 +175,7 @@
             <ul style="list-style: none; padding-left: 0;">
                 <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
                     <span style="position: absolute; left: 0; color: var(--orange-cuivre);">✦</span>
-                    <strong>Juriste</strong>
+                    Faculté de droit à Paris
                 </li>
                 <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
                     <span style="position: absolute; left: 0; color: var(--orange-cuivre);">✦</span>
@@ -193,11 +208,11 @@
                 </li>
                 <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
                     <span style="position: absolute; left: 0; color: var(--orange-cuivre);">✦</span>
-                    Formation au <strong>drainage lymphatique</strong> avec Dubarry Académie
+                    <strong>École Dubarry Académie</strong> à Aix-en-Provence (drainage lymphatique)
                 </li>
                 <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative;">
                     <span style="position: absolute; left: 0; color: var(--orange-cuivre);">✦</span>
-                    Formation en <strong>énergétique</strong>, 4ème degré de Reiki
+                    Formation en <strong>énergétique</strong> : 4ème degré de Reïki usui et école des dons et des savoirs de Jean-Christophe Gyre
                 </li>
             </ul>
 
@@ -234,12 +249,18 @@
 
     <footer>
         <div class="container">
+            <!-- CTA LAISSER UN AVIS -->
+            <div class="footer-cta">
+                <p>Vous avez apprécié votre séance ?</p>
+                <a href="https://maps.app.goo.gl/B99F9CMtDDj8VtBL9" target="_blank" class="btn btn-primary">Laisser un avis</a>
+            </div>
+            
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Delphine Millot</h3>
                     <p>Massages bien-être & Qi Gong<br>
                     Brignoles, Var (83)</p>
-                    <p><em>Cœur, Corps, Conscience</em></p>
+                    <p><em>Corps, Cœur, Conscience</em></p>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
