@@ -34,7 +34,7 @@
   --spacing-xxl: 6rem;
   
   /* Autres */
-  --border-radius: 30px;
+  --border-radius: 2px;
   --transition: all 0.3s ease;
   --max-width: 1200px;
 }
@@ -234,7 +234,7 @@ header.scrolled .logo-favicon {
   padding: 0.7rem 1.5rem;
   background-color: var(--orange-cuivre);
   color: var(--blanc);
-  border-radius: var(--border-radius);
+  border-radius: 26px;
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
@@ -246,10 +246,6 @@ header.scrolled .logo-favicon {
   background-color: var(--orange-fonce);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(212, 130, 92, 0.3);
-}
-
-.header-phone-btn::before {
-  font-size: 1.1rem;
 }
 
 /* === NAVIGATION === */
@@ -264,6 +260,7 @@ nav ul {
   list-style: none;
   gap: var(--spacing-md);
   transition: all 0.4s ease;
+  justify-content: center;
 }
 
 nav a {
@@ -335,7 +332,11 @@ nav li {
   content: " ▼";
   font-size: 0.7rem;
   margin-left: 0.3rem;
-  color: var(--gris-texte);
+  color: var(--noir);
+}
+
+.nav-item-with-submenu > a:hover::after {
+  color: var(--orange-cuivre);
 }
 
 /* Menu mobile */
@@ -454,6 +455,7 @@ nav li {
   background-image: url('/images/massage.jpg');
 }
 
+/* Overlay sombre pour contraste texte */
 .hero-massages::before {
   content: '';
   position: absolute;
@@ -462,9 +464,9 @@ nav li {
   right: 0;
   bottom: 0;
   background: linear-gradient(
-    135deg,
-    rgba(26, 26, 26, 0.3) 0%,
-    rgba(212, 130, 92, 0) 100%
+    180deg,
+    rgba(26, 26, 26, 0.2) 0%,
+    rgba(212, 130, 92, 0.4) 100%
   );
   z-index: 1;
 }
@@ -475,25 +477,18 @@ nav li {
   text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
 }
 
-.hero-massages .btn-secondary {
-  background-color: transparent;
-  color: var(--blanc);
-  border-color: var(--blanc);
-}
-
-.hero-massages .btn-secondary:hover {
-  background-color: var(--blanc);
-  color: var(--orange-cuivre);
-  border-color: var(--blanc);
-}
-
 /* === HERO PAGE QI GONG === */
 .hero-qigong {
-  background-image: url('/images/qi-gong.jpg');
+  background-image: url('/images/qigong.webp');
   background-size: cover;
   background-position: center;
 }
 
+.no-webp .hero-qigong {
+  background-image: url('/images/qigong.jpg');
+}
+
+/* Overlay sombre pour contraste texte */
 .hero-qigong::before {
   content: '';
   position: absolute;
@@ -515,109 +510,26 @@ nav li {
   text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
 }
 
-.hero-qigong .btn-secondary {
-  background-color: transparent;
-  color: var(--blanc);
-  border-color: var(--blanc);
-}
-
-.hero-qigong .btn-secondary:hover {
-  background-color: var(--blanc);
-  color: var(--orange-cuivre);
-  border-color: var(--blanc);
-}
-
-/* === HERO PAGE À PROPOS === */
-.hero-apropos {
-  background-image: url('/images/a-propos.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-.no-webp .hero-apropos {
-  background-image: url('/images/a-propos.jpg');
-}
-
-.hero-apropos::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(26, 26, 26, 0.4) 0%,
-    rgba(212, 130, 92, 0.1) 100%
-  );
-  z-index: 1;
-}
-
-.hero-apropos h1,
-.hero-apropos p {
-  color: var(--blanc);
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-}
-
-.hero-apropos .btn-secondary {
-  background-color: transparent;
-  color: var(--blanc);
-  border-color: var(--blanc);
-}
-
-.hero-apropos .btn-secondary:hover {
-  background-color: var(--blanc);
-  color: var(--orange-cuivre);
-  border-color: var(--blanc);
-}
-
-/* === HERO SOUS-PAGES MASSAGES (fond personnalisé) === */
+/* === HERO SOUS-PAGES MASSAGES (plus compact) === */
 .hero-massage-page {
-  background: linear-gradient(135deg, var(--orange-fonce) 0%, var(--orange-cuivre) 100%);
+  height: 40vh;
+  min-height: 300px;
+  background-color: var(--gris-clair);
 }
 
-.hero-massage-page h1,
-.hero-massage-page p {
-  color: var(--blanc);
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-}
-
-/* === PHRASE SIGNATURE === */
-.phrase-signature {
-  text-align: center;
-  padding: var(--spacing-xl) var(--spacing-md);
-  background-color: var(--blanc-casse);
-}
-
-.phrase-signature p {
-  font-family: var(--font-titre);
-  font-size: 1.6rem;
-  font-style: italic;
-  color: var(--orange-cuivre);
-  font-weight: 500;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-/* === BUTTONS === */
+/* === BOUTONS === */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.9rem 2rem;
-  font-family: var(--font-texte);
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border-radius: 26px;
+  font-weight: 600;
   font-size: 0.95rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
-  border: 1px solid;
-  border-radius: var(--border-radius);
-  cursor: pointer;
+  letter-spacing: 0.05em;
   transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid transparent;
   text-align: center;
-  line-height: 1.2;
-  vertical-align: middle;
 }
 
 .btn-primary {
@@ -635,30 +547,43 @@ nav li {
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--gris-texte);
-  border-color: var(--gris-moyen);
-  padding: 0.6rem 1.3rem;
-  font-size: 0.8rem;
-  font-weight: 300;
+  color: var(--noir);
+  border: 1px solid var(--noir);
 }
 
 .btn-secondary:hover {
-  background-color: var(--gris-clair);
-  color: var(--orange-cuivre);
-  border-color: var(--orange-cuivre);
+  background-color: var(--noir);
+  color: var(--blanc);
 }
 
 .btn-group {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   justify-content: center;
   flex-wrap: wrap;
 }
 
-/* === CARDS === */
+/* === PHRASE SIGNATURE === */
+.phrase-signature {
+  background-color: var(--blanc-casse);
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.phrase-signature p {
+  font-family: var(--font-titre);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--orange-cuivre);
+  font-weight: 400;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* === CARTES === */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-lg);
   margin-top: var(--spacing-lg);
 }
@@ -666,56 +591,52 @@ nav li {
 .card {
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
+  border-radius: 20px;
   padding: var(--spacing-lg);
   transition: var(--transition);
-  text-align: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   border-color: var(--orange-cuivre);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px);
 }
 
 .card h3 {
   color: var(--orange-cuivre);
   margin-bottom: var(--spacing-sm);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
 }
 
 .card p {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: var(--spacing-lg);
+  color: var(--gris-texte);
   flex-grow: 1;
 }
 
-.card .btn {
-  margin-top: var(--spacing-md);
-  align-self: center;
-  width: fit-content;
+.card a {
+  color: var(--orange-cuivre);
+  font-weight: 600;
+  margin-top: var(--spacing-sm);
+  display: inline-block;
 }
 
-/* === SECTIONS AVEC TITRES CENTRÉS === */
-section h2 {
-  text-align: center;
+.card a:hover {
+  text-decoration: underline;
 }
 
-/* Exceptions : titres alignés à gauche */
-.presentation-text h2,
-.charte-section h2,
-.legal-page h2 {
-  text-align: left;
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: var(--spacing-sm);
+  border-radius: 8px;
 }
 
-/* === SECTIONS SPÉCIFIQUES === */
-.presentation-section {
-  background-color: var(--blanc);
-}
-
+/* === PRÉSENTATION === */
 .presentation-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -727,130 +648,117 @@ section h2 {
   color: var(--orange-cuivre);
 }
 
-.presentation-text h2,
-.charte-section h2 {
-  color: var(--orange-cuivre);
-  font-weight: 500;
-  font-size: 2.2rem;
+.presentation-text p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.9;
 }
 
 .presentation-image {
-  width: 100%;
-  height: 400px;
-  background-color: var(--gris-clair);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gris-texte);
-  font-style: italic;
   background-size: cover;
   background-position: center;
-  position: relative;
-}
-
-/* === FILTRE ORANGE SUR SECTION QI GONG (PAGE D'ACCUEIL) === */
-.presentation-grid .presentation-image::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(212, 130, 92, 0.3) 0%,
-    rgba(212, 130, 92, 0.1) 100%
-  );
-  pointer-events: none;
-}
-
-/* Image jardin Qi Gong */
-.jardin-qigong-image {
-  background-image: url('/images/jardin-qigong.jpg');
-}
-
-/* Section Qi Gong avec photo */
-.qigong-photo-section {
-  position: relative;
-  min-height: 400px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url('/images/jardin-qigong.jpg');
-}
-
-.qigong-photo-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 1;
-}
-
-.qigong-photo-section .container {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--blanc);
-}
-
-.qigong-photo-section h2 {
-  color: var(--blanc);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.qigong-photo-section p {
-  color: var(--blanc);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-.qigong-photo-placeholder {
   min-height: 400px;
   background-color: var(--gris-clair);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gris-texte);
-  font-style: italic;
-  font-size: 1.2rem;
+  border-radius: 8px;
 }
 
-/* === CHARTE ÉTHIQUE === */
-.charte-section {
+/* === SECTION MASSAGES PAGE D'ACCUEIL === */
+.massages-section {
   background-color: var(--blanc-casse);
 }
 
-.charte-section ul {
-  list-style: none;
+.massage-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
   margin-top: var(--spacing-lg);
 }
 
-.charte-section li {
-  padding: var(--spacing-sm) 0;
-  padding-left: var(--spacing-md);
-  position: relative;
-  color: var(--gris-texte);
-  line-height: 1.8;
+.massage-card {
+  background-color: var(--blanc);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--gris-moyen);
+  border-radius: 20px;
+  text-align: center;
+  transition: var(--transition);
 }
 
-.charte-section li::before {
-  content: "✦";
-  position: absolute;
-  left: 0;
+.massage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-color: var(--orange-cuivre);
+}
+
+.massage-card h3 {
   color: var(--orange-cuivre);
-  font-size: 0.8rem;
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.massage-card p {
+  color: var(--gris-texte);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+.massage-card a {
+  color: var(--orange-cuivre);
+  font-weight: 600;
+}
+
+.massage-card a:hover {
+  text-decoration: underline;
+}
+
+/* === QI GONG SECTION === */
+.qigong-section {
+  background-color: var(--blanc);
+}
+
+.qigong-photo {
+  background-image: url('/images/qigong-photo.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Filtre orange sur la photo Qi Gong (page d'accueil uniquement) */
+.qigong-photo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(212, 130, 92, 0.35);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.qigong-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.qigong-text h2 {
+  color: var(--orange-cuivre);
+}
+
+.qigong-text p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.9;
 }
 
 /* === TARIFS === */
 .tarif-card {
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
+  border-radius: 20px;
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
 }
@@ -898,7 +806,7 @@ section h2 {
   align-items: center;
   transition: var(--transition);
   padding: var(--spacing-sm);
-  border-radius: var(--border-radius);
+  border-radius: 20px;
 }
 
 .faq-question:hover {
@@ -960,7 +868,7 @@ section h2 {
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
   padding: var(--spacing-lg);
-  border-radius: var(--border-radius);
+  border-radius: 20px;
   flex-shrink: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
@@ -1027,7 +935,7 @@ footer {
 
 /* === CTA "LAISSER UN AVIS" DANS FOOTER === */
 .footer-cta {
-  text-align: center;
+  text-align: right;
   padding: var(--spacing-lg) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1045,10 +953,6 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.footer-cta .btn-primary::before {
-  font-size: 1.2rem;
 }
 
 .footer-bottom {
@@ -1124,6 +1028,14 @@ footer {
     grid-template-columns: 1fr;
   }
   
+  .massage-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .qigong-content {
+    grid-template-columns: 1fr;
+  }
+  
   /* Navigation mobile */
   .header-phone-btn {
     font-size: 0.85rem;
@@ -1170,6 +1082,10 @@ footer {
   
   .footer-content {
     grid-template-columns: 1fr;
+  }
+  
+  .footer-cta {
+    text-align: center;
   }
   
   .avis-card {
@@ -1230,11 +1146,6 @@ footer {
     padding: 0.5rem 0.8rem;
   }
   
-  .header-phone-btn::before {
-    content: "☎";
-    font-size: 1rem;
-  }
-  
   /* Logo */
   .logo {
     height: 100px;
@@ -1259,6 +1170,10 @@ footer {
   /* Sections */
   .presentation-image {
     min-height: 250px;
+  }
+  
+  .massage-cards-grid {
+    grid-template-columns: 1fr;
   }
   
   /* Cartes */
