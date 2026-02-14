@@ -171,14 +171,13 @@ header.scrolled {
 }
 
 .header-content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0.5rem var(--spacing-md);
   max-width: var(--max-width);
   margin: 0 auto;
   transition: all 0.4s ease;
-  position: relative;
 }
 
 .logo {
@@ -258,9 +257,13 @@ nav {
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  justify-content: center;
+  grid-column: 2;
+}
+
+.header-phone-btn {
+  grid-column: 3;
+  justify-self: end;
 }
 
 nav ul {
