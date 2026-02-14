@@ -35,8 +35,13 @@
   
   /* Autres */
   --border-radius: 30px;
+  --card-image-radius: 8px;
   --transition: all 0.3s ease;
   --max-width: 1200px;
+}
+
+img {
+  border-radius: var(--card-image-radius);
 }
 
 /* === RESET & BASE === */
@@ -668,6 +673,7 @@ nav li {
 .card {
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
+  border-radius: var(--card-image-radius);
   padding: var(--spacing-lg);
   transition: var(--transition);
   text-align: center;
@@ -853,6 +859,7 @@ section h2 {
 .tarif-card {
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
+  border-radius: var(--card-image-radius);
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
 }
@@ -962,7 +969,7 @@ section h2 {
   background-color: var(--blanc);
   border: 1px solid var(--gris-moyen);
   padding: var(--spacing-lg);
-  border-radius: var(--border-radius);
+  border-radius: var(--card-image-radius);
   flex-shrink: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
