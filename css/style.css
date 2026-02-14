@@ -229,6 +229,7 @@ header.scrolled .logo-favicon {
 
 /* === BOUTON TÉLÉPHONE HEADER === */
 .header-phone-btn {
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.7rem 1.5rem;
@@ -260,11 +261,6 @@ nav {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.header-phone-btn {
-  justify-self: end;
-  grid-column: 3;
 }
 
 nav ul {
