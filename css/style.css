@@ -230,11 +230,11 @@ header.scrolled .logo-favicon {
 
 /* === NAVIGATION === */
 nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: var(--spacing-md);
-  justify-content: center;
-  grid-column: 2;
+  width: 100%;
+  grid-column: 2 / 4;
 }
 
 nav ul {
