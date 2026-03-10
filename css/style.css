@@ -251,7 +251,7 @@ nav {
   flex-shrink: 0;
 }
 
-.nav-cta-mobile {
+li.nav-cta-mobile {
   display: none;
 }
 
@@ -1149,11 +1149,12 @@ footer {
     width: auto;
   }
 
-  .header-cta {
+  .header-cta,
+  .header-phone-btn {
     display: none;
   }
 
-  .nav-cta-mobile {
+  li.nav-cta-mobile {
     display: block;
     text-align: center;
     padding: var(--spacing-md) 0 var(--spacing-sm);
