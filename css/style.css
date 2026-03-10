@@ -238,9 +238,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-lg);
-  width: 100%;
-  grid-column: 2 / 4;
+  grid-column: 2;
 }
 
 nav ul {
@@ -340,7 +338,7 @@ nav li {
   letter-spacing: 0.02em;
   transition: var(--transition);
   white-space: nowrap;
-  margin-left: auto;
+  justify-self: end;
 }
 
 .header-phone-btn:hover {
@@ -1136,15 +1134,20 @@ footer {
   /* Navigation mobile */
   .header-content {
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
-  
-  nav {
-    grid-column: auto;
+
+  .logo {
+    flex: 1;
   }
-  
+
+  nav {
+    order: 3;
+  }
+
   .header-phone-btn {
-    grid-column: auto;
+    order: 2;
     justify-self: auto;
     font-size: 0.85rem;
     padding: 0.5rem 1rem;
