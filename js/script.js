@@ -6,13 +6,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ============================================
     // 1. MENU MOBILE TOGGLE
-    // ============================================
-    window.toggleMenu = function() {
-        const menu = document.getElementById('nav-menu');
-        menu.classList.toggle('active');
-    };
-    
-    // ============================================
+// ============================================
+window.toggleMenu = function() {
+    const menu = document.getElementById('nav-menu');
+    menu.classList.toggle('active');
+};
+
+// ============================================
+// 2. SOUS-MENU MASSAGES (mobile uniquement)
+// ============================================
+document.querySelectorAll('.nav-item-with-submenu > a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            this.closest('.nav-item-with-submenu').classList.toggle('active');
+        }
+    });
+}); ============================================
     // 2. FAQ ACCORDÉON
     // ============================================
     const faqItems = document.querySelectorAll('.faq-item');
