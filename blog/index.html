@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Delphine Millot - Massages & Qi Gong Brignoles</title>
+<meta name="description" content="Articles sur le bien-être, les massages et le Qi Gong par Delphine Millot, praticienne à Brignoles.">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-content">
+    <div class="logo">
+      <a href="/index.html">
+        <img src="/images/logo.png" alt="Delphine Millot - Corps, Cœur, Conscience" class="logo-full">
+        <img src="/images/favicon.png" alt="Delphine Millot" class="logo-favicon">
+      </a>
+    </div>
+    <nav>
+      <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <ul id="nav-menu">
+        <li><a href="/index.html">Accueil</a></li>
+        <li class="nav-item-with-submenu">
+          <a href="/massages.html">Massages</a>
+          <ul class="submenu">
+            <li><a href="/massages/massage-suedois.html">Massage Suédois</a></li>
+            <li><a href="/massages/massage-tantrique.html">Massage Tantrique</a></li>
+            <li><a href="/massages/massage-lomi-lomi.html">Massage Lomi Lomi</a></li>
+            <li><a href="/massages/drainage-lymphatique.html">Drainage Lymphatique</a></li>
+            <li><a href="/massages/massage-therapeutique.html">Massage Thérapeutique</a></li>
+            <li><a href="/massages/massage-4-mains-duo.html">Massage 4 Mains et Duo</a></li>
+          </ul>
+        </li>
+        <li><a href="/qi-gong.html">Qi Gong</a></li>
+        <li><a href="/a-propos.html">À propos</a></li>
+        <li><a href="/blog/index.html">Blog</a></li>
+        <li class="nav-cta-mobile"><a href="tel:+33628132536" class="btn btn-primary">06 28 13 25 36</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:+33628132536" class="header-phone-btn">06 28 13 25 36</a>
+    </div>
+  </div>
+</header>
+
+<section style="padding: var(--spacing-xl) 0;">
+  <div class="container">
+    <h1 class="text-center">Blog</h1>
+    <p class="text-center" style="color: var(--gris-texte); margin-bottom: var(--spacing-xl);">Bien-être, massages et Qi Gong</p>
+    <div id="articles-list" class="cards-grid">
+      <p style="text-align:center; color: var(--gris-texte); grid-column: 1/-1;">Aucun article pour le moment.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-cta">
+      <p>Vous avez apprécié votre séance ?</p>
+      <a href="https://maps.app.goo.gl/B99F9CMtDDj8VtBL9" target="_blank" class="btn btn-primary">Laisser un avis</a>
+    </div>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Delphine Millot</h3>
+        <p>Massages bien-être & Qi Gong<br>Brignoles, Var (83)</p>
+        <p><em>Corps, Cœur, Conscience</em></p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Téléphone : <a href="tel:+33628132536">06 28 13 25 36</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Navigation</h3>
+        <ul class="footer-links">
+          <li><a href="/index.html">Accueil</a></li>
+          <li><a href="/massages.html">Massages</a></li>
+          <li><a href="/qi-gong.html">Qi Gong</a></li>
+          <li><a href="/a-propos.html">À propos</a></li>
+          <li><a href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Légal</h3>
+        <ul class="footer-links">
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/politique-confidentialite.html">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Delphine Millot - Tous droits réservés</p>
+      <p>Fait avec ❤️ par <a href="https://agence-aurore.fr" target="_blank">l'Agence Aurore</a></p>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleMenu() {
+  document.getElementById('nav-menu').classList.toggle('active');
+}
+</script>
+<script src="/js/script.js"></script>
+</body>
+</html>
