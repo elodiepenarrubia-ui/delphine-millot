@@ -1,9 +1,18 @@
 export default async function handler(req, res) {
+
+  // CORS - doit être en tout premier
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  if (req.method === "OPTIONS") return res.status(200).end();
-  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+  res.setHeader("Access-Control-Max-Age", "86400");
+
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
   const secret = req.headers["authorization"]?.replace("Bearer ", "");
   if (secret !== process.env.PUBLISH_SECRET) {
@@ -129,7 +138,6 @@ function toggleMenu() {
 </body>
 </html>`;
 
-  // Créer l'article
   const filePath = `blog/${slug}.html`;
   const fileContent = Buffer.from(html).toString("base64");
   const githubUrl = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/contents/${filePath}`;
@@ -143,8 +151,16 @@ function toggleMenu() {
 
     const create = await fetch(githubUrl, {
       method: "PUT",
-      headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "Content-Type": "application/json" },
-      body: JSON.stringify({ message: `Article : ${titre}`, content: fileContent, ...(sha ? { sha } : {}) })
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: `Article : ${titre}`,
+        content: fileContent,
+        ...(sha ? { sha } : {})
+      })
     });
 
     if (!create.ok) {
