@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Publication d'articles</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Lato', sans-serif; background: #fafafa; color: #1a1a1a; min-height: 100vh; }
+  
+  #login-screen {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; padding: 2rem;
+  }
+  .login-card {
+    background: white; border-radius: 12px; padding: 2.5rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08); width: 100%; max-width: 400px;
+    text-align: center;
+  }
+  .login-card h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #1a1a1a; }
+  .login-card p { color: #666; margin-bottom: 2rem; font-size: 0.95rem; }
+
+  #admin-screen { display: none; max-width: 800px; margin: 0 auto; padding: 2rem; }
+  .admin-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 2rem; padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .admin-header h1 { font-size: 1.4rem; }
+  .admin-header span { font-size: 0.85rem; color: #666; }
+
+  .card {
+    background: white; border-radius: 12px; padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 1.5rem;
+  }
+  .card h2 { font-size: 1rem; color: #d4825c; margin-bottom: 1.5rem;
+    text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85rem; }
+
+  .field { margin-bottom: 1.2rem; }
+  .field label { display: block; font-size: 0.9rem; font-weight: 700;
+    margin-bottom: 0.4rem; color: #1a1a1a; }
+  .field input, .field textarea {
+    width: 100%; padding: 0.75rem 1rem; border: 1px solid #e0e0e0;
+    border-radius: 8px; font-family: inherit; font-size: 0.95rem;
+    transition: border-color 0.2s; background: #fafafa;
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none; border-color: #d4825c; background: white;
+  }
+  .field textarea { resize: vertical; min-height: 120px; }
+  .field .hint { font-size: 0.8rem; color: #999; margin-top: 0.3rem; }
+
+  .slug-preview {
+    font-size: 0.8rem; color: #d4825c; margin-top: 0.3rem;
+    font-family: monospace;
+  }
+
+  .char-count { font-size: 0.8rem; color: #999; text-align: right; margin-top: 0.2rem; }
+  .char-count.warn { color: #e07b39; }
+  .char-count.over { color: #c0392b; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.8rem 2rem; border: none; border-radius: 30px;
+    font-family: inherit; font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; text-decoration: none;
+  }
+  .btn-primary { background: #d4825c; color: white; width: 100%; font-size: 1rem; padding: 1rem; }
+  .btn-primary:hover { background: #b86844; transform: translateY(-1px); }
+  .btn-primary:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+  .btn-secondary { background: #f5f5f5; color: #666; font-size: 0.85rem; padding: 0.5rem 1rem; }
+
+  .alert {
+    padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;
+    font-size: 0.95rem; display: none;
+  }
+  .alert.success { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+  .alert.error { background: #fdecea; color: #c62828; border: 1px solid #ffcdd2; }
+  .alert a { color: inherit; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ÉCRAN DE CONNEXION -->
+<div id="login-screen">
+  <div class="login-card">
+    <h1>✍️ Publication d'articles</h1>
+    <p>Delphine Millot - Administration</p>
+    <div class="field">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" placeholder="••••••••••" onkeydown="if(event.key==='Enter') login()">
+    </div>
+    <button class="btn btn-primary" onclick="login()">Accéder</button>
+    <p id="login-error" style="color:#c62828; margin-top:1rem; font-size:0.9rem; display:none;">Mot de passe incorrect.</p>
+  </div>
+</div>
+
+<!-- ÉCRAN ADMIN -->
+<div id="admin-screen">
+  <div class="admin-header">
+    <h1>✍️ Nouvel article</h1>
+    <span>delphine-millot.fr/blog/</span>
+  </div>
+
+  <div id="alert-success" class="alert success"></div>
+  <div id="alert-error" class="alert error"></div>
+
+  <div class="card">
+    <h2>Informations SEO</h2>
+    <div class="field">
+      <label>Titre de l'article *</label>
+      <input type="text" id="titre" placeholder="Ex: Les bienfaits du massage suédois" oninput="updateSlug(); updateCount('titre', 60)">
+      <div class="char-count" id="count-titre">0 / 60</div>
+      <div class="slug-preview" id="slug-preview">URL : /blog/</div>
+    </div>
+    <div class="field">
+      <label>Description SEO *</label>
+      <input type="text" id="description" placeholder="Résumé de l'article pour Google (160 caractères max)" oninput="updateCount('description', 160)">
+      <div class="char-count" id="count-description">0 / 160</div>
+    </div>
+    <div class="field">
+      <label>Slug URL</label>
+      <input type="text" id="slug" placeholder="bienfaits-massage-suedois">
+      <div class="hint">Généré automatiquement depuis le titre. Modifiable.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Contenu</h2>
+    <div class="field">
+      <label>Introduction (chapeau)</label>
+      <textarea id="intro" rows="3" placeholder="Phrase d'accroche visible en haut de l'article..."></textarea>
+    </div>
+    <div class="field">
+      <label>Corps de l'article *</label>
+      <textarea id="corps" rows="12" placeholder="Contenu principal de l'article. Tu peux utiliser du HTML simple : &lt;p&gt;, &lt;h2&gt;, &lt;strong&gt;, &lt;ul&gt;&lt;li&gt;..."></textarea>
+      <div class="hint">Tu peux écrire en texte simple ou utiliser des balises HTML basiques.</div>
+    </div>
+    <div class="field">
+      <label>Date de publication</label>
+      <input type="date" id="date">
+    </div>
+  </div>
+
+  <button class="btn btn-primary" id="publish-btn" onclick="publishArticle()">
+    Publier l'article →
+  </button>
+</div>
+
+<script>
+const API_URL = "https://delphine-millot-k3vsingp4-elodiepenarrubia-uis-projects.vercel.app/api/publish-article";
+let authToken = "";
+
+// Définir la date du jour par défaut
+document.getElementById("date").value = new Date().toISOString().split("T")[0];
+
+function login() {
+  const pwd = document.getElementById("password").value;
+  // Le mot de passe est vérifié côté serveur - on le stocke pour les requêtes
+  authToken = pwd;
+  document.getElementById("login-screen").style.display = "none";
+  document.getElementById("admin-screen").style.display = "block";
+  document.getElementById("login-error").style.display = "none";
+}
+
+function slugify(text) {
+  return text.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+}
+
+function updateSlug() {
+  const titre = document.getElementById("titre").value;
+  const slug = slugify(titre);
+  document.getElementById("slug").value = slug;
+  document.getElementById("slug-preview").textContent = "URL : /blog/" + (slug || "...");
+}
+
+function updateCount(fieldId, max) {
+  const val = document.getElementById(fieldId).value.length;
+  const el = document.getElementById("count-" + fieldId);
+  el.textContent = val + " / " + max;
+  el.className = "char-count" + (val > max ? " over" : val > max * 0.85 ? " warn" : "");
+}
+
+async function publishArticle() {
+  const titre = document.getElementById("titre").value.trim();
+  const description = document.getElementById("description").value.trim();
+  const slug = document.getElementById("slug").value.trim();
+  const intro = document.getElementById("intro").value.trim();
+  const corps = document.getElementById("corps").value.trim();
+  const date = document.getElementById("date").value;
+
+  // Validation
+  if (!titre || !description || !slug || !corps) {
+    showAlert("error", "Merci de remplir au minimum le titre, la description, le slug et le corps de l'article.");
+    return;
+  }
+
+  const btn = document.getElementById("publish-btn");
+  btn.disabled = true;
+  btn.textContent = "Publication en cours...";
+  hideAlerts();
+
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + authToken
+      },
+      body: JSON.stringify({ titre, description, slug, intro, corps, date })
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      showAlert("success", `✅ Article publié ! Il sera en ligne dans 1-2 minutes : <a href="${data.url}" target="_blank">${data.url}</a>`);
+      resetForm();
+    } else if (res.status === 401) {
+      document.getElementById("admin-screen").style.display = "none";
+      document.getElementById("login-screen").style.display = "flex";
+      document.getElementById("login-error").style.display = "block";
+      document.getElementById("login-error").textContent = "Session expirée ou mot de passe incorrect.";
+    } else {
+      showAlert("error", "Erreur : " + (data.error || "Problème inconnu."));
+    }
+  } catch (err) {
+    showAlert("error", "Erreur réseau. Vérifie ta connexion et réessaie.");
+  }
+
+  btn.disabled = false;
+  btn.textContent = "Publier l'article →";
+}
+
+function showAlert(type, msg) {
+  const el = document.getElementById("alert-" + type);
+  el.innerHTML = msg;
+  el.style.display = "block";
+  el.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function hideAlerts() {
+  document.getElementById("alert-success").style.display = "none";
+  document.getElementById("alert-error").style.display = "none";
+}
+
+function resetForm() {
+  document.getElementById("titre").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("slug").value = "";
+  document.getElementById("intro").value = "";
+  document.getElementById("corps").value = "";
+  document.getElementById("slug-preview").textContent = "URL : /blog/";
+  document.getElementById("count-titre").textContent = "0 / 60";
+  document.getElementById("count-description").textContent = "0 / 160";
+  document.getElementById("date").value = new Date().toISOString().split("T")[0];
+}
+</script>
+</body>
+</html>
