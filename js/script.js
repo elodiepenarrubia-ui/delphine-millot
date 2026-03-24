@@ -22,7 +22,7 @@ document.querySelectorAll('.nav-item-with-submenu > a').forEach(link => {
             this.closest('.nav-item-with-submenu').classList.toggle('active');
         }
     });
-}); ============================================
+}); // ============================================
     // 2. FAQ ACCORDÉON
     // ============================================
     const faqItems = document.querySelectorAll('.faq-item');
