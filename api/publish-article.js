@@ -1,31 +1,122 @@
 export default async function handler(req, res) {
-
-  // CORS - doit être en tout premier
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Max-Age", "86400");
-
-  if (req.method === "OPTIONS") {
-    return res.status(204).end();
-  }
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  if (req.method === "OPTIONS") return res.status(204).end();
 
   const secret = req.headers["authorization"]?.replace("Bearer ", "");
   if (secret !== process.env.PUBLISH_SECRET) {
     return res.status(401).json({ error: "Non autorisé" });
   }
 
-  const { slug, titre, description, date, intro, corps } = req.body;
+  const OWNER = process.env.GITHUB_OWNER;
+  const REPO = process.env.GITHUB_REPO;
+  const TOKEN = process.env.GITHUB_TOKEN;
+
+  const ghHeaders = {
+    Authorization: `Bearer ${TOKEN}`,
+    Accept: "application/vnd.github+json",
+    "Content-Type": "application/json",
+  };
+
+  async function getFile(path) {
+    const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, { headers: ghHeaders });
+    if (!r.ok) return null;
+    return r.json();
+  }
+
+  async function putFile(path, content, message, sha) {
+    const body = { message, content: Buffer.from(content).toString("base64") };
+    if (sha) body.sha = sha;
+    const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
+      method: "PUT", headers: ghHeaders, body: JSON.stringify(body),
+    });
+    return r;
+  }
+
+  async function deleteFile(path, message, sha) {
+    const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
+      method: "DELETE", headers: ghHeaders,
+      body: JSON.stringify({ message, sha }),
+    });
+    return r;
+  }
+
+  // ─── GET : liste ou article unique ───
+  if (req.method === "GET") {
+    const action = req.query.action;
+
+    if (action === "list") {
+      try {
+        const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/blog`, { headers: ghHeaders });
+        if (!r.ok) return res.status(200).json({ articles: [] });
+        const files = await r.json();
+        const articles = files
+          .filter(f => f.name.endsWith(".html") && f.name !== "index.html")
+          .map(f => {
+            const slug = f.name.replace(".html", "");
+            return { slug, titre: slug.replace(/-/g, " "), date: "", url: `https://delphine-millot.fr/blog/${slug}.html` };
+          });
+        return res.status(200).json({ articles });
+      } catch (err) {
+        return res.status(500).json({ error: "Erreur liste", details: err.message });
+      }
+    }
+
+    if (action === "get") {
+      const slug = req.query.slug;
+      if (!slug) return res.status(400).json({ error: "Slug manquant" });
+      try {
+        const file = await getFile(`blog/${slug}.html`);
+        if (!file) return res.status(404).json({ error: "Article introuvable" });
+        const html = Buffer.from(file.content, "base64").toString("utf8");
+
+        const titre = (html.match(/<title>([^|]+)\|/) || [])[1]?.trim() || slug.replace(/-/g, " ");
+        const description = (html.match(/<meta name="description" content="([^"]+)"/) || [])[1] || "";
+        const date = (html.match(/(\d{4}-\d{2}-\d{2})/) || [])[1] || "";
+
+        const introMatch = html.match(/font-style: italic[^>]*>([^<]+)<\/p>/);
+        const intro = introMatch ? introMatch[1] : "";
+
+        const corpsMatch = html.match(/margin-top: var\(--spacing-lg\);">\s*([\s\S]*?)\s*<\/div>\s*<div style="margin-top: var\(--spacing-xl\)/);
+        const corps = corpsMatch ? corpsMatch[1].trim() : "";
+
+        return res.status(200).json({ article: { titre, description, date, intro, corps } });
+      } catch (err) {
+        return res.status(500).json({ error: "Erreur lecture", details: err.message });
+      }
+    }
+
+    return res.status(405).json({ error: "Action inconnue" });
+  }
+
+  // ─── POST : publish ou delete ───
+  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+
+  const { action, slug, titre, description, date, intro, corps } = req.body;
+
+  // ─── SUPPRESSION ───
+  if (action === "delete") {
+    if (!slug) return res.status(400).json({ error: "Slug manquant" });
+    try {
+      const file = await getFile(`blog/${slug}.html`);
+      if (!file) return res.status(404).json({ error: "Article introuvable" });
+      const r = await deleteFile(`blog/${slug}.html`, `Suppression : ${slug}`, file.sha);
+      if (!r.ok) return res.status(500).json({ error: "Erreur suppression GitHub" });
+      return res.status(200).json({ success: true, message: "Article supprimé" });
+    } catch (err) {
+      return res.status(500).json({ error: "Erreur serveur", details: err.message });
+    }
+  }
+
+  // ─── PUBLICATION / MISE À JOUR ───
   if (!slug || !titre || !corps) {
-    return res.status(400).json({ error: "Champs manquants" });
+    return res.status(400).json({ error: "Champs manquants : slug, titre, corps" });
   }
 
   const dateObj = new Date(date || new Date());
   const dateDisplay = dateObj.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+  const dateISO = dateObj.toISOString().split("T")[0];
 
   const html = `<!DOCTYPE html>
 <html lang="fr">
@@ -130,50 +221,29 @@ export default async function handler(req, res) {
   </div>
 </footer>
 <script>
-function toggleMenu() {
-  document.getElementById('nav-menu').classList.toggle('active');
-}
+function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
 </script>
 <script src="/js/script.js"></script>
 </body>
 </html>`;
 
-  const filePath = `blog/${slug}.html`;
-  const fileContent = Buffer.from(html).toString("base64");
-  const githubUrl = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/contents/${filePath}`;
-
   try {
-    let sha;
-    const check = await fetch(githubUrl, {
-      headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json" }
-    });
-    if (check.ok) { const ex = await check.json(); sha = ex.sha; }
-
-    const create = await fetch(githubUrl, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        Accept: "application/vnd.github+json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: `Article : ${titre}`,
-        content: fileContent,
-        ...(sha ? { sha } : {})
-      })
-    });
-
-    if (!create.ok) {
-      const err = await create.json();
+    const existing = await getFile(`blog/${slug}.html`);
+    const r = await putFile(
+      `blog/${slug}.html`,
+      html,
+      `${action === "update" ? "Mise à jour" : "Article"} : ${titre}`,
+      existing?.sha
+    );
+    if (!r.ok) {
+      const err = await r.json();
       return res.status(500).json({ error: "Erreur GitHub", details: err.message });
     }
-
     return res.status(200).json({
       success: true,
-      message: "Article publié avec succès",
+      message: action === "update" ? "Article mis à jour" : "Article publié",
       url: `https://delphine-millot.fr/blog/${slug}.html`
     });
-
   } catch (err) {
     return res.status(500).json({ error: "Erreur serveur", details: err.message });
   }
