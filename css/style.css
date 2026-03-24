@@ -1147,24 +1147,6 @@ footer {
   .cards-grid {
     grid-template-columns: 1fr;
   }
-
-{
-  .nav-item-with-submenu.active .submenu {
-    position: static;
-    box-shadow: none;
-    border: none;
-    border-top: 1px solid var(--gris-moyen);
-    min-width: unset;
-    width: 100%;
-    margin-top: 0;
-    padding: var(--spacing-xs) 0;
-    text-align: center;
-  }
-
-  .nav-item-with-submenu.active .submenu a {
-    padding: var(--spacing-xs) var(--spacing-md);
-  }
-}
   
   /* Navigation mobile */
   .logo {
@@ -1248,13 +1230,6 @@ footer {
     font-size: 1.05rem;
     line-height: 1.7;
   }
-
-@media (max-width: 768px) {
-  nav {
-    flex: unset;
-    margin-left: auto;
-  }
-}
   
   /* Hero */
   .hero {
