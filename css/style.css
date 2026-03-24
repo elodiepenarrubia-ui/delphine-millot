@@ -1017,7 +1017,7 @@ section h2 {
 footer {
   background-color: var(--noir);
   color: var(--blanc);
-  padding: var(--spacing-xl) 0 var(--spacing-md);
+  padding: var(--spacing-md) 0 var(--spacing-md);
 }
 
 .footer-content {
@@ -1057,7 +1057,6 @@ footer {
 .footer-cta {
   text-align: center;
   padding: var(--spacing-md) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: var(--spacing-lg);
 }
