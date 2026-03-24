@@ -1147,10 +1147,16 @@ footer {
   .cards-grid {
     grid-template-columns: 1fr;
   }
-  
+
   /* Navigation mobile */
   .logo {
     width: auto;
+  }
+
+  /* CORRECTION 1 : burger à droite */
+  nav {
+    flex: unset;
+    margin-left: auto;
   }
 
   .header-cta,
@@ -1183,13 +1189,25 @@ footer {
     display: flex;
   }
   
-  /* Sous-menu mobile */
+  /* CORRECTION 2 : sous-menu sans décalage */
   .submenu {
     position: static;
     box-shadow: none;
     border: none;
     border-top: 1px solid var(--gris-moyen);
     margin-top: var(--spacing-xs);
+    width: 100%;
+    min-width: unset;
+    padding: 0;
+  }
+
+  .submenu li {
+    text-align: center;
+  }
+
+  .submenu a {
+    padding: var(--spacing-xs) var(--spacing-md) !important;
+    padding-left: var(--spacing-md) !important;
   }
   
   .nav-item-with-submenu:hover .submenu {
@@ -1206,6 +1224,11 @@ footer {
   
   .footer-content {
     grid-template-columns: 1fr;
+  }
+
+  /* CORRECTION 3 : réduire la marge noire en haut du footer */
+  footer {
+    padding-top: var(--spacing-sm);
   }
   
   .avis-card {
