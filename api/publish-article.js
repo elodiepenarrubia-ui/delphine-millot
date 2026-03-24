@@ -42,21 +42,26 @@ export default async function handler(req, res) {
     return r;
   }
 
-  // ─── GET : liste ou article unique ───
+  async function getIndex() {
+    const file = await getFile("blog/index.json");
+    if (!file) return { articles: [] };
+    const content = Buffer.from(file.content, "base64").toString("utf8");
+    return { data: JSON.parse(content), sha: file.sha };
+  }
+
+  async function saveIndex(articles, sha, message) {
+    const content = JSON.stringify({ articles }, null, 2);
+    return putFile("blog/index.json", content, message, sha);
+  }
+
+  // ─── GET ───
   if (req.method === "GET") {
     const action = req.query.action;
 
     if (action === "list") {
       try {
-        const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/blog`, { headers: ghHeaders });
-        if (!r.ok) return res.status(200).json({ articles: [] });
-        const files = await r.json();
-        const articles = files
-          .filter(f => f.name.endsWith(".html") && f.name !== "index.html")
-          .map(f => {
-            const slug = f.name.replace(".html", "");
-            return { slug, titre: slug.replace(/-/g, " "), date: "", url: `https://delphine-millot.fr/blog/${slug}.html` };
-          });
+        const { data } = await getIndex();
+        const articles = (data?.articles || []).sort((a, b) => new Date(b.date) - new Date(a.date));
         return res.status(200).json({ articles });
       } catch (err) {
         return res.status(500).json({ error: "Erreur liste", details: err.message });
@@ -73,11 +78,10 @@ export default async function handler(req, res) {
 
         const titre = (html.match(/<title>([^|]+)\|/) || [])[1]?.trim() || slug.replace(/-/g, " ");
         const description = (html.match(/<meta name="description" content="([^"]+)"/) || [])[1] || "";
+        const dateMatch = html.match(/· (\d{1,2}\s\w+\s\d{4})/);
         const date = (html.match(/(\d{4}-\d{2}-\d{2})/) || [])[1] || "";
-
         const introMatch = html.match(/font-style: italic[^>]*>([^<]+)<\/p>/);
         const intro = introMatch ? introMatch[1] : "";
-
         const corpsMatch = html.match(/margin-top: var\(--spacing-lg\);">\s*([\s\S]*?)\s*<\/div>\s*<div style="margin-top: var\(--spacing-xl\)/);
         const corps = corpsMatch ? corpsMatch[1].trim() : "";
 
@@ -90,7 +94,6 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Action inconnue" });
   }
 
-  // ─── POST : publish ou delete ───
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
   const { action, slug, titre, description, date, intro, corps } = req.body;
@@ -101,8 +104,12 @@ export default async function handler(req, res) {
     try {
       const file = await getFile(`blog/${slug}.html`);
       if (!file) return res.status(404).json({ error: "Article introuvable" });
-      const r = await deleteFile(`blog/${slug}.html`, `Suppression : ${slug}`, file.sha);
-      if (!r.ok) return res.status(500).json({ error: "Erreur suppression GitHub" });
+      await deleteFile(`blog/${slug}.html`, `Suppression : ${slug}`, file.sha);
+
+      const { data, sha } = await getIndex();
+      const articles = (data?.articles || []).filter(a => a.slug !== slug);
+      await saveIndex(articles, sha, `Index : suppression ${slug}`);
+
       return res.status(200).json({ success: true, message: "Article supprimé" });
     } catch (err) {
       return res.status(500).json({ error: "Erreur serveur", details: err.message });
@@ -111,7 +118,7 @@ export default async function handler(req, res) {
 
   // ─── PUBLICATION / MISE À JOUR ───
   if (!slug || !titre || !corps) {
-    return res.status(400).json({ error: "Champs manquants : slug, titre, corps" });
+    return res.status(400).json({ error: "Champs manquants" });
   }
 
   const dateObj = new Date(date || new Date());
@@ -217,6 +224,7 @@ export default async function handler(req, res) {
     <div class="footer-bottom">
       <p>&copy; 2025 Delphine Millot - Tous droits réservés</p>
       <p>Fait avec ❤️ par <a href="https://agence-aurore.fr" target="_blank">l'Agence Aurore</a></p>
+      <p style="margin-top: 0.5rem;"><a href="/admin/" style="color: rgba(255,255,255,0.3); font-size: 0.75rem;">Administration</a></p>
     </div>
   </div>
 </footer>
@@ -229,16 +237,24 @@ function toggleMenu() { document.getElementById('nav-menu').classList.toggle('ac
 
   try {
     const existing = await getFile(`blog/${slug}.html`);
-    const r = await putFile(
-      `blog/${slug}.html`,
-      html,
+    await putFile(
+      `blog/${slug}.html`, html,
       `${action === "update" ? "Mise à jour" : "Article"} : ${titre}`,
       existing?.sha
     );
-    if (!r.ok) {
-      const err = await r.json();
-      return res.status(500).json({ error: "Erreur GitHub", details: err.message });
+
+    const { data, sha } = await getIndex();
+    const articles = data?.articles || [];
+    const existingIdx = articles.findIndex(a => a.slug === slug);
+    const entry = { slug, titre, description, date: dateISO };
+
+    if (existingIdx >= 0) {
+      articles[existingIdx] = entry;
+    } else {
+      articles.unshift(entry);
     }
+    await saveIndex(articles, sha, `Index : ${action === "update" ? "màj" : "ajout"} ${slug}`);
+
     return res.status(200).json({
       success: true,
       message: action === "update" ? "Article mis à jour" : "Article publié",
