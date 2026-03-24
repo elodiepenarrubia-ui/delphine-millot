@@ -48,7 +48,7 @@
     <h1 class="text-center">Blog</h1>
     <p class="text-center" style="color: var(--gris-texte); margin-bottom: var(--spacing-xl);">Bien-être, massages et Qi Gong</p>
     <div id="articles-list" class="cards-grid">
-      <p style="text-align:center; color: var(--gris-texte); grid-column: 1/-1;">Aucun article pour le moment.</p>
+      <p style="text-align:center; color: var(--gris-texte); grid-column: 1/-1;">Chargement...</p>
     </div>
   </div>
 </section>
@@ -90,14 +90,40 @@
     <div class="footer-bottom">
       <p>&copy; 2025 Delphine Millot - Tous droits réservés</p>
       <p>Fait avec ❤️ par <a href="https://agence-aurore.fr" target="_blank">l'Agence Aurore</a></p>
-      <p style="margin-top: 0.5rem; text-align: right;"><a href="/admin/" style="color: rgba(255,255,255,0.3); font-size: 0.75rem;">Administration</a></p>
+      <p style="margin-top: 0.5rem;"><a href="/admin/" style="color: rgba(255,255,255,0.3); font-size: 0.75rem;">Administration</a></p>
     </div>
   </div>
 </footer>
+
 <script>
 function toggleMenu() {
   document.getElementById('nav-menu').classList.toggle('active');
 }
+
+fetch("https://raw.githubusercontent.com/elodiepenarrubia-ui/delphine-millot/main/blog/index.json")
+  .then(r => r.json())
+  .then(data => {
+    const articles = data.articles || [];
+    const container = document.getElementById("articles-list");
+    if (articles.length === 0) {
+      container.innerHTML = '<p style="text-align:center; color: var(--gris-texte); grid-column: 1/-1;">Aucun article pour le moment.</p>';
+      return;
+    }
+    container.innerHTML = articles.map(a => {
+      const date = new Date(a.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+      return `
+        <div class="card">
+          <p style="font-size:0.8rem; color:var(--orange-cuivre); margin-bottom:0.5rem;">${date}</p>
+          <h3 style="margin-bottom:0.8rem; font-size:1.1rem;">${a.titre}</h3>
+          <p style="font-size:0.9rem; color:var(--gris-texte); margin-bottom:1rem; flex-grow:1;">${a.description}</p>
+          <a href="/blog/${a.slug}.html" class="btn btn-secondary">Lire l'article →</a>
+        </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById("articles-list").innerHTML =
+      '<p style="text-align:center; color: var(--gris-texte); grid-column: 1/-1;">Erreur de chargement.</p>';
+  });
 </script>
 <script src="/js/script.js"></script>
 </body>
