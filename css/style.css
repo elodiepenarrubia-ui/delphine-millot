@@ -1216,6 +1216,16 @@ footer {
   .nav-item-with-submenu.active .submenu {
     display: block;
   }
+
+.nav-item-with-submenu {
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-item-with-submenu > a {
+    display: block;
+    text-align: center;
+  }
   
   .menu-toggle {
     display: flex;
