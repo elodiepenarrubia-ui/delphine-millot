@@ -310,6 +310,10 @@ nav li {
   display: block;
 }
 
+.nav-item-with-submenu.active .submenu {
+  display: block;
+}
+
 .submenu li {
   display: block;
   margin: 0;
