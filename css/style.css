@@ -1193,7 +1193,6 @@ footer {
     position: static;
     box-shadow: none;
     border: none;
-    border-top: 1px solid var(--gris-moyen);
     margin-top: var(--spacing-xs);
     width: 100%;
     min-width: unset;
