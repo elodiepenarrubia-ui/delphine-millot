@@ -302,6 +302,8 @@ nav li {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   min-width: 240px;
   padding: var(--spacing-sm) 0;
+  border-radius: var(--card-image-radius);
+  overflow: hidden;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
@@ -342,10 +344,14 @@ nav li {
   transition: var(--transition);
 }
 
+.submenu a {
+  transform-origin: left center;
+}
+
 .submenu a:hover {
   background-color: var(--gris-clair);
   color: var(--orange-cuivre);
-  padding-left: calc(var(--spacing-md) + 0.5rem);
+  transform: scale(1.06);
 }
 
 /* Flèche chevron fin (style agence-aurore) */
