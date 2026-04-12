@@ -610,9 +610,22 @@ nav li {
 
 /* === PHRASE SIGNATURE === */
 .phrase-signature {
-  text-align: center;
   padding: var(--spacing-xl) var(--spacing-md);
   background-color: var(--blanc-casse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.phrase-signature-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 .phrase-signature p {
@@ -621,9 +634,10 @@ nav li {
   font-style: italic;
   color: var(--orange-cuivre);
   font-weight: 500;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: 0;
   line-height: 1.6;
+  text-align: left;
 }
 
 /* === BUTTONS === */
