@@ -293,7 +293,6 @@ nav li {
 }
 
 .submenu {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -302,16 +301,30 @@ nav li {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   min-width: 240px;
   padding: var(--spacing-sm) 0;
-  margin-top: 0.5rem;
   z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.6s;
 }
 
-.nav-item-with-submenu:hover .submenu {
-  display: block;
+/* Pont invisible pour éviter que le survol ne se coupe entre le lien et le sous-menu */
+.nav-item-with-submenu::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 20px;
 }
 
+.nav-item-with-submenu:hover .submenu,
+.nav-item-with-submenu:focus-within .submenu,
 .nav-item-with-submenu.active .submenu {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
 }
 
 .submenu li {
@@ -334,12 +347,29 @@ nav li {
   padding-left: calc(var(--spacing-md) + 0.5rem);
 }
 
-/* Flèche indicateur sous-menu */
+/* Flèche chevron fin (style agence-aurore) */
+.nav-item-with-submenu > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .nav-item-with-submenu > a::after {
-  content: " ▼";
-  font-size: 0.7rem;
-  margin-left: 0.3rem;
-  color: var(--gris-texte);
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.25s ease;
+  opacity: 0.7;
+}
+
+.nav-item-with-submenu:hover > a::after,
+.nav-item-with-submenu.active > a::after {
+  transform: rotate(225deg) translateY(-2px);
+  opacity: 1;
 }
 
 /* === BOUTON TÉLÉPHONE HEADER === */
@@ -1212,6 +1242,11 @@ footer {
     width: 100%;
     min-width: unset;
     padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+    transition: none;
   }
 
   .submenu li {
@@ -1222,11 +1257,15 @@ footer {
     padding: var(--spacing-xs) var(--spacing-md) !important;
     padding-left: var(--spacing-md) !important;
   }
-  
+
+  .nav-item-with-submenu::after {
+    display: none;
+  }
+
   .nav-item-with-submenu:hover .submenu {
     display: none;
   }
-  
+
   .nav-item-with-submenu.active .submenu {
     display: block;
   }
