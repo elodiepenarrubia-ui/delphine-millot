@@ -1414,3 +1414,53 @@ footer {
 .mt-sm { margin-top: var(--spacing-sm); }
 .mt-md { margin-top: var(--spacing-md); }
 .mt-lg { margin-top: var(--spacing-lg); }
+
+/* === BULLE WHATSAPP FLOTTANTE === */
+.whatsapp-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.whatsapp-bubble:hover,
+.whatsapp-bubble:focus-visible {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  outline: none;
+}
+
+.whatsapp-bubble svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-bubble {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-bubble svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-bubble { transition: none; }
+  .whatsapp-bubble:hover,
+  .whatsapp-bubble:focus-visible { transform: none; }
+}
