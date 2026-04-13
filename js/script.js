@@ -2,15 +2,32 @@
 // DELPHINE MILLOT - SCRIPT COMPLET
 // ============================================
 
+// Fonction globale accessible depuis les onclick inline (doit rester hors DOMContentLoaded)
+window.toggleMenu = function() {
+    const menuList = document.getElementById('nav-menu');
+    const menuBtn = document.querySelector('.menu-toggle');
+    if (!menuList) return;
+    const isOpen = menuList.classList.toggle('active');
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', String(isOpen));
+};
+
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     // ============================================
-    // 1. MENU MOBILE TOGGLE
+    // 1. MENU MOBILE : fermer avec Escape
     // ============================================
-    window.toggleMenu = function() {
-        const menu = document.getElementById('nav-menu');
-        menu.classList.toggle('active');
-    };
+    const menuBtn = document.querySelector('.menu-toggle');
+    const menuList = document.getElementById('nav-menu');
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuList && menuList.classList.contains('active')) {
+            menuList.classList.remove('active');
+            if (menuBtn) {
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.focus();
+            }
+        }
+    });
 
     // ============================================
     // 1.5 LIEN ACTIF SELON L'URL
@@ -44,64 +61,78 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ============================================
-    // 3. FAQ ACCORDÉON
+    // 3. FAQ ACCORDÉON (accessible clavier + lecteur d'écran)
     // ============================================
     const faqItems = document.querySelectorAll('.faq-item');
-    
-    faqItems.forEach(item => {
+
+    faqItems.forEach((item, i) => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
-        
-        if (question && answer) {
-            const arrow = document.createElement('span');
-            arrow.className = 'faq-arrow';
-            arrow.innerHTML = '▼';
-            question.appendChild(arrow);
-            
-            answer.style.display = 'none';
-            
-            question.addEventListener('click', function() {
-                const isOpen = answer.style.display === 'block';
-                
-                faqItems.forEach(otherItem => {
-                    otherItem.querySelector('.faq-answer').style.display = 'none';
-                    otherItem.querySelector('.faq-question').classList.remove('active');
-                });
-                
-                if (!isOpen) {
-                    answer.style.display = 'block';
-                    question.classList.add('active');
+
+        if (!question || !answer) return;
+
+        // Rendre le <p> accessible comme un bouton
+        question.setAttribute('role', 'button');
+        question.setAttribute('tabindex', '0');
+        question.setAttribute('aria-expanded', 'false');
+        const ansId = answer.id || `faq-ans-${i}`;
+        answer.id = ansId;
+        question.setAttribute('aria-controls', ansId);
+
+        const arrow = document.createElement('span');
+        arrow.className = 'faq-arrow';
+        arrow.innerHTML = '▼';
+        arrow.setAttribute('aria-hidden', 'true');
+        question.appendChild(arrow);
+
+        answer.style.display = 'none';
+
+        function toggle() {
+            const isOpen = answer.style.display === 'block';
+            faqItems.forEach(other => {
+                const q = other.querySelector('.faq-question');
+                const a = other.querySelector('.faq-answer');
+                if (a) a.style.display = 'none';
+                if (q) {
+                    q.classList.remove('active');
+                    q.setAttribute('aria-expanded', 'false');
                 }
             });
+            if (!isOpen) {
+                answer.style.display = 'block';
+                question.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+            }
         }
+
+        question.addEventListener('click', toggle);
+        question.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle();
+            }
+        });
     });
-    
+
     // ============================================
-    // 4. HEADER QUI CHANGE AU SCROLL
+    // 4. HEADER QUI CHANGE AU SCROLL (passive pour perf)
     // ============================================
     const header = document.querySelector('header');
-    let lastScroll = 0;
-    
+
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
+        if (!header) return;
+        if (window.pageYOffset > 100) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-        
-        lastScroll = currentScroll;
-    });
-    
+    }, { passive: true });
+
     // ============================================
     // 5. ANIMATIONS FADE-IN AU SCROLL
+    //    (plus d'opacity:0 forcé en JS : si JS échoue,
+    //    les sections restent visibles)
     // ============================================
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -109,35 +140,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
-    
-    const sections = document.querySelectorAll('section');
-    sections.forEach((section, index) => {
-        section.style.opacity = '0';
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
-    
+
     // ============================================
-    // 6. AVIS DÉFILANTS (Animation fluide sans saut)
+    // 6. AVIS DÉFILANTS (respecte prefers-reduced-motion)
     // ============================================
     const avisSlider = document.querySelector('.avis-slider');
-    if (avisSlider) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (avisSlider && !reduceMotion) {
         const avisCards = avisSlider.innerHTML;
         avisSlider.innerHTML = avisCards + avisCards;
-        
+
         avisSlider.style.animation = 'none';
-        
+
         let position = 0;
         const speed = 0.8;
         let animationId;
         let isPaused = false;
-        
+
         const firstCard = avisSlider.querySelector('.avis-card');
         const cardWidth = firstCard ? firstCard.offsetWidth : 360;
         const gap = 48;
         const totalCards = avisSlider.querySelectorAll('.avis-card').length / 2;
         const oneSetWidth = (cardWidth + gap) * totalCards;
-        
+
         function animate() {
             if (!isPaused) {
                 position -= speed;
@@ -148,12 +179,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             animationId = requestAnimationFrame(animate);
         }
-        
+
         animate();
-        
+
         avisSlider.addEventListener('mouseenter', () => { isPaused = true; });
         avisSlider.addEventListener('mouseleave', () => { isPaused = false; });
+        avisSlider.addEventListener('focusin', () => { isPaused = true; });
+        avisSlider.addEventListener('focusout', () => { isPaused = false; });
         window.addEventListener('beforeunload', () => { cancelAnimationFrame(animationId); });
     }
-    
+
 });

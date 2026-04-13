@@ -1464,3 +1464,63 @@ footer {
   .whatsapp-bubble:hover,
   .whatsapp-bubble:focus-visible { transform: none; }
 }
+
+/* === ACCESSIBILITÉ === */
+
+/* Lien d'évitement (skip link) */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  background: var(--orange-cuivre);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 10000;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 var(--border-radius) 0;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Focus visible par défaut pour tous les éléments interactifs */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--orange-cuivre);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* La faq-question doit être cliquable au clavier (JS ajoute role=button + tabindex=0) */
+.faq-question[role="button"] {
+  user-select: none;
+}
+
+/* Réduction de mouvement globale (préférences utilisateur) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .fade-in {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+  .avis-slider {
+    animation: none !important;
+    transform: none !important;
+  }
+}

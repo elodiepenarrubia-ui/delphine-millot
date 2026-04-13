@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À propos de Delphine Millot - Praticienne massage & Qi Gong Brignoles</title>
     <meta name="description" content="Delphine Millot, praticienne en massages bien-être et Qi Gong à Brignoles. Formée en massage suédois, tantrique, lomi lomi et diplômée de l'IEQG. Approche holistique.">
-    <link rel="stylesheet" href="/css/style.css?v=6">
+    <link rel="stylesheet" href="/css/style.css?v=7">
+    <link rel="canonical" href="https://delphine-millot.fr/a-propos.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://delphine-millot.fr/a-propos.html">
+    <meta property="og:title" content="À propos de Delphine Millot - Praticienne massage & Qi Gong Brignoles">
+    <meta property="og:description" content="Delphine Millot, praticienne en massages bien-être et Qi Gong à Brignoles. Formée en massage suédois, tantrique, lomi lomi et diplômée de l'IEQG.">
+    <meta property="og:image" content="https://delphine-millot.fr/images/logo.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Delphine Millot">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preload" as="image" href="/images/a-propos.webp" type="image/webp">
     <link rel="preload" as="image" href="/images/a-propos.jpg" type="image/jpeg">
     
@@ -108,6 +117,7 @@
     </script>
 </head>
 <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
     <header>
     <div class="header-content">
         <div class="logo">
@@ -121,7 +131,7 @@
             </a>
         </div>
         <nav>
-            <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">
+            <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -150,6 +160,7 @@
         </div>
     </div>
 </header>
+<div id="contenu" tabindex="-1"></div>
 
     <!-- HERO À PROPOS -->
 <section class="hero hero-apropos" style="height: 50vh; min-height: 350px;">
@@ -295,12 +306,6 @@
     </footer>
     
     <!-- Script menu mobile -->
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
-    </script>
     
     <!-- Script animations -->
     <script src="/js/script.js" defer></script>

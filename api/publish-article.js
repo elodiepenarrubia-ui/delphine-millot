@@ -243,9 +243,19 @@ export default async function handler(req, res) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${safeTitre} | Delphine Millot</title>
 <meta name="description" content="${safeDesc}">
-<link rel="stylesheet" href="/css/style.css?v=6">
+<link rel="canonical" href="https://delphine-millot.fr/blog/${slug}.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://delphine-millot.fr/blog/${slug}.html">
+<meta property="og:title" content="${safeTitre} | Delphine Millot">
+<meta property="og:description" content="${safeDesc}">
+<meta property="og:image" content="https://delphine-millot.fr/images/logo.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Delphine Millot">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/css/style.css?v=7">
 </head>
 <body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
 <header>
   <div class="header-content">
     <div class="logo">
@@ -255,7 +265,7 @@ export default async function handler(req, res) {
       </a>
     </div>
     <nav>
-      <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
       <ul id="nav-menu">
         <li><a href="/index.html">Accueil</a></li>
         <li class="nav-item-with-submenu">
@@ -280,6 +290,7 @@ export default async function handler(req, res) {
     </div>
   </div>
 </header>
+<div id="contenu" tabindex="-1"></div>
 
 <article style="padding: var(--spacing-xl) 0;">
   <div class="container-narrow">
@@ -341,9 +352,6 @@ ${safeCorps}
     </div>
   </div>
 </footer>
-<script>
-function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
-</script>
 <script src="/js/script.js" defer></script>
 <!-- Bulle WhatsApp flottante -->
 <a class="whatsapp-bubble" href="https://wa.me/33628132536" target="_blank" rel="noopener" aria-label="Contacter Delphine par WhatsApp">
