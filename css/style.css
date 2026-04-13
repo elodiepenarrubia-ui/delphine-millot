@@ -1426,8 +1426,8 @@ footer {
 /* === BULLE WHATSAPP FLOTTANTE === */
 .whatsapp-bubble {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 24px;
+  right: 24px;
   width: 56px;
   height: 56px;
   background-color: #25D366;
@@ -1436,7 +1436,7 @@ footer {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 999;
+  z-index: 9999;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
 }
@@ -1456,8 +1456,8 @@ footer {
 
 @media (max-width: 768px) {
   .whatsapp-bubble {
-    bottom: 16px;
-    right: 16px;
+    bottom: 18px;
+    right: 18px;
     width: 52px;
     height: 52px;
   }
@@ -1465,6 +1465,32 @@ footer {
     width: 28px;
     height: 28px;
   }
+}
+
+/* Hero : infos pratiques (prix, adresse) */
+.hero-infos {
+  margin-top: var(--spacing-sm);
+  font-size: 0.95rem;
+  color: var(--blanc-casse);
+  opacity: 0.92;
+  letter-spacing: 0.01em;
+}
+
+/* Économie affichée sous les prix forfaits */
+.economie {
+  display: block;
+  color: var(--orange-cuivre);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 0.1rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Grille phares accueil : 3 cartes moins étirées */
+.cards-grid-phares {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
