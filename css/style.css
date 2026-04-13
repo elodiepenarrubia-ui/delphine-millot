@@ -990,13 +990,21 @@ section h2 {
 }
 
 .faq-arrow {
-  font-size: 0.8rem;
-  transition: transform 0.3s ease;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.25s ease;
+  opacity: 0.7;
   margin-left: var(--spacing-sm);
+  flex-shrink: 0;
 }
 
 .faq-question.active .faq-arrow {
-  transform: rotate(180deg);
+  transform: rotate(225deg) translateY(-2px);
+  opacity: 1;
 }
 
 .faq-answer {

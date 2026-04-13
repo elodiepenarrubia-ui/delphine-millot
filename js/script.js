@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const arrow = document.createElement('span');
         arrow.className = 'faq-arrow';
-        arrow.innerHTML = '▼';
         arrow.setAttribute('aria-hidden', 'true');
         question.appendChild(arrow);
 
