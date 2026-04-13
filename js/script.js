@@ -51,13 +51,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // 2. SOUS-MENU MASSAGES (mobile uniquement)
     // ============================================
+    // Mobile + appareils tactiles desktop (iPad, écrans tactiles) : ouvre/ferme au tap
+    const isTouch = window.matchMedia('(hover: none)').matches;
     document.querySelectorAll('.nav-item-with-submenu > a').forEach(link => {
         link.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                this.closest('.nav-item-with-submenu').classList.toggle('active');
+            if (window.innerWidth <= 768 || isTouch) {
+                const parent = this.closest('.nav-item-with-submenu');
+                // 1er tap : ouvre. 2e tap sur le même lien : navigue.
+                if (!parent.classList.contains('active')) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-item-with-submenu.active').forEach(other => {
+                        if (other !== parent) other.classList.remove('active');
+                    });
+                    parent.classList.add('active');
+                }
             }
         });
+    });
+    // Ferme le sous-menu tactile au tap en dehors
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item-with-submenu')) {
+            document.querySelectorAll('.nav-item-with-submenu.active').forEach(p => p.classList.remove('active'));
+        }
     });
 
     // ============================================
