@@ -952,6 +952,116 @@ section h2 {
   font-weight: 600;
 }
 
+/* === TARIFS ÉDITORIAL (pages massages) === */
+.tarifs-editorial {
+  max-width: 640px;
+  margin: 0 auto var(--spacing-md);
+  background: #fbf6f1;
+  border-left: 3px solid var(--orange-cuivre);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+}
+
+.tarifs-editorial.tarifs-forfait {
+  background: #f5e9dc;
+}
+
+.tarifs-editorial > h3 {
+  color: var(--orange-cuivre);
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 500;
+  margin: 0 0 var(--spacing-md);
+}
+
+.tarif-liste {
+  margin: 0;
+  padding: 0;
+}
+
+.tarif-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spacing-md);
+  padding: 0.6rem 0;
+  border-bottom: 1px dotted var(--gris-moyen);
+}
+
+.tarif-ligne:last-child {
+  border-bottom: none;
+}
+
+.tarif-ligne .duree {
+  font-style: italic;
+  color: var(--gris-texte);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.tarif-ligne .prix {
+  font-size: 1.4rem;
+  color: var(--orange-cuivre);
+  font-weight: 500;
+  margin: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tarif-ligne .prix .economie {
+  display: block;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--gris-texte);
+  font-weight: 400;
+  margin-top: 0.15rem;
+}
+
+.tarif-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.tarif-duo .tarif-colonne + .tarif-colonne {
+  border-left: 1px solid var(--gris-moyen);
+  padding-left: var(--spacing-lg);
+}
+
+.tarif-colonne > h3 {
+  color: var(--orange-cuivre);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 500;
+  margin: 0 0 var(--spacing-sm);
+}
+
+.tarif-note {
+  font-size: 0.85rem;
+  color: var(--gris-texte);
+  font-style: italic;
+  margin: var(--spacing-md) 0 0;
+}
+
+@media (max-width: 600px) {
+  .tarifs-editorial {
+    padding: var(--spacing-md);
+  }
+  .tarif-duo {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  .tarif-duo .tarif-colonne + .tarif-colonne {
+    border-left: none;
+    border-top: 1px dotted var(--gris-moyen);
+    padding-left: 0;
+    padding-top: var(--spacing-md);
+  }
+  .tarif-ligne .prix {
+    font-size: 1.2rem;
+  }
+}
+
 /* === FAQ === */
 .faq-section {
   background-color: var(--blanc);
