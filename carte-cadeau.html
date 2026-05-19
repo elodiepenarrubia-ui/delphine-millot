@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carte Cadeau - Massage | Delphine Millot</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  padding: 40px 20px;
+  background: #d6cec6;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* A5 paysage = 210mm x 148mm */
+.carte {
+  width: 210mm;
+  height: 148mm;
+  background: linear-gradient(160deg, #faf8f5, #f3ece5);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 50px rgba(0,0,0,.13);
+  display: flex;
+  flex-direction: column;
+}
+
+.il {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.line {
+  border: none;
+  border-bottom: 1px dotted #ccc;
+  width: 100%;
+  display: block;
+  margin-top: 6px;
+  height: 24px;
+}
+
+.pv-line {
+  border: none;
+  border-bottom: 1px dotted #d4825c;
+  width: 100%;
+  display: block;
+  margin-top: 6px;
+  height: 28px;
+}
+
+.vl {
+  font-size: 14px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vl .line {
+  flex: 1;
+  max-width: 180px;
+  height: 20px;
+}
+
+.fb {
+  text-align: center;
+  padding: 14px 40px;
+  background: rgba(212,130,92,.08);
+  border-top: 1px solid rgba(212,130,92,.15);
+  font-size: 15px;
+  color: #1a1a1a;
+  font-weight: 300;
+  margin-top: auto;
+}
+
+.fb span {
+  color: #d4825c;
+  font-weight: 400;
+}
+
+.sep {
+  border: none;
+  border-top: 1px solid rgba(212,130,92,.25);
+  width: 50%;
+  margin: 0 auto;
+}
+
+.hero {
+  width: 100%;
+  height: 180px;
+  background: url('/images/massage.webp') center / cover no-repeat;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(250,248,245,0) 30%, rgba(243,236,229,1));
+}
+
+.logo {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.92);
+  padding: 9px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.12);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.carte-body {
+  padding: 14px 44px 20px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titre {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.soustitre {
+  font-size: 16px;
+  font-style: italic;
+  color: #b86844;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: left;
+  margin: 18px 0;
+}
+
+.r {
+  text-align: right;
+}
+
+.r .line {
+  margin-left: auto;
+}
+
+.btn-imprimer {
+  margin-top: 24px;
+  padding: 12px 36px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  background: #d4825c;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-imprimer:hover {
+  background: #b86844;
+}
+
+@media print {
+  body {
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+  .carte {
+    box-shadow: none;
+    width: 210mm;
+    height: 148mm;
+    border-radius: 0;
+  }
+  .btn-imprimer {
+    display: none;
+  }
+  @page {
+    size: A5 landscape;
+    margin: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="carte">
+  <div class="hero">
+    <div class="logo"><img src="/images/logo.png" alt="Delphine Millot"></div>
+  </div>
+  <div class="carte-body">
+    <div class="titre">Carte Cadeau - Massage</div>
+    <div class="soustitre">Un moment rien que pour soi</div>
+    <hr class="sep">
+    <div class="grid">
+      <div><div class="il">Pour</div><div class="line"></div></div>
+      <div class="r"><div class="il">De la part de</div><div class="line"></div></div>
+    </div>
+    <div style="margin-bottom:16px;text-align:left"><div class="il">Prestation</div><div class="pv-line"></div></div>
+    <div class="vl">Valable jusqu&rsquo;au <span class="line"></span></div>
+  </div>
+  <div class="fb">R&eacute;servez au <span>06 28 13 25 36</span> &middot; <span>delphine-millot.fr</span></div>
+</div>
+
+<button class="btn-imprimer" onclick="window.print()">Imprimer la carte cadeau</button>
+
+</body>
+</html>
