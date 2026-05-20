@@ -44,6 +44,19 @@ body {
   display: block;
   margin-top: 6px;
   height: 24px;
+  background: transparent;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color: #1a1a1a;
+  outline: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.line::placeholder {
+  color: #ccc;
+  font-style: italic;
+  font-size: 13px;
 }
 
 .pv-line {
@@ -53,6 +66,19 @@ body {
   display: block;
   margin-top: 6px;
   height: 28px;
+  background: transparent;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color: #1a1a1a;
+  outline: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pv-line::placeholder {
+  color: #ccc;
+  font-style: italic;
+  font-size: 13px;
 }
 
 .vl {
@@ -67,6 +93,7 @@ body {
   flex: 1;
   max-width: 180px;
   height: 20px;
+  text-align: center;
 }
 
 .fb {
@@ -217,6 +244,12 @@ body {
   .btn-imprimer {
     display: none;
   }
+  .line, .pv-line {
+    border-bottom-style: dotted !important;
+  }
+  .line::placeholder, .pv-line::placeholder {
+    color: transparent;
+  }
   @page {
     size: A5 landscape;
     margin: 0;
@@ -235,11 +268,11 @@ body {
     <div class="soustitre">Un moment rien que pour soi</div>
     <hr class="sep">
     <div class="grid">
-      <div><div class="il">Pour</div><div class="line"></div></div>
-      <div class="r"><div class="il">De la part de</div><div class="line"></div></div>
+      <div><div class="il">Pour</div><input type="text" class="line" placeholder="Nom du bénéficiaire"></div>
+      <div class="r"><div class="il">De la part de</div><input type="text" class="line" placeholder="Votre nom"></div>
     </div>
-    <div style="margin-bottom:16px;text-align:left"><div class="il">Prestation</div><div class="pv-line"></div></div>
-    <div class="vl">Valable jusqu&rsquo;au <span class="line"></span></div>
+    <div style="margin-bottom:16px;text-align:left"><div class="il">Prestation</div><input type="text" class="pv-line" placeholder="Ex : Massage relaxant 1h"></div>
+    <div class="vl">Valable jusqu&rsquo;au <input type="text" class="line" placeholder="JJ/MM/AAAA"></div>
   </div>
   <div class="fb">R&eacute;servez au <span>06 28 13 25 36</span> &middot; <span>delphine-millot.fr</span></div>
 </div>
