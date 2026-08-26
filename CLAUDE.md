@@ -6,9 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Site vitrine statique de **Delphine Millot** (massages bien-être & Qi Gong, Brignoles, Var). Public francophone. Domaine : `delphine-millot.fr` (voir `CNAME`).
 
-- **Stack** : HTML/CSS/JS vanilla, aucun build, aucun framework, aucun test.
+- **Stack** : HTML/CSS/JS vanilla, aucun build, aucun framework, aucun test. Site 100 % statique (l'ancienne API `api/publish-article.js` et l'admin ont été supprimées).
 - **Hébergement** : Vercel (`vercel.json` minimal, `"public": true`). Le site est déployé automatiquement sur push `main` via l'intégration GitHub ↔ Vercel.
-- **Une seule API serverless** : `api/publish-article.js` (fonction Vercel Node).
 
 ## Workflow de développement
 
@@ -25,20 +24,11 @@ Les liens vers le CSS utilisent un cache-buster manuel : `/css/style.css?v=N`. Q
 - `css/style.css` — feuille de styles unique (~1400 lignes), variables CSS en tête (`--orange-cuivre`, `--gris-texte`, `--spacing-*`, `--border-radius`, etc.). Respecter ces tokens plutôt que des valeurs en dur.
 - `js/script.js` — petit script global (menu mobile, comportements UI). Le menu mobile est aussi défini inline dans chaque page via `toggleMenu()`.
 
-### Blog & admin (flux de publication)
-Le blog est **généré à la demande** côté serveur via `api/publish-article.js`, qui écrit directement dans ce même repo GitHub via l'API Contents :
-
-1. `admin/index.html` — SPA minimaliste (auth locale, éditeur WYSIWYG) qui appelle l'API avec un `Bearer ${PUBLISH_SECRET}`.
-2. `api/publish-article.js` — handler Vercel qui :
-   - **GET `?action=list`** : lit `blog/index.json` et renvoie la liste triée.
-   - **GET `?action=get&slug=...`** : lit `blog/{slug}.html` et extrait titre/description/date/intro/corps par **regex sur le HTML généré** (voir lignes 79-86). Le template HTML est le contrat : ne pas changer la structure sans mettre à jour les regex en cohérence.
-   - **POST `action=delete`** : supprime `blog/{slug}.html` et met à jour `blog/index.json`.
-   - **POST (publish/update)** : reconstruit entièrement `blog/{slug}.html` depuis le template inline (lignes 128-236) et met à jour `blog/index.json`. **Le header/footer dans ce template doit rester synchronisé avec ceux des autres pages.**
-
-Variables d'environnement Vercel requises : `PUBLISH_SECRET`, `GITHUB_OWNER`, `GITHUB_REPO`, `GITHUB_TOKEN` (PAT avec accès écriture au repo).
+### Blog
+Le blog est constitué de pages HTML statiques dans `blog/`, éditées à la main comme le reste du site. `blog/index.json` liste les articles (slug, titre, description, date) et doit être mis à jour à chaque ajout/suppression d'article, tout comme la page `blog/index.html`. Le header/footer des articles doit rester synchronisé avec ceux des autres pages.
 
 ### SEO
-`sitemap.xml` et `robots.txt` sont maintenus à la main. Quand une nouvelle page est ajoutée à la racine ou dans `massages/`, l'ajouter au sitemap. Les articles de blog ne sont pas listés dans `sitemap.xml` (à vérifier avant toute campagne SEO).
+`sitemap.xml` et `robots.txt` sont maintenus à la main. Quand une page est ajoutée (racine, `massages/` ou `blog/`), l'ajouter au sitemap avec un `lastmod` correct ; mettre à jour le `lastmod` des pages modifiées de façon substantielle. `carte-cadeau.html` est une page-outil d'impression en `noindex`, hors sitemap. La feuille de route SEO/acquisition est dans `ROADMAP-SEO.md`.
 
 ## Conventions
 
