@@ -142,110 +142,8 @@
           }
         ]
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "6",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       "sameAs": [
         "https://maps.app.goo.gl/B99F9CMtDDj8VtBL9"
-      ]
-    }
-    </script>
-    
-    <!-- Schema Reviews -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Delphine Millot - Massages bien-être & Qi Gong",
-      "review": [
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Olivier"
-          },
-          "datePublished": "2024-12-15",
-          "reviewBody": "Un nouveau massage avec Delphine, d'écoute et de douceur. Sa présence et son toucher m'ont permis de me laisser aller, une bulle de détente et de bonheur. Gratitude.",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          }
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Sandrine"
-          },
-          "datePublished": "2024-11-28",
-          "reviewBody": "Delphine est très professionnelle et apporte beaucoup de bienfaits lors de ses massages. Je me suis sentie très apaisée et libérée de certains blocages. Je la recommande.",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          }
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Nicole"
-          },
-          "datePublished": "2024-11-10",
-          "reviewBody": "Accueil très chaleureux, ambiance cocooning où tout est pensé pour qu'on se sente bien. Massage doux et léger ou plus profond mais toujours thérapeutique. Un soin à s'offrir ! Je recommande !",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          }
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Luc"
-          },
-          "datePublished": "2024-10-22",
-          "reviewBody": "Un toucher lent, subtil, profond. Une grande douceur qui m'a permis de contacter un espace de paix intérieur, un lâcher-prise en confiance et sécurité. Merci Delphine.",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          }
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Samantha"
-          },
-          "datePublished": "2024-10-05",
-          "reviewBody": "J'ai passé un moment de détente extraordinaire. Un voyage de douceur. Delphine sait mettre en confiance. J'ai été touchée par son écoute et son toucher.",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          }
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Alain"
-          },
-          "datePublished": "2024-09-18",
-          "reviewBody": "J'ai passé un agréable moment. Très professionnelle. Je vous la recommande sans problème. Pourtant je suis difficile... Le top !",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          }
-        }
       ]
     }
     </script>
@@ -491,7 +389,12 @@
         <p class="text-center" style="color: var(--gris-texte); margin-bottom: var(--spacing-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
             Témoignages authentiques de personnes ayant vécu l'expérience des massages à Brignoles
         </p>
-        
+
+        <div class="text-center" style="margin-bottom: var(--spacing-lg);">
+            <span style="font-family: var(--font-titre); font-size: 1.6rem;"><span id="avis-note">5,0</span> <span style="color: var(--orange-cuivre); letter-spacing: 2px;">★★★★★</span></span>
+            <p style="color: var(--gris-texte); font-size: 0.95rem; margin-top: 0.3rem;">sur <span id="avis-total">6</span> avis Google</p>
+        </div>
+
         <div class="avis-container">
             <div class="avis-slider">
                 <!-- Avis 1 - Olivier -->
@@ -671,6 +574,46 @@
     <!-- Script menu mobile -->
     
     <!-- Script FAQ Accordéon -->
+    <!-- Avis Google : avis.json est régénéré chaque jour par .github/workflows/avis-google.yml -->
+    <script>
+    (function () {
+      fetch('/avis.json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d) return;
+          if (typeof d.note === 'number') {
+            document.getElementById('avis-note').textContent = d.note.toFixed(1).replace('.', ',');
+          }
+          if (d.nombreAvis) {
+            document.getElementById('avis-total').textContent = d.nombreAvis;
+          }
+          var slider = document.querySelector('.avis-slider');
+          if (!slider || !d.avis || !d.avis.length) return;
+          slider.innerHTML = '';
+          d.avis.slice(0, 6).forEach(function (a) {
+            var card = document.createElement('div');
+            card.className = 'avis-card';
+            var stars = document.createElement('div');
+            stars.className = 'stars';
+            var n = Math.max(1, Math.min(5, Math.round(a.note || 5)));
+            stars.textContent = '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
+            var text = document.createElement('div');
+            text.className = 'text';
+            var t = (a.texte || '').trim();
+            if (t.length > 300) { t = t.slice(0, 300).trimEnd() + '…'; }
+            text.textContent = '"' + t + '"';
+            var name = document.createElement('div');
+            name.className = 'name';
+            name.textContent = a.auteur + (a.date ? ' · ' + a.date : '');
+            card.appendChild(stars);
+            card.appendChild(text);
+            card.appendChild(name);
+            slider.appendChild(card);
+          });
+        })
+        .catch(function () {});
+    })();
+    </script>
     <script src="/js/script.js" defer></script>
 <!-- Bulle WhatsApp flottante -->
 <a class="whatsapp-bubble" href="https://wa.me/33628132536" target="_blank" rel="noopener" aria-label="Contacter Delphine par WhatsApp">

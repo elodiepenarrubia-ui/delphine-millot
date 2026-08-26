@@ -6,7 +6,8 @@ Dernière mise à jour : 2026-08-26.
 ## Priorité 1 — Fiche Google Business Profile (GBP)
 
 - [ ] Obtenir des avis Google en continu : demander après chaque séance (QR code vers le lien d'avis imprimé au cabinet). Objectif : 30-50 avis.
-- [ ] **Connecter le site à Google pour que les avis se synchronisent automatiquement entre le site et la fiche GBP** : remplacer les 6 avis codés en dur dans `index.html` par un affichage des avis Google réels (widget tiers type Elfsight/Trustindex, ou Google Places API avec une clé). Ainsi un nouvel avis Google apparaît automatiquement sur le site, sans édition manuelle. Note : le balisage `AggregateRating` auto-hébergé actuel est ignoré par Google (avis « self-serving ») — la vraie valeur est sur la fiche GBP.
+- [x] **Connecter le site à Google pour que les avis se synchronisent automatiquement entre le site et la fiche GBP** — côté site, c'est en place (2026-08-26) : la GitHub Action `.github/workflows/avis-google.yml` récupère chaque jour note globale + nombre total + 5 avis via l'API Google Places (New) et committe `avis.json`, que la page d'accueil affiche. Coût : ~30 appels/mois pour 1 000 gratuits (catégorie Enterprise + Atmosphere), donc 0 €.
+  - [ ] **Reste à faire (une fois, ~15 min)** : créer un projet sur console.cloud.google.com, activer « Places API (New) », créer une clé API restreinte à cette API, puis dans GitHub → Settings → Secrets and variables → Actions : ajouter le secret `GOOGLE_PLACES_API_KEY` (la clé) et la variable `GOOGLE_PLACE_ID` (trouvable via le Place ID Finder de Google en cherchant « Delphine Millot Brignoles »). Enfin, lancer le workflow « Avis Google » à la main (onglet Actions → Run workflow) pour vérifier.
 - [ ] Alimenter la fiche GBP : photos régulières, posts, Q&R, catégories secondaires (drainage lymphatique, Qi Gong…), et cocher le **service à domicile** avec la zone desservie.
 
 ## Priorité 2 — Massages à domicile (nouvelle offre à exploiter)

@@ -27,6 +27,9 @@ Les liens vers le CSS utilisent un cache-buster manuel : `/css/style.css?v=N`. Q
 ### Blog
 Le blog est constitué de pages HTML statiques dans `blog/`, éditées à la main comme le reste du site. `blog/index.json` liste les articles (slug, titre, description, date) et doit être mis à jour à chaque ajout/suppression d'article, tout comme la page `blog/index.html`. Le header/footer des articles doit rester synchronisé avec ceux des autres pages.
 
+### Avis Google
+`avis.json` (racine) contient note globale, nombre total et derniers avis de la fiche Google Business Profile. Il est régénéré quotidiennement par la GitHub Action `.github/workflows/avis-google.yml` (API Google Places New ; secret `GOOGLE_PLACES_API_KEY` + variable `GOOGLE_PLACE_ID` requis) — ne pas l'éditer à la main. `index.html` le charge en JS pour afficher la section avis ; les cartes en dur dans le HTML servent de fallback sans JS.
+
 ### SEO
 `sitemap.xml` et `robots.txt` sont maintenus à la main. Quand une page est ajoutée (racine, `massages/` ou `blog/`), l'ajouter au sitemap avec un `lastmod` correct ; mettre à jour le `lastmod` des pages modifiées de façon substantielle. `carte-cadeau.html` est une page-outil d'impression en `noindex`, hors sitemap. La feuille de route SEO/acquisition est dans `ROADMAP-SEO.md`.
 

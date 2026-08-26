@@ -1,0 +1,42 @@
+{
+  "note": 5,
+  "nombreAvis": 6,
+  "avis": [
+    {
+      "auteur": "Olivier",
+      "note": 5,
+      "texte": "Un nouveau massage avec Delphine, d'écoute et de douceur. Sa présence et son toucher m'ont permis de me laisser aller, une bulle de détente et de bonheur. Gratitude.",
+      "date": ""
+    },
+    {
+      "auteur": "Sandrine",
+      "note": 5,
+      "texte": "Delphine est très professionnelle et apporte beaucoup de bienfaits lors de ses massages. Je me suis sentie très apaisée et libérée de certains blocages. Je la recommande.",
+      "date": ""
+    },
+    {
+      "auteur": "Nicole",
+      "note": 5,
+      "texte": "Accueil très chaleureux, ambiance cocooning où tout est pensé pour qu'on se sente bien. Massage doux et léger ou plus profond mais toujours thérapeutique. Un soin à s'offrir ! Je recommande !",
+      "date": ""
+    },
+    {
+      "auteur": "Luc",
+      "note": 5,
+      "texte": "Un toucher lent, subtil, profond. Une grande douceur qui m'a permis de contacter un espace de paix intérieur, un lâcher-prise en confiance et sécurité. Merci Delphine.",
+      "date": ""
+    },
+    {
+      "auteur": "Samantha",
+      "note": 5,
+      "texte": "J'ai passé un moment de détente extraordinaire. Un voyage de douceur. Delphine sait mettre en confiance. J'ai été touchée par son écoute et son toucher.",
+      "date": ""
+    },
+    {
+      "auteur": "Alain",
+      "note": 5,
+      "texte": "J'ai passé un agréable moment. Très professionnelle. Je vous la recommande sans problème. Pourtant je suis difficile... Le top !",
+      "date": ""
+    }
+  ]
+}
