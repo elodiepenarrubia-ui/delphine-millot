@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
         avisSlider.style.transform = 'translateX(0)';
 
         let position = 0;
-        const speed = 0.4;
+        const speed = 0.8;
         let isPaused = false;
 
         const firstCard = avisSlider.querySelector('.avis-card');
