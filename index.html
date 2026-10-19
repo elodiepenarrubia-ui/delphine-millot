@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delphine Millot — Massages bien-être & Qi Gong à Brignoles (Var)</title>
     <meta name="description" content="Delphine Millot, praticienne à Brignoles (83). Séances de massage et cours de Qi Gong sur rendez-vous. Cabinet 4 Av. Henri Buzzegoli. Dès 70€ la séance. ☎️ 06 28 13 25 36">
-    <link rel="stylesheet" href="/css/style.css?v=12">
+    <link rel="stylesheet" href="/css/style.css?v=13">
     <link rel="canonical" href="https://delphine-millot.fr/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://delphine-millot.fr/">
@@ -576,7 +576,15 @@
     <!-- Script FAQ Accordéon -->
     <!-- Avis Google : avis.json est régénéré chaque jour par .github/workflows/avis-google.yml -->
     <script>
+    // Signale à js/script.js que les avis sont chargés ici : il n'initialisera
+    // le carrousel qu'une fois les vrais avis injectés (via demarrerCarrousel).
+    window.__avisLoaderPresent = true;
     (function () {
+      function demarrerCarrousel() {
+        if (typeof window.initAvisDefilants === 'function') {
+          window.initAvisDefilants();
+        }
+      }
       fetch('/avis.json')
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (d) {
@@ -611,7 +619,8 @@
             slider.appendChild(card);
           });
         })
-        .catch(function () {});
+        .catch(function () {})
+        .finally(demarrerCarrousel);
     })();
     </script>
     <script src="/js/script.js" defer></script>

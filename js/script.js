@@ -163,18 +163,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // 6. AVIS DÉFILANTS (respecte prefers-reduced-motion)
     // ============================================
-    const avisSlider = document.querySelector('.avis-slider');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let avisAnimationId = null;
 
-    if (avisSlider && !reduceMotion) {
+    // Initialise (ou ré-initialise) le carrousel à partir des cartes présentes
+    // dans le DOM. Appelée après le chargement des vrais avis (script inline
+    // d'index.html) pour que la largeur de boucle corresponde au nombre réel
+    // de cartes — sinon l'animation défile dans le vide.
+    window.initAvisDefilants = function () {
+        const avisSlider = document.querySelector('.avis-slider');
+        if (!avisSlider) return;
+
+        // Stoppe une éventuelle animation précédente (ré-initialisation)
+        if (avisAnimationId) {
+            cancelAnimationFrame(avisAnimationId);
+            avisAnimationId = null;
+        }
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) {
+            avisSlider.style.transform = 'none';
+            return;
+        }
+
+        // Duplique le jeu de cartes pour une boucle sans saut
         const avisCards = avisSlider.innerHTML;
         avisSlider.innerHTML = avisCards + avisCards;
-
         avisSlider.style.animation = 'none';
+        avisSlider.style.transform = 'translateX(0)';
 
         let position = 0;
-        const speed = 0.8;
-        let animationId;
+        const speed = 0.4;
         let isPaused = false;
 
         const firstCard = avisSlider.querySelector('.avis-card');
@@ -191,16 +209,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 avisSlider.style.transform = `translateX(${position}px)`;
             }
-            animationId = requestAnimationFrame(animate);
+            avisAnimationId = requestAnimationFrame(animate);
         }
-
         animate();
 
         avisSlider.addEventListener('mouseenter', () => { isPaused = true; });
         avisSlider.addEventListener('mouseleave', () => { isPaused = false; });
         avisSlider.addEventListener('focusin', () => { isPaused = true; });
         avisSlider.addEventListener('focusout', () => { isPaused = false; });
-        window.addEventListener('beforeunload', () => { cancelAnimationFrame(animationId); });
+        window.addEventListener('beforeunload', () => { cancelAnimationFrame(avisAnimationId); });
+    };
+
+    // Repli : si le chargeur d'avis (script inline d'index.html) est absent,
+    // démarre quand même le carrousel sur les cartes déjà en place.
+    if (document.querySelector('.avis-slider') && !window.__avisLoaderPresent) {
+        window.initAvisDefilants();
     }
 
 });
