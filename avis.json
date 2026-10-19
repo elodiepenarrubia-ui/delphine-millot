@@ -1,42 +1,36 @@
 {
   "note": 5,
-  "nombreAvis": 6,
+  "nombreAvis": 24,
   "avis": [
     {
-      "auteur": "Olivier",
+      "auteur": "Alain Andre",
       "note": 5,
-      "texte": "Un nouveau massage avec Delphine, d'écoute et de douceur. Sa présence et son toucher m'ont permis de me laisser aller, une bulle de détente et de bonheur. Gratitude.",
-      "date": ""
+      "texte": "Delphine m'a accueilli chaleureusement et avec bienveillance. S'informant sur mes éventuels soucis de santé et les parties du corps où elle devait insister. J'ai apprécié son professionnalisme, et son contact humain durant le massage pendant lequel nous avons discuté de choses et d'autres. L'endroit est très propre, on sent bien et ressourcé en fin de séance. J'y retournerai c'est certain. Alain.",
+      "date": "il y a 7 mois"
     },
     {
-      "auteur": "Sandrine",
+      "auteur": "Étienne Bernard",
       "note": 5,
-      "texte": "Delphine est très professionnelle et apporte beaucoup de bienfaits lors de ses massages. Je me suis sentie très apaisée et libérée de certains blocages. Je la recommande.",
-      "date": ""
+      "texte": "Je suis venu voir Delphine pour un massage tantrique et j'ai rencontré une  personne à l'écoute, douce et compréhensive. Le massage, qui a duré presque 2 heures, a été une révélation pour moi , a contribué à un véritable lâcher prise  et un bien être total. Delphine est une fée et je la remercie. Je reviendrai.",
+      "date": "il y a 8 mois"
     },
     {
-      "auteur": "Nicole",
+      "auteur": "Patrtick Garcia",
       "note": 5,
-      "texte": "Accueil très chaleureux, ambiance cocooning où tout est pensé pour qu'on se sente bien. Massage doux et léger ou plus profond mais toujours thérapeutique. Un soin à s'offrir ! Je recommande !",
-      "date": ""
+      "texte": "J’ai choisi un massage lymphatique. Quelle merveilleuse sensation à la fin du massage d’avoir le corps nettoyé. Bien être garanti , je recommande.\nMerci",
+      "date": "il y a 8 mois"
     },
     {
-      "auteur": "Luc",
+      "auteur": "Ol Ive",
       "note": 5,
-      "texte": "Un toucher lent, subtil, profond. Une grande douceur qui m'a permis de contacter un espace de paix intérieur, un lâcher-prise en confiance et sécurité. Merci Delphine.",
-      "date": ""
+      "texte": "Un nouveau massage avec Delphine ,d'écoute et de douceur.\nSa présence et son toucher m'ont permis de me laisser aller,une bulle de détente et de bonheur.Gratitude.",
+      "date": "il y a un an"
     },
     {
-      "auteur": "Samantha",
+      "auteur": "Nicole Le Mével-Bircher",
       "note": 5,
-      "texte": "J'ai passé un moment de détente extraordinaire. Un voyage de douceur. Delphine sait mettre en confiance. J'ai été touchée par son écoute et son toucher.",
-      "date": ""
-    },
-    {
-      "auteur": "Alain",
-      "note": 5,
-      "texte": "J'ai passé un agréable moment. Très professionnelle. Je vous la recommande sans problème. Pourtant je suis difficile... Le top !",
-      "date": ""
+      "texte": "Accueil très chaleureux de Delphine,\nAmbiance cocooning où tout est pensé pour qu'on se sente bien,\nMassage doux et léger ou plus profond mais toujours thérapeutique.\nUn soin à s'offrir ! Je recommande !",
+      "date": "il y a un an"
     }
   ]
 }
