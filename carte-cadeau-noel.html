@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="apple-touch-icon" href="/images/favicon.png">
+<meta name="robots" content="noindex">
+<title>Carte Cadeau de No&euml;l - Massage | Delphine Millot</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* Charte graphique du site (cf. css/style.css) */
+:root {
+  --noir: #1a1a1a;
+  --blanc: #ffffff;
+  --blanc-casse: #fafafa;
+  --orange-cuivre: #d4825c;
+  --orange-clair: #e69a77;
+  --orange-fonce: #b86844;
+  --gris-clair: #f5f5f5;
+  --gris-moyen: #e0e0e0;
+  --gris-texte: #666666;
+  --font-titre: 'Playfair Display', serif;
+  --font-texte: 'Lato', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 40px 20px;
+  background: var(--gris-clair);
+  font-family: var(--font-texte);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* A5 paysage = 210mm x 148mm */
+.carte {
+  width: 210mm;
+  height: 148mm;
+  background: var(--blanc);
+  overflow: hidden;
+  box-shadow: 0 16px 50px rgba(0,0,0,.13);
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* === Photo pleine hauteur, bord en biseau === */
+.photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 42%;
+  background: url('/images/massage.webp') center / cover no-repeat;
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg, rgba(212,130,92,.22), rgba(26,26,26,.16));
+}
+
+/* Liseré cuivré qui longe le biseau */
+.photo-lisere {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 42%;
+  clip-path: polygon(18% 0, 21.5% 0, 3.5% 100%, 0 100%);
+  background: var(--orange-cuivre);
+}
+
+/* === Panneau de contenu === */
+.panneau {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 62%;
+  padding: 9mm 12mm 9mm 13mm;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+/* Formes organiques discrètes en fond */
+.panneau::before {
+  content: '';
+  position: absolute;
+  top: -30mm;
+  left: -24mm;
+  width: 70mm;
+  height: 60mm;
+  border-radius: 48% 52% 55% 45% / 55% 46% 54% 45%;
+  background: var(--gris-clair);
+  z-index: -1;
+}
+
+.panneau::after {
+  content: '';
+  position: absolute;
+  bottom: -26mm;
+  left: 30mm;
+  width: 58mm;
+  height: 48mm;
+  border-radius: 52% 48% 45% 55% / 46% 55% 45% 54%;
+  background: rgba(212,130,92,.07);
+  z-index: -1;
+}
+
+.logo {
+  width: 34mm;
+  margin-left: -1mm;
+}
+
+.logo img {
+  width: 100%;
+  display: block;
+}
+
+.titre {
+  font-family: var(--font-titre);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  color: var(--noir);
+  margin: 3mm 0 0;
+}
+
+.soustitre {
+  font-size: 11.5px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gris-texte);
+  margin: 2mm 0 0;
+  font-weight: 400;
+}
+
+.voeux {
+  font-family: var(--font-titre);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--orange-cuivre);
+  margin: 2.5mm 0 0;
+}
+
+/* Étoiles scintillantes (décor de Noël, tons de la charte) */
+.etoiles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.etoiles svg {
+  position: absolute;
+}
+
+.filet {
+  border: none;
+  border-top: 1px solid var(--orange-cuivre);
+  width: 34mm;
+  margin: 4mm 0 4mm;
+  opacity: .6;
+}
+
+.message {
+  font-family: var(--font-titre);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--orange-fonce);
+  margin: 0 0 1mm;
+  max-width: 100mm;
+}
+
+/* === Champs === */
+.champs {
+  margin-top: 4mm;
+  display: flex;
+  flex-direction: column;
+  gap: 4.6mm;
+}
+
+.champ {
+  display: flex;
+  align-items: flex-end;
+  gap: 3mm;
+}
+
+.champ label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--noir);
+  white-space: nowrap;
+  padding-bottom: 2px;
+}
+
+.champ input {
+  flex: 1;
+  border: none;
+  border-bottom: 1.3px dotted var(--gris-moyen);
+  background: transparent;
+  font-family: var(--font-texte);
+  font-size: 14.5px;
+  font-weight: 300;
+  color: var(--noir);
+  outline: none;
+  padding: 0 0 2px;
+  min-width: 0;
+}
+
+.champ input::placeholder {
+  color: #cccccc;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.champ.accent input {
+  border-bottom-color: var(--orange-cuivre);
+}
+
+.validite {
+  margin-top: 4.2mm;
+  font-size: 11px;
+  color: var(--gris-texte);
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5mm;
+}
+
+.validite input {
+  border: none;
+  border-bottom: 1.3px dotted var(--gris-moyen);
+  background: transparent;
+  font-family: var(--font-texte);
+  font-size: 12.5px;
+  color: var(--noir);
+  outline: none;
+  padding: 0 0 1px;
+  width: 34mm;
+  text-align: center;
+}
+
+.validite input::placeholder {
+  color: #cccccc;
+  font-style: italic;
+  font-size: 11px;
+}
+
+/* === Pied de carte === */
+.contact {
+  margin-top: auto;
+  padding-top: 4mm;
+  border-top: 1px solid rgba(212,130,92,.3);
+  font-size: 11px;
+  letter-spacing: .8px;
+  color: var(--gris-texte);
+  line-height: 1.7;
+}
+
+.contact strong {
+  color: var(--orange-fonce);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* === Boutons écran === */
+.actions {
+  margin-top: 26px;
+  text-align: center;
+}
+
+.btn-imprimer {
+  padding: 12px 36px;
+  font-family: var(--font-texte);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--blanc);
+  background: var(--orange-cuivre);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-imprimer:hover {
+  background: var(--orange-fonce);
+}
+
+.astuce {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--gris-texte);
+  max-width: 420px;
+}
+
+/* Aperçu réduit sur petit écran */
+@media (max-width: 860px) {
+  body { padding: 16px 0 40px; }
+  .carte { transform: scale(.42); transform-origin: top center; margin-bottom: calc(-148mm * .58); }
+}
+
+@media print {
+  body {
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+  .carte {
+    box-shadow: none;
+    width: 210mm;
+    height: 148mm;
+    transform: none;
+    margin: 0;
+  }
+  .carte, .photo, .photo::after, .photo-lisere, .panneau::before, .panneau::after, .contact {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  .actions {
+    display: none;
+  }
+  .champ input, .validite input {
+    border-bottom-style: dotted !important;
+  }
+  .champ input::placeholder, .validite input::placeholder {
+    color: transparent;
+  }
+  @page {
+    size: A5 landscape;
+    margin: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="carte">
+  <div class="photo"></div>
+  <div class="photo-lisere"></div>
+
+  <div class="etoiles" aria-hidden="true">
+    <svg style="left:106mm; top:32mm; width:6mm;" viewBox="0 0 24 24"><path fill="#d4825c" d="M12 0C13.2 7.2 16.8 10.8 24 12C16.8 13.2 13.2 16.8 12 24C10.8 16.8 7.2 13.2 0 12C7.2 10.8 10.8 7.2 12 0Z"/></svg>
+    <svg style="left:114mm; top:41mm; width:3.5mm; opacity:.7;" viewBox="0 0 24 24"><path fill="#d4825c" d="M12 0C13.2 7.2 16.8 10.8 24 12C16.8 13.2 13.2 16.8 12 24C10.8 16.8 7.2 13.2 0 12C7.2 10.8 10.8 7.2 12 0Z"/></svg>
+    <svg style="left:99mm; top:25mm; width:3mm; opacity:.5;" viewBox="0 0 24 24"><path fill="#d4825c" d="M12 0C13.2 7.2 16.8 10.8 24 12C16.8 13.2 13.2 16.8 12 24C10.8 16.8 7.2 13.2 0 12C7.2 10.8 10.8 7.2 12 0Z"/></svg>
+    <svg style="left:104mm; top:93mm; width:4mm; opacity:.55;" viewBox="0 0 24 24"><path fill="#d4825c" d="M12 0C13.2 7.2 16.8 10.8 24 12C16.8 13.2 13.2 16.8 12 24C10.8 16.8 7.2 13.2 0 12C7.2 10.8 10.8 7.2 12 0Z"/></svg>
+    <svg style="left:152mm; top:12mm; width:5mm; opacity:.9;" viewBox="0 0 24 24"><path fill="#ffffff" d="M12 0C13.2 7.2 16.8 10.8 24 12C16.8 13.2 13.2 16.8 12 24C10.8 16.8 7.2 13.2 0 12C7.2 10.8 10.8 7.2 12 0Z"/></svg>
+    <svg style="left:196mm; top:28mm; width:3.5mm; opacity:.8;" viewBox="0 0 24 24"><path fill="#ffffff" d="M12 0C13.2 7.2 16.8 10.8 24 12C16.8 13.2 13.2 16.8 12 24C10.8 16.8 7.2 13.2 0 12C7.2 10.8 10.8 7.2 12 0Z"/></svg>
+    <svg style="left:162mm; top:124mm; width:4mm; opacity:.85;" viewBox="0 0 24 24"><path fill="#ffffff" d="M12 0C13.2 7.2 16.8 10.8 24 12C16.8 13.2 13.2 16.8 12 24C10.8 16.8 7.2 13.2 0 12C7.2 10.8 10.8 7.2 12 0Z"/></svg>
+  </div>
+
+  <div class="panneau">
+    <div class="logo"><img src="/images/logo.png" alt="Delphine Millot - Corps, Cœur, Conscience"></div>
+
+    <div class="titre">CARTE CADEAU</div>
+    <div class="soustitre">Massages bien-&ecirc;tre &middot; Brignoles</div>
+    <div class="voeux">Joyeuses f&ecirc;tes</div>
+
+    <hr class="filet">
+
+    <p class="message">Un moment de d&eacute;tente et de douceur &agrave; glisser sous le sapin.</p>
+
+    <div class="champs">
+      <div class="champ">
+        <label>Pour&nbsp;:</label>
+        <input type="text" placeholder="Nom du bénéficiaire">
+      </div>
+      <div class="champ">
+        <label>De la part de&nbsp;:</label>
+        <input type="text" placeholder="Votre nom">
+      </div>
+      <div class="champ accent">
+        <label>Prestation ou montant&nbsp;:</label>
+        <input type="text" placeholder="Ex : Massage suédois 1h">
+      </div>
+    </div>
+
+    <div class="validite">Valable jusqu&rsquo;au <input type="text" placeholder="JJ/MM/AAAA"></div>
+
+    <div class="contact">
+      R&eacute;servation au <strong>06 28 13 25 36</strong><br>
+      4 Avenue Henri Buzzegoli, Brignoles &middot; delphine-millot.fr
+    </div>
+  </div>
+</div>
+
+<div class="actions">
+  <button class="btn-imprimer" onclick="window.print()">Imprimer la carte cadeau</button>
+  <p class="astuce">Remplissez les champs directement sur la carte avant d&rsquo;imprimer.<br>Pour un envoi par e-mail&nbsp;: choisissez &laquo;&nbsp;Enregistrer au format PDF&nbsp;&raquo; dans la fen&ecirc;tre d&rsquo;impression.</p>
+  <p class="astuce"><a href="/carte-cadeau.html" style="color: var(--orange-fonce);">&rarr; Voir la version classique de la carte cadeau</a></p>
+</div>
+
+</body>
+</html>

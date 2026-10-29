@@ -13,7 +13,7 @@ Dernière mise à jour : 2026-10-29.
 ## Priorité 2 — Carte cadeau (saison Noël)
 
 - [x] **Améliorer le design de `carte-cadeau.html`** — refonte le 2026-10-29 (photo pleine hauteur en biseau, titre Playfair + calligraphie, champs pointillés, charte noir/blanc cassé/orange cuivré). Reste à valider par un test d'impression réel en A5.
-- [ ] **Créer une déclinaison spéciale Noël de la carte cadeau** (visuel festif aux couleurs de la charte, à proposer en plus de la version classique pendant la saison).
+- [x] **Créer une déclinaison spéciale Noël de la carte cadeau** — fait le 2026-10-29 : `carte-cadeau-noel.html` (même structure que la carte classique, mention « Joyeuses fêtes », étoiles scintillantes dans les tons cuivre ; liens de bascule entre les deux versions à l'écran). En `noindex`, hors sitemap, comme la version classique.
 - [ ] Mettre la carte cadeau en avant sur le site pendant la saison (accueil, article de blog « idée cadeau »).
 
 ## Abandonné
