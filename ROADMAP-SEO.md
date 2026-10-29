@@ -1,13 +1,13 @@
 # Roadmap SEO & acquisition — delphine-millot.fr
 
 Objectif : augmenter significativement le chiffre d'affaires (visibilité locale, réservations, récurrence).
-Dernière mise à jour : 2026-08-26.
+Dernière mise à jour : 2026-10-29.
 
 ## Priorité 1 — Fiche Google Business Profile (GBP)
 
-- [ ] Obtenir des avis Google en continu : demander après chaque séance (QR code vers le lien d'avis imprimé au cabinet). Objectif : 30-50 avis.
+- [ ] Obtenir des avis Google en continu : demander après chaque séance (QR code vers le lien d'avis imprimé au cabinet). Objectif : 30-50 avis. **Point au 2026-10-29 : 24 avis, note 5,0 — en bonne voie.**
 - [x] **Connecter le site à Google pour que les avis se synchronisent automatiquement entre le site et la fiche GBP** — côté site, c'est en place (2026-08-26) : la GitHub Action `.github/workflows/avis-google.yml` récupère chaque jour note globale + nombre total + 5 avis via l'API Google Places (New) et committe `avis.json`, que la page d'accueil affiche. Coût : ~30 appels/mois pour 1 000 gratuits (catégorie Enterprise + Atmosphere), donc 0 €.
-  - [ ] **Reste à faire (une fois, ~15 min)** : créer un projet sur console.cloud.google.com, activer « Places API (New) », créer une clé API restreinte à cette API, puis dans GitHub → Settings → Secrets and variables → Actions : ajouter le secret `GOOGLE_PLACES_API_KEY` (la clé) et la variable `GOOGLE_PLACE_ID` (trouvable via le Place ID Finder de Google en cherchant « Delphine Millot Brignoles »). Enfin, lancer le workflow « Avis Google » à la main (onglet Actions → Run workflow) pour vérifier.
+  - [x] Clé API + Place ID configurés — le workflow tourne en production depuis octobre 2026 (commits quotidiens du bot quand les avis changent).
 - [ ] Alimenter la fiche GBP : photos régulières, posts, Q&R, catégories secondaires (drainage lymphatique, Qi Gong…), et cocher le **service à domicile** avec la zone desservie.
 
 ## Priorité 2 — Massages à domicile (nouvelle offre à exploiter)
