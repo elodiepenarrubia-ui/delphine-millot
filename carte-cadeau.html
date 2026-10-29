@@ -7,23 +7,28 @@
 <link rel="apple-touch-icon" href="/images/favicon.png">
 <meta name="robots" content="noindex">
 <title>Carte Cadeau - Massage | Delphine Millot</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
+/* Charte graphique du site (cf. css/style.css) */
 :root {
   --noir: #1a1a1a;
-  --blanc-chaud: #fdfbf8;
-  --creme: #f6efe8;
+  --blanc: #ffffff;
+  --blanc-casse: #fafafa;
   --orange-cuivre: #d4825c;
+  --orange-clair: #e69a77;
   --orange-fonce: #b86844;
-  --ligne: #cbb6a8;
+  --gris-clair: #f5f5f5;
+  --gris-moyen: #e0e0e0;
   --gris-texte: #666666;
+  --font-titre: 'Playfair Display', serif;
+  --font-texte: 'Lato', sans-serif;
 }
 
 body {
   margin: 0;
   padding: 40px 20px;
-  background: #d6cec6;
-  font-family: 'Lato', sans-serif;
+  background: var(--gris-clair);
+  font-family: var(--font-texte);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +40,7 @@ body {
 .carte {
   width: 210mm;
   height: 148mm;
-  background: var(--blanc-chaud);
+  background: var(--blanc);
   overflow: hidden;
   box-shadow: 0 16px 50px rgba(0,0,0,.13);
   position: relative;
@@ -48,7 +53,7 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 44%;
+  width: 42%;
   background: url('/images/massage.webp') center / cover no-repeat;
   clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
 }
@@ -57,7 +62,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(200deg, rgba(212,130,92,.18), rgba(26,26,26,.12));
+  background: linear-gradient(200deg, rgba(212,130,92,.14), rgba(26,26,26,.10));
 }
 
 /* Liseré cuivré qui longe le biseau */
@@ -66,7 +71,7 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 44%;
+  width: 42%;
   clip-path: polygon(18% 0, 21.5% 0, 3.5% 100%, 0 100%);
   background: var(--orange-cuivre);
 }
@@ -77,15 +82,15 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 60%;
-  padding: 11mm 10mm 9mm 13mm;
+  width: 62%;
+  padding: 9mm 12mm 9mm 13mm;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   z-index: 2;
 }
 
-/* Formes organiques discrètes en fond (clin d'œil inspiration aquarelle) */
+/* Formes organiques discrètes en fond */
 .panneau::before {
   content: '';
   position: absolute;
@@ -94,7 +99,7 @@ body {
   width: 70mm;
   height: 60mm;
   border-radius: 48% 52% 55% 45% / 55% 46% 54% 45%;
-  background: var(--creme);
+  background: var(--gris-clair);
   z-index: -1;
 }
 
@@ -106,25 +111,27 @@ body {
   width: 58mm;
   height: 48mm;
   border-radius: 52% 48% 45% 55% / 46% 55% 45% 54%;
-  background: rgba(212,130,92,.08);
+  background: rgba(212,130,92,.07);
   z-index: -1;
 }
 
+.logo {
+  width: 34mm;
+  margin-left: -1mm;
+}
+
+.logo img {
+  width: 100%;
+  display: block;
+}
+
 .titre {
-  font-family: 'Playfair Display', serif;
-  font-size: 34px;
+  font-family: var(--font-titre);
+  font-size: 32px;
   font-weight: 500;
   letter-spacing: 5px;
   color: var(--noir);
-  margin: 2mm 0 0;
-}
-
-.nom-script {
-  font-family: 'Great Vibes', cursive;
-  font-size: 40px;
-  line-height: 1.15;
-  color: var(--orange-cuivre);
-  margin: 1mm 0 0 1mm;
+  margin: 3mm 0 0;
 }
 
 .soustitre {
@@ -132,7 +139,7 @@ body {
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--gris-texte);
-  margin: 2.5mm 0 0;
+  margin: 2mm 0 0;
   font-weight: 400;
 }
 
@@ -140,25 +147,26 @@ body {
   border: none;
   border-top: 1px solid var(--orange-cuivre);
   width: 34mm;
-  margin: 5mm 0 4.5mm;
+  margin: 4mm 0 4mm;
   opacity: .6;
 }
 
 .message {
-  font-size: 13.5px;
-  font-weight: 300;
-  line-height: 1.65;
-  color: var(--noir);
+  font-family: var(--font-titre);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--orange-fonce);
   margin: 0 0 1mm;
-  max-width: 98mm;
+  max-width: 100mm;
 }
 
 /* === Champs === */
 .champs {
-  margin-top: 4.5mm;
+  margin-top: 4mm;
   display: flex;
   flex-direction: column;
-  gap: 4.8mm;
+  gap: 4.6mm;
 }
 
 .champ {
@@ -180,9 +188,9 @@ body {
 .champ input {
   flex: 1;
   border: none;
-  border-bottom: 1.3px dotted var(--ligne);
+  border-bottom: 1.3px dotted var(--gris-moyen);
   background: transparent;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-texte);
   font-size: 14.5px;
   font-weight: 300;
   color: var(--noir);
@@ -192,7 +200,7 @@ body {
 }
 
 .champ input::placeholder {
-  color: #c9c2bb;
+  color: #cccccc;
   font-style: italic;
   font-size: 12px;
 }
@@ -202,7 +210,7 @@ body {
 }
 
 .validite {
-  margin-top: 4.5mm;
+  margin-top: 4.2mm;
   font-size: 11px;
   color: var(--gris-texte);
   display: flex;
@@ -212,9 +220,9 @@ body {
 
 .validite input {
   border: none;
-  border-bottom: 1.3px dotted var(--ligne);
+  border-bottom: 1.3px dotted var(--gris-moyen);
   background: transparent;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-texte);
   font-size: 12.5px;
   color: var(--noir);
   outline: none;
@@ -224,7 +232,7 @@ body {
 }
 
 .validite input::placeholder {
-  color: #c9c2bb;
+  color: #cccccc;
   font-style: italic;
   font-size: 11px;
 }
@@ -246,16 +254,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* Brin de feuillage stylisé */
-.brin {
-  position: absolute;
-  right: 4mm;
-  bottom: 5mm;
-  width: 60px;
-  opacity: .9;
-  z-index: 3;
-}
-
 /* === Boutons écran === */
 .actions {
   margin-top: 26px;
@@ -264,10 +262,10 @@ body {
 
 .btn-imprimer {
   padding: 12px 36px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-texte);
   font-size: 15px;
   font-weight: 400;
-  color: #fff;
+  color: var(--blanc);
   background: var(--orange-cuivre);
   border: none;
   border-radius: 30px;
@@ -282,7 +280,7 @@ body {
 .astuce {
   margin-top: 12px;
   font-size: 13px;
-  color: #6b6560;
+  color: var(--gris-texte);
   max-width: 420px;
 }
 
@@ -333,13 +331,14 @@ body {
   <div class="photo-lisere"></div>
 
   <div class="panneau">
+    <div class="logo"><img src="/images/logo.png" alt="Delphine Millot - Corps, Cœur, Conscience"></div>
+
     <div class="titre">CARTE CADEAU</div>
-    <div class="nom-script">Delphine Millot</div>
-    <div class="soustitre">Massages bien-être &middot; Brignoles</div>
+    <div class="soustitre">Massages bien-&ecirc;tre &middot; Brignoles</div>
 
     <hr class="filet">
 
-    <p class="message">Une parenth&egrave;se de d&eacute;tente et de bien-&ecirc;tre, offerte avec attention &mdash; un moment rien que pour vous, au c&oelig;ur de la Provence Verte.</p>
+    <p class="message">Une parenth&egrave;se de d&eacute;tente et de bien-&ecirc;tre, un moment rien que pour vous.</p>
 
     <div class="champs">
       <div class="champ">
@@ -363,18 +362,6 @@ body {
       4 Avenue Henri Buzzegoli, Brignoles &middot; delphine-millot.fr
     </div>
   </div>
-
-  <svg class="brin" viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M30 88 C 28 60, 26 34, 32 4" stroke="#fdfbf8" stroke-width="1.6" stroke-linecap="round"/>
-    <g fill="#fdfbf8" opacity="0.9">
-      <ellipse cx="22" cy="20" rx="7" ry="3.4" transform="rotate(-32 22 20)"/>
-      <ellipse cx="40" cy="27" rx="7" ry="3.4" transform="rotate(26 40 27)"/>
-      <ellipse cx="20" cy="38" rx="7.5" ry="3.6" transform="rotate(-28 20 38)"/>
-      <ellipse cx="40" cy="46" rx="7.5" ry="3.6" transform="rotate(24 40 46)"/>
-      <ellipse cx="19" cy="57" rx="8" ry="3.8" transform="rotate(-24 19 57)"/>
-      <ellipse cx="40" cy="65" rx="8" ry="3.8" transform="rotate(20 40 65)"/>
-    </g>
-  </svg>
 </div>
 
 <div class="actions">
