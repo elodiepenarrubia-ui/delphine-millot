@@ -13,6 +13,7 @@ Dernière mise à jour : 2026-10-29.
 ## Priorité 2 — Carte cadeau (saison Noël)
 
 - [ ] **Améliorer le design de `carte-cadeau.html`** : le rendu imprimé actuel est jugé fade / peu esthétique. Revoir la mise en page pour l'impression (couleurs et images qui ressortent bien sur papier, typographie Playfair Display mise en valeur, respect de la charte noir/blanc/orange cuivré) et tester une impression réelle en A5 avant Noël.
+- [ ] **Créer une déclinaison spéciale Noël de la carte cadeau** (visuel festif aux couleurs de la charte, à proposer en plus de la version classique pendant la saison).
 - [ ] Mettre la carte cadeau en avant sur le site pendant la saison (accueil, article de blog « idée cadeau »).
 
 ## Abandonné
