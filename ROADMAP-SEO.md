@@ -1,7 +1,7 @@
 # Roadmap SEO & acquisition — delphine-millot.fr
 
 Objectif : augmenter significativement le chiffre d'affaires (visibilité locale, réservations, récurrence).
-Dernière mise à jour : 2026-10-29.
+Dernière mise à jour : 2026-10-30.
 
 ## Priorité 1 — Fiche Google Business Profile (GBP)
 
@@ -10,14 +10,15 @@ Dernière mise à jour : 2026-10-29.
   - [x] Clé API + Place ID configurés — le workflow tourne en production depuis octobre 2026 (commits quotidiens du bot quand les avis changent).
 - [ ] Alimenter la fiche GBP : photos régulières, posts, Q&R, catégories secondaires (drainage lymphatique, Qi Gong…).
 
-## Priorité 2 — Carte cadeau (saison Noël)
+## Priorité 2 — Carte cadeau (saison Noël) ✅ dispositif en place
 
-- [x] **Améliorer le design de la carte cadeau** — refonte validée le 2026-10-29. Décision du 2026-10-30 : la page `carte-cadeau.html` est retirée du site pour empêcher l'impression sans paiement ; **Delphine détient le PDF** (transmis par e-mail) et le site ne montre qu'un aperçu basse résolution dans l'article de Noël.
-- [x] Mettre la carte cadeau en avant pendant la saison : encart avec aperçu visuel + bouton de commande WhatsApp dans l'article de blog idée cadeau de Noël, et encart saisonnier « Offrez un massage pour Noël » sur l'accueil (2026-10-30). **À retirer après les fêtes** (commentaire repère dans `index.html`).
+- [x] **Améliorer le design de la carte cadeau** — refonte validée le 2026-10-29. Décision du 2026-10-30 : pas de page carte cadeau sur le site (pour empêcher l'impression sans paiement) ; **Delphine détient le PDF** et le site ne montre qu'un aperçu basse résolution (`images/carte-cadeau-apercu.webp`).
+- [x] Mettre la carte cadeau en avant pendant la saison : encart avec aperçu visuel + bouton de commande WhatsApp dans l'article de blog idée cadeau de Noël, et encart « Offrez un massage pour Noël » sur l'accueil juste sous le hero (2026-10-30).
+- [ ] **Début janvier 2027 : retirer l'encart Noël de l'accueil** (commentaire repère « saisonnier » dans `index.html`) — ou le remplacer par une version Saint-Valentin (le massage duo s'y prête).
 
 ## Abandonné
 
-- ~~Carte cadeau spéciale Noël~~ — décision du 2026-10-30 : on garde une seule carte cadeau, la classique (`carte-cadeau.html`).
+- ~~Carte cadeau spéciale Noël~~ — décision du 2026-10-30 : une seule carte cadeau, la classique (PDF détenu par Delphine).
 - ~~Massages à domicile~~ — Delphine ne souhaite pas proposer cette offre (décision 2026-10-29). Ne pas créer de page ni l'évoquer sur le site ou la fiche GBP.
 
 ## Priorité 3 — Réservation en ligne
@@ -27,7 +28,7 @@ Dernière mise à jour : 2026-10-29.
 
 ## Priorité 4 — Contenu
 
-- [ ] 1 à 2 articles de blog par mois. Pistes : idée cadeau massage (avant Noël, Saint-Valentin, fête des mères), jambes lourdes l'été (drainage), massage anti-stress, Qi Gong débutant, réflexologie plantaire chinoise.
+- [ ] 1 à 2 articles de blog par mois. **Premier article saisonnier publié le 2026-10-29 : « Offrir un massage pour Noël »** (`blog/offrir-massage-noel-carte-cadeau-brignoles.html`). Prochaines pistes : Saint-Valentin (massage duo), réflexologie plantaire chinoise (nouveauté à faire connaître), massage anti-stress, Qi Gong débutant, jambes lourdes l'été (drainage).
 - [ ] Tenir `blog/index.json`, `blog/index.html` et `sitemap.xml` à jour à chaque publication.
 
 ## Priorité 5 — Liens locaux (backlinks & citations)
@@ -43,6 +44,7 @@ Dernière mise à jour : 2026-10-29.
 
 ## Fait
 
-- [x] 2026-08-26 — `noindex` sur `carte-cadeau.html` (page-outil d'impression).
+- [x] 2026-10-30 — Dispositif de Noël complet : article idée cadeau publié (blog + sitemap + listing), refonte de la carte cadeau (PDF privé remis à Delphine, page outil supprimée du site), aperçu basse résolution dans l'article et encart saisonnier sur l'accueil.
+- [x] Octobre 2026 — Synchronisation automatique des avis Google en production (workflow quotidien, note + nombre total + 5 avis affichés sur l'accueil).
 - [x] 2026-08-26 — `lastmod` du sitemap mis à jour pour `a-propos.html` ; CLAUDE.md dépoussiéré (API blog supprimée).
 - [x] (antérieur) — Base on-page solide : titres/descriptions localisés, JSON-LD complet (LocalBusiness, Services, FAQ, fil d'Ariane), canonicals, sitemap incluant le blog, images WebP avec alt.
