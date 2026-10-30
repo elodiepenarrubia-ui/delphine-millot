@@ -12,12 +12,12 @@ Dernière mise à jour : 2026-10-29.
 
 ## Priorité 2 — Carte cadeau (saison Noël)
 
-- [x] **Améliorer le design de `carte-cadeau.html`** — refonte le 2026-10-29 (photo pleine hauteur en biseau, titre Playfair + calligraphie, champs pointillés, charte noir/blanc cassé/orange cuivré). Reste à valider par un test d'impression réel en A5.
-- [x] **Créer une déclinaison spéciale Noël de la carte cadeau** — fait le 2026-10-29 : `carte-cadeau-noel.html` (même structure que la carte classique, mention « Joyeuses fêtes », étoiles scintillantes dans les tons cuivre ; liens de bascule entre les deux versions à l'écran). En `noindex`, hors sitemap, comme la version classique.
-- [ ] Mettre la carte cadeau en avant sur le site pendant la saison (accueil, article de blog « idée cadeau »).
+- [x] **Améliorer le design de `carte-cadeau.html`** — refonte le 2026-10-29 (photo pleine hauteur en biseau, titre Playfair + logo, champs pointillés, charte noir/blanc cassé/orange cuivré), validée. Reste un test d'impression réel en A5.
+- [x] Mettre la carte cadeau en avant pendant la saison : encart « Découvrir la carte cadeau » ajouté dans l'article de blog idée cadeau de Noël (2026-10-30). Optionnel : encart saisonnier sur l'accueil.
 
 ## Abandonné
 
+- ~~Carte cadeau spéciale Noël~~ — décision du 2026-10-30 : on garde une seule carte cadeau, la classique (`carte-cadeau.html`).
 - ~~Massages à domicile~~ — Delphine ne souhaite pas proposer cette offre (décision 2026-10-29). Ne pas créer de page ni l'évoquer sur le site ou la fiche GBP.
 
 ## Priorité 3 — Réservation en ligne
