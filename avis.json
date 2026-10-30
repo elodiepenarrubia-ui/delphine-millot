@@ -3,10 +3,16 @@
   "nombreAvis": 24,
   "avis": [
     {
+      "auteur": "Patrick DRABIK",
+      "note": 5,
+      "texte": "Un massage absolument exceptionnel!\nUne veritable parenthèse de bonheur, avec des gestes précis, une grande douceur et un professionnalisme remarquable!\nUne expérience que je vous recommande..\nMerci Delphine pour ce merveilleux moment.",
+      "date": "il y a 2 mois"
+    },
+    {
       "auteur": "Alain Andre",
       "note": 5,
       "texte": "Delphine m'a accueilli chaleureusement et avec bienveillance. S'informant sur mes éventuels soucis de santé et les parties du corps où elle devait insister. J'ai apprécié son professionnalisme, et son contact humain durant le massage pendant lequel nous avons discuté de choses et d'autres. L'endroit est très propre, on sent bien et ressourcé en fin de séance. J'y retournerai c'est certain. Alain.",
-      "date": "il y a 7 mois"
+      "date": "il y a 8 mois"
     },
     {
       "auteur": "Étienne Bernard",
@@ -15,22 +21,16 @@
       "date": "il y a 8 mois"
     },
     {
+      "auteur": "Chris C.A",
+      "note": 5,
+      "texte": "Delphine masse avec une douceur extrême elle créait une bulle ou le corps et l'esprit lâche prise ,immense relaxation.",
+      "date": "il y a 2 mois"
+    },
+    {
       "auteur": "Patrtick Garcia",
       "note": 5,
       "texte": "J’ai choisi un massage lymphatique. Quelle merveilleuse sensation à la fin du massage d’avoir le corps nettoyé. Bien être garanti , je recommande.\nMerci",
       "date": "il y a 8 mois"
-    },
-    {
-      "auteur": "Ol Ive",
-      "note": 5,
-      "texte": "Un nouveau massage avec Delphine ,d'écoute et de douceur.\nSa présence et son toucher m'ont permis de me laisser aller,une bulle de détente et de bonheur.Gratitude.",
-      "date": "il y a un an"
-    },
-    {
-      "auteur": "Nicole Le Mével-Bircher",
-      "note": 5,
-      "texte": "Accueil très chaleureux de Delphine,\nAmbiance cocooning où tout est pensé pour qu'on se sente bien,\nMassage doux et léger ou plus profond mais toujours thérapeutique.\nUn soin à s'offrir ! Je recommande !",
-      "date": "il y a un an"
     }
   ]
 }

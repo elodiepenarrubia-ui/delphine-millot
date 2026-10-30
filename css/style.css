@@ -44,6 +44,97 @@ img {
   border-radius: var(--card-image-radius);
 }
 
+/* === IMAGES IMMERSIVES === */
+/* Bandeau photo pleine largeur, voile sombre et citation en surimpression */
+.bandeau-photo {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) var(--spacing-sm);
+}
+
+.bandeau-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.62), rgba(26, 26, 26, 0.38));
+}
+
+.bandeau-photo p {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-titre);
+  font-style: italic;
+  font-size: 1.7rem;
+  line-height: 1.5;
+  color: var(--blanc);
+  text-align: center;
+  max-width: 720px;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Section moitié image / moitié texte */
+.section-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  padding: 0;
+}
+
+.section-duo .duo-image {
+  background-size: cover;
+  background-position: center;
+  border-radius: 0;
+  min-height: 460px;
+}
+
+.section-duo .duo-texte {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 640px;
+}
+
+.section-duo.duo-inverse .duo-image {
+  order: 2;
+}
+
+.section-duo.duo-inverse .duo-texte {
+  justify-self: end;
+}
+
+@media (max-width: 900px) {
+  .section-duo {
+    grid-template-columns: 1fr;
+  }
+
+  .section-duo .duo-image {
+    min-height: 300px;
+  }
+
+  .section-duo.duo-inverse .duo-image {
+    order: 0;
+  }
+
+  .section-duo .duo-texte {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .bandeau-photo {
+    min-height: 48vh;
+  }
+
+  .bandeau-photo p {
+    font-size: 1.3rem;
+  }
+}
+
 /* === RESET & BASE === */
 * {
   margin: 0;
@@ -66,33 +157,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* === ANIMATIONS FADE-IN === */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
+/* === ANIMATIONS D'APPARITION AU SCROLL === */
+/* .reveal-prep est posée par JS au chargement, uniquement sur les sections
+   encore sous la ligne de flottaison : le contenu déjà visible n'est jamais
+   masqué (pas de saut), et sans JS rien n'est caché. */
+.reveal-prep {
   opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
+  transform: translateY(30px);
 }
 
-.fade-in-delay-1 {
-  animation-delay: 0.2s;
+.reveal-prep.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
 }
 
-.fade-in-delay-2 {
-  animation-delay: 0.4s;
-}
-
-.fade-in-delay-3 {
-  animation-delay: 0.6s;
+@media (prefers-reduced-motion: reduce) {
+  .reveal-prep {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* === TYPOGRAPHIE === */
@@ -508,13 +592,13 @@ nav li {
 
 /* === HERO PAGE MASSAGES === */
 .hero-massages {
-  background-image: url('/images/massage.webp');
+  background-image: url('/images/hero-massages-cabinet.webp');
   background-size: cover;
-  background-position: center;
+  background-position: center 70%;
 }
 
 .no-webp .hero-massages {
-  background-image: url('/images/massage.jpg');
+  background-image: url('/images/hero-massages-cabinet.jpg');
 }
 
 .hero-massages::before {

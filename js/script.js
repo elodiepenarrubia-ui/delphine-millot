@@ -143,22 +143,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true });
 
     // ============================================
-    // 5. ANIMATIONS FADE-IN AU SCROLL
-    //    (plus d'opacity:0 forcé en JS : si JS échoue,
-    //    les sections restent visibles)
+    // 5. ANIMATIONS D'APPARITION AU SCROLL
+    //    Seules les sections encore sous la ligne de
+    //    flottaison sont pré-masquées (et seulement si JS
+    //    tourne) : pas de saut sur le contenu déjà visible,
+    //    et sans JS tout reste affiché.
     // ============================================
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
+    const reduceMotionReveal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotionReveal && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('section').forEach(section => {
+            if (section.getBoundingClientRect().top > window.innerHeight) {
+                section.classList.add('reveal-prep');
+                observer.observe(section);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
+    }
 
     // ============================================
     // 6. AVIS DÉFILANTS (respecte prefers-reduced-motion)
