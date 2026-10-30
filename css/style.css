@@ -44,6 +44,43 @@ img {
   border-radius: var(--card-image-radius);
 }
 
+/* === IMAGES ÉDITORIALES (placements variés dans les pages) === */
+.img-flot-droite,
+.img-flot-gauche {
+  width: 44%;
+  margin-bottom: var(--spacing-sm);
+}
+
+.img-flot-droite {
+  float: right;
+  margin-left: var(--spacing-md);
+}
+
+.img-flot-gauche {
+  float: left;
+  margin-right: var(--spacing-md);
+}
+
+.img-centree {
+  display: block;
+  width: 70%;
+  margin: var(--spacing-md) auto 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 768px) {
+  .img-flot-droite,
+  .img-flot-gauche {
+    float: none;
+    width: 100%;
+    margin: var(--spacing-md) 0 0;
+  }
+
+  .img-centree {
+    width: 100%;
+  }
+}
+
 /* === RESET & BASE === */
 * {
   margin: 0;
@@ -503,7 +540,7 @@ nav li {
 .hero-massages {
   background-image: url('/images/hero-massages-cabinet.webp');
   background-size: cover;
-  background-position: center;
+  background-position: center 70%;
 }
 
 .no-webp .hero-massages {
