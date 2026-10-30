@@ -66,33 +66,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* === ANIMATIONS FADE-IN === */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
+/* === ANIMATIONS D'APPARITION AU SCROLL === */
+/* .reveal-prep est posée par JS au chargement, uniquement sur les sections
+   encore sous la ligne de flottaison : le contenu déjà visible n'est jamais
+   masqué (pas de saut), et sans JS rien n'est caché. */
+.reveal-prep {
   opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
+  transform: translateY(30px);
 }
 
-.fade-in-delay-1 {
-  animation-delay: 0.2s;
+.reveal-prep.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
 }
 
-.fade-in-delay-2 {
-  animation-delay: 0.4s;
-}
-
-.fade-in-delay-3 {
-  animation-delay: 0.6s;
+@media (prefers-reduced-motion: reduce) {
+  .reveal-prep {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* === TYPOGRAPHIE === */
