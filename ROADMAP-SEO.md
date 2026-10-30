@@ -13,7 +13,7 @@ Dernière mise à jour : 2026-10-29.
 ## Priorité 2 — Carte cadeau (saison Noël)
 
 - [x] **Améliorer le design de la carte cadeau** — refonte validée le 2026-10-29. Décision du 2026-10-30 : la page `carte-cadeau.html` est retirée du site pour empêcher l'impression sans paiement ; **Delphine détient le PDF** (transmis par e-mail) et le site ne montre qu'un aperçu basse résolution dans l'article de Noël.
-- [x] Mettre la carte cadeau en avant pendant la saison : encart avec aperçu visuel + bouton de commande WhatsApp dans l'article de blog idée cadeau de Noël (2026-10-30). Optionnel : encart saisonnier sur l'accueil.
+- [x] Mettre la carte cadeau en avant pendant la saison : encart avec aperçu visuel + bouton de commande WhatsApp dans l'article de blog idée cadeau de Noël, et encart saisonnier « Offrez un massage pour Noël » sur l'accueil (2026-10-30). **À retirer après les fêtes** (commentaire repère dans `index.html`).
 
 ## Abandonné
 
