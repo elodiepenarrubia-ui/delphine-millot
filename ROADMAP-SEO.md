@@ -1,14 +1,14 @@
 # Roadmap SEO & acquisition — delphine-millot.fr
 
 Objectif : augmenter significativement le chiffre d'affaires (visibilité locale, réservations, récurrence).
-Dernière mise à jour : 2026-10-30.
+Dernière mise à jour : 2026-10-30 (fin de journée — photos intégrées).
 
 ## Priorité 1 — Fiche Google Business Profile (GBP)
 
 - [ ] Obtenir des avis Google en continu : demander après chaque séance (QR code vers le lien d'avis imprimé au cabinet). Objectif : 30-50 avis. **Point au 2026-10-29 : 24 avis, note 5,0 — en bonne voie.**
 - [x] **Connecter le site à Google pour que les avis se synchronisent automatiquement entre le site et la fiche GBP** — côté site, c'est en place (2026-08-26) : la GitHub Action `.github/workflows/avis-google.yml` récupère chaque jour note globale + nombre total + 5 avis via l'API Google Places (New) et committe `avis.json`, que la page d'accueil affiche. Coût : ~30 appels/mois pour 1 000 gratuits (catégorie Enterprise + Atmosphere), donc 0 €.
   - [x] Clé API + Place ID configurés — le workflow tourne en production depuis octobre 2026 (commits quotidiens du bot quand les avis changent).
-- [ ] Alimenter la fiche GBP : photos régulières, posts, Q&R, catégories secondaires (drainage lymphatique, Qi Gong…).
+- [ ] Alimenter la fiche GBP : photos régulières (**les 23 photos pro du site sont prêtes à y être téléversées** — portrait de Delphine en photo de profil, déco bouddha en couverture), posts, Q&R, catégories secondaires (drainage lymphatique, Qi Gong…).
 
 ## Priorité 2 — Carte cadeau (saison Noël) ✅ dispositif en place
 
@@ -44,6 +44,8 @@ Dernière mise à jour : 2026-10-30.
 
 ## Fait
 
+- [x] 2026-10-30 — **Reportage photo intégré sur tout le site** : 23 photos professionnelles du cabinet (WebP optimisé, alt descriptifs). Vrai bandeau photo sur la page Massages, sections moitié image/moitié texte (`.section-duo`) pour les intros des pages prestations, l'accueil et À propos, bandeaux citation pleine largeur (`.bandeau-photo`, 65vh, voile sombre, cadrage réglé au cas par cas), articles de blog illustrés. À faire en miroir : téléverser les meilleures photos sur la fiche GBP (portrait en photo de profil, déco bouddha en couverture).
+- [x] 2026-10-30 — Correction du saut visuel au scroll (sections pré-masquées seulement sous la ligne de flottaison).
 - [x] 2026-10-30 — Dispositif de Noël complet : article idée cadeau publié (blog + sitemap + listing), refonte de la carte cadeau (PDF privé remis à Delphine, page outil supprimée du site), aperçu basse résolution dans l'article et encart saisonnier sur l'accueil.
 - [x] Octobre 2026 — Synchronisation automatique des avis Google en production (workflow quotidien, note + nombre total + 5 avis affichés sur l'accueil).
 - [x] 2026-08-26 — `lastmod` du sitemap mis à jour pour `a-propos.html` ; CLAUDE.md dépoussiéré (API blog supprimée).
