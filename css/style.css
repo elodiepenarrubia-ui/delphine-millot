@@ -50,7 +50,7 @@ img {
   position: relative;
   background-size: cover;
   background-position: center;
-  min-height: 46vh;
+  min-height: 65vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,7 +127,7 @@ img {
   }
 
   .bandeau-photo {
-    min-height: 34vh;
+    min-height: 48vh;
   }
 
   .bandeau-photo p {
