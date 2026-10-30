@@ -501,13 +501,13 @@ nav li {
 
 /* === HERO PAGE MASSAGES === */
 .hero-massages {
-  background-image: url('/images/massage.webp');
+  background-image: url('/images/hero-massages-cabinet.webp');
   background-size: cover;
   background-position: center;
 }
 
 .no-webp .hero-massages {
-  background-image: url('/images/massage.jpg');
+  background-image: url('/images/hero-massages-cabinet.jpg');
 }
 
 .hero-massages::before {
