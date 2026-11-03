@@ -3,6 +3,12 @@
   "nombreAvis": 24,
   "avis": [
     {
+      "auteur": "Tiana Randria",
+      "note": 5,
+      "texte": "Après des séances de sport intenses, je suis venu avec des noeuds partout sur mon corps.\nLe massage suédois de Delphine m’a fait énormément du bien. Je suis détendu, et les tensions musculaires disparaissaient.\nMerci beaucoup Delphine pour cette prestation.\nJe la recommande sans aucune hésitation.\nÀ très bientôt.",
+      "date": "il y a un mois"
+    },
+    {
       "auteur": "Patrick DRABIK",
       "note": 5,
       "texte": "Un massage absolument exceptionnel!\nUne veritable parenthèse de bonheur, avec des gestes précis, une grande douceur et un professionnalisme remarquable!\nUne expérience que je vous recommande..\nMerci Delphine pour ce merveilleux moment.",
@@ -25,12 +31,6 @@
       "note": 5,
       "texte": "Delphine masse avec une douceur extrême elle créait une bulle ou le corps et l'esprit lâche prise ,immense relaxation.",
       "date": "il y a 2 mois"
-    },
-    {
-      "auteur": "Patrtick Garcia",
-      "note": 5,
-      "texte": "J’ai choisi un massage lymphatique. Quelle merveilleuse sensation à la fin du massage d’avoir le corps nettoyé. Bien être garanti , je recommande.\nMerci",
-      "date": "il y a 8 mois"
     }
   ]
 }
