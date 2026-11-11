@@ -3,6 +3,12 @@
   "nombreAvis": 26,
   "avis": [
     {
+      "auteur": "Sylvaint Toussaint",
+      "note": 5,
+      "texte": "Je suis venue chez Delphine lundi 21 septembre pour massages tête , pieds et mains , et j’ai passé un moment formidablement relaxant et agréable . Cadeau offert par une amie et qui sera sans doute le départ d'autres séances aussi relaxant. Delphine est très très douce en massages et de plus très sympathique .\nEncore merci pour ce moment . A bientôt",
+      "date": "il y a un mois"
+    },
+    {
       "auteur": "Tiana Randria",
       "note": 5,
       "texte": "Après des séances de sport intenses, je suis venu avec des noeuds partout sur mon corps.\nLe massage suédois de Delphine m’a fait énormément du bien. Je suis détendu, et les tensions musculaires disparaissaient.\nMerci beaucoup Delphine pour cette prestation.\nJe la recommande sans aucune hésitation.\nÀ très bientôt.",
@@ -25,12 +31,6 @@
       "note": 5,
       "texte": "Je suis venu voir Delphine pour un massage tantrique et j'ai rencontré une  personne à l'écoute, douce et compréhensive. Le massage, qui a duré presque 2 heures, a été une révélation pour moi , a contribué à un véritable lâcher prise  et un bien être total. Delphine est une fée et je la remercie. Je reviendrai.",
       "date": "il y a 8 mois"
-    },
-    {
-      "auteur": "Chris C.A",
-      "note": 5,
-      "texte": "Delphine masse avec une douceur extrême elle créait une bulle ou le corps et l'esprit lâche prise ,immense relaxation.",
-      "date": "il y a 2 mois"
     }
   ]
 }
