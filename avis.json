@@ -3,6 +3,12 @@
   "nombreAvis": 26,
   "avis": [
     {
+      "auteur": "VERSE",
+      "note": 5,
+      "texte": "Un vrai moment de bonheur ! 🥰 Une masseuse adorable, douce et très professionnelle. J’ai passé un excellent moment, le massage m’a fait énormément de bien et je suis ressortie complètement détendue. On sent qu’elle aime ce qu’elle fait et qu’elle prend vraiment soin de ses client(e)s. Merci encore pour ce joli moment, je reviendrai sans hésiter ! ❤️",
+      "date": "il y a moins d'une semaine"
+    },
+    {
       "auteur": "Sylvaint Toussaint",
       "note": 5,
       "texte": "Je suis venue chez Delphine lundi 21 septembre pour massages tête , pieds et mains , et j’ai passé un moment formidablement relaxant et agréable . Cadeau offert par une amie et qui sera sans doute le départ d'autres séances aussi relaxant. Delphine est très très douce en massages et de plus très sympathique .\nEncore merci pour ce moment . A bientôt",
@@ -25,12 +31,6 @@
       "note": 5,
       "texte": "Un massage absolument exceptionnel!\nUne veritable parenthèse de bonheur, avec des gestes précis, une grande douceur et un professionnalisme remarquable!\nUne expérience que je vous recommande..\nMerci Delphine pour ce merveilleux moment.",
       "date": "il y a 3 mois"
-    },
-    {
-      "auteur": "Alain Andre",
-      "note": 5,
-      "texte": "Delphine m'a accueilli chaleureusement et avec bienveillance. S'informant sur mes éventuels soucis de santé et les parties du corps où elle devait insister. J'ai apprécié son professionnalisme, et son contact humain durant le massage pendant lequel nous avons discuté de choses et d'autres. L'endroit est très propre, on sent bien et ressourcé en fin de séance. J'y retournerai c'est certain. Alain.",
-      "date": "il y a 8 mois"
     }
   ]
 }
