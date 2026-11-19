@@ -3,7 +3,7 @@
   <!-- Page d'accueil -->
   <url>
     <loc>https://delphine-millot.fr/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,7 +11,7 @@
   <!-- Pages principales -->
   <url>
     <loc>https://delphine-millot.fr/massages.html</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -118,7 +118,7 @@
 
   <url>
     <loc>https://delphine-millot.fr/blog/comment-choisir-son-massage-a-brignoles-guide-complet.html</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

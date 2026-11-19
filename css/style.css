@@ -518,9 +518,72 @@ nav li {
 
 /* === HERO PAGE D'ACCUEIL (avec image de fond) === */
 .hero-home {
-  background-image: url('/images/hero-massage.jpg');
+  background-color: var(--noir);
+}
+
+/* Diaporama du hero : fondu enchaîné + léger zoom lent */
+.hero-diaporama {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.6s ease, transform 8s ease-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Points de navigation du diaporama */
+.hero-points {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero-points button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid var(--blanc);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.hero-points button[aria-current="true"] {
+  background: var(--blanc);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transform: none; transition: none; }
+}
+
+/* Mobile : le hero s'adapte au contenu et laisse la place aux points */
+@media (max-width: 768px) {
+  .hero-home {
+    height: auto;
+    min-height: 60vh;
+    padding: var(--spacing-xl) 0 calc(var(--spacing-xl) + 10px);
+  }
+  .hero-points {
+    bottom: var(--spacing-sm);
+  }
 }
 
 /* Overlay sombre pour contraste texte (page d'accueil uniquement) */
@@ -533,8 +596,9 @@ nav li {
   bottom: 0;
   background: linear-gradient(
     180deg,
-    rgba(26, 26, 26, 0.1) 0%,
-    rgba(212, 130, 92, 0.5) 100%
+    rgba(26, 26, 26, 0.45) 0%,
+    rgba(26, 26, 26, 0.42) 50%,
+    rgba(184, 104, 68, 0.6) 100%
   );
   z-index: 1;
 }

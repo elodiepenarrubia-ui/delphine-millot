@@ -169,6 +169,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================
+    // 5 bis. DIAPORAMA DU HERO (accueil)
+    //    Sans JS ou en mouvement réduit : la 1re photo reste fixe.
+    // ============================================
+    const slides = document.querySelectorAll('.hero-slide');
+    const reduceMotionHero = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (slides.length > 1 && !reduceMotionHero) {
+        // Charge les photos suivantes une fois la page affichée
+        slides.forEach(slide => {
+            if (slide.dataset.bg) slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
+        });
+
+        let current = 0;
+        let timer = null;
+        const pointsBox = document.querySelector('.hero-points');
+        const points = [];
+
+        const show = (i) => {
+            slides[current].classList.remove('active');
+            points[current] && points[current].setAttribute('aria-current', 'false');
+            current = (i + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            points[current] && points[current].setAttribute('aria-current', 'true');
+        };
+        const start = () => { clearInterval(timer); timer = setInterval(() => show(current + 1), 6000); };
+
+        if (pointsBox) {
+            slides.forEach((_, i) => {
+                const b = document.createElement('button');
+                b.type = 'button';
+                b.setAttribute('aria-label', `Photo ${i + 1} sur ${slides.length}`);
+                b.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+                b.addEventListener('click', () => { show(i); start(); });
+                pointsBox.appendChild(b);
+                points.push(b);
+            });
+            pointsBox.hidden = false;
+        }
+
+        // Pause quand l'onglet n'est pas visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) clearInterval(timer); else start();
+        });
+        start();
+    }
+
+    // ============================================
     // 6. AVIS DÉFILANTS (respecte prefers-reduced-motion)
     // ============================================
     let avisAnimationId = null;
