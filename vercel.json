@@ -3,19 +3,51 @@
     {
       "source": "/(images|img)/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/css/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/js/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, must-revalidate"
+        }
       ]
-    }  ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/carte-cadeau",
+      "destination": "/#carte-cadeau",
+      "permanent": true
+    },
+    {
+      "source": "/carte-cadeau.html",
+      "destination": "/#carte-cadeau",
+      "permanent": true
+    },
+    {
+      "source": "/carte-cadeau-noel",
+      "destination": "/#carte-cadeau",
+      "permanent": true
+    },
+    {
+      "source": "/carte-cadeau-noel.html",
+      "destination": "/#carte-cadeau",
+      "permanent": true
+    }
+  ]
 }

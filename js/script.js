@@ -169,6 +169,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================
+    // 5 ter. ANCRE DANS L'URL (ex. /#carte-cadeau) : recalage une fois
+    //    la page chargée, le contenu au-dessus ayant pu bouger
+    // ============================================
+    if (location.hash.length > 1) {
+        window.addEventListener('load', () => {
+            const cible = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+            if (cible) cible.scrollIntoView({ block: 'start' });
+        });
+    }
+
+    // ============================================
     // 5 bis. DIAPORAMA DU HERO (accueil)
     //    Sans JS ou en mouvement réduit : la 1re photo reste fixe.
     // ============================================
