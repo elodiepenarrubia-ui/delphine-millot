@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
             current = (i + slides.length) % slides.length;
             slides[current].classList.add('active');
         };
-        const start = () => { clearInterval(timer); timer = setInterval(() => show(current + 1), 2000); };
+        const start = () => { clearInterval(timer); timer = setInterval(() => show(current + 1), 4000); };
 
         // Pause quand l'onglet n'est pas visible
         document.addEventListener('visibilitychange', () => {

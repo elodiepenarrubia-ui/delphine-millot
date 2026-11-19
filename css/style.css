@@ -521,7 +521,7 @@ nav li {
   background-color: var(--noir);
 }
 
-/* Diaporama du hero : fondu enchaîné rapide (photo changée toutes les 2 s) + léger zoom */
+/* Diaporama du hero : fondu enchaîné rapide (photo changée toutes les 4 s) + léger zoom */
 .hero-diaporama {
   position: absolute;
   inset: 0;
@@ -535,7 +535,7 @@ nav li {
   background-position: center;
   opacity: 0;
   transform: scale(1.06);
-  transition: opacity 0.8s ease, transform 3s ease-out;
+  transition: opacity 1.2s ease, transform 5s ease-out;
 }
 
 .hero-slide.active {
