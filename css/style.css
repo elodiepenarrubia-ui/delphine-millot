@@ -543,46 +543,20 @@ nav li {
   transform: scale(1);
 }
 
-/* Points de navigation du diaporama */
-.hero-points {
-  position: absolute;
-  bottom: var(--spacing-md);
-  left: 0;
-  right: 0;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.hero-points button {
-  width: 10px;
-  height: 10px;
-  padding: 0;
-  border: 1px solid var(--blanc);
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.hero-points button[aria-current="true"] {
-  background: var(--blanc);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero-slide { transform: none; transition: none; }
 }
 
-/* Mobile : le hero s'adapte au contenu et laisse la place aux points */
+/* Mobile : le hero occupe tout l'écran sous le menu (--header-h mesuré par
+   js/script.js, 117 px par défaut) et grandit si son contenu est plus haut.
+   Sélecteur renforcé pour passer devant les règles .hero { height: 60vh }
+   plus bas dans la feuille. */
 @media (max-width: 768px) {
-  .hero-home {
+  .hero.hero-home {
     height: auto;
-    min-height: 60vh;
-    padding: var(--spacing-xl) 0 calc(var(--spacing-xl) + 10px);
-  }
-  .hero-points {
-    bottom: var(--spacing-sm);
+    min-height: calc(100vh - var(--header-h, 117px));
+    min-height: calc(100svh - var(--header-h, 117px));
+    padding: var(--spacing-lg) 0;
   }
 }
 
