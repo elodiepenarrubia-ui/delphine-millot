@@ -1451,6 +1451,11 @@ footer {
     display: inline-block;
     text-align: center;
   }
+
+  /* Espace entre « Massages » et le chevron (le gap du inline-flex ne s'applique plus ici) */
+  .nav-item-with-submenu > a::after {
+    margin-left: 0.6rem;
+  }
   
   .menu-toggle {
     display: flex;
