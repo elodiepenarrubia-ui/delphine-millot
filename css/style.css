@@ -644,11 +644,7 @@ nav li {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(26, 26, 26, 0.3) 0%,
-    rgba(212, 130, 92, 0) 100%
-  );
+  background: rgba(26, 26, 26, 0.5); /* même voile que l'accueil, pour la lisibilité */
   z-index: 1;
 }
 
