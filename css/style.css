@@ -110,6 +110,26 @@ img {
   justify-self: end;
 }
 
+/* Variante encadrée : photo dans le conteneur, avec marges blanches et coins
+   arrondis (ne touche ni les fonds ni les photos voisines). Sur mobile, le
+   texte passe avant la photo. */
+.section-duo.duo-cadre {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.section-duo.duo-cadre .duo-image {
+  border-radius: var(--card-image-radius);
+  min-height: 480px;
+}
+
+.section-duo.duo-cadre .duo-texte {
+  padding: 0;
+}
+
 @media (max-width: 900px) {
   .section-duo {
     grid-template-columns: 1fr;
@@ -125,6 +145,21 @@ img {
 
   .section-duo .duo-texte {
     padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .section-duo.duo-cadre {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    gap: var(--spacing-md);
+  }
+
+  .section-duo.duo-cadre .duo-image,
+  .section-duo.duo-inverse.duo-cadre .duo-image {
+    order: 2;
+    min-height: 320px;
+  }
+
+  .section-duo.duo-cadre .duo-texte {
+    padding: 0;
   }
 
   .bandeau-photo {
